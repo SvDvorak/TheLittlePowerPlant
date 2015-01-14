@@ -1,0 +1,5 @@
+# Ignore everything except code
+/*
+!/.gitignore
+!/UnityVS*
+!/Code*
