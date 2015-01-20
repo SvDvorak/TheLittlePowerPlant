@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemList : MonoBehaviour
@@ -32,6 +30,15 @@ public class ItemList : MonoBehaviour
         }
     }
 
+    public object Selected
+    {
+        get
+        {
+            var selectedToggle = ItemPanel.GetComponent<ToggleGroup>().GetActive();
+            return selectedToggle.GetComponent<MachineTypeData>().MachineType;
+        }
+    }
+
     private void CreatePresentationForItems()
     {
         var panelRect = ItemPanel.GetComponent<RectTransform>();
@@ -46,6 +53,8 @@ public class ItemList : MonoBehaviour
             contentHeight -= itemHeight + ItemPadding;
             var toggle = itemPresentation.GetComponent<Toggle>();
             toggle.group = panelToggleGroup;
+            var dataContext = itemPresentation.GetComponent<MachineTypeData>();
+            dataContext.SetMachineType(item);
         }
 
         panelRect.sizeDelta = new Vector2(panelRect.sizeDelta.x, panelRect.sizeDelta.y/2 - contentHeight - ItemPadding);

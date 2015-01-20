@@ -1,33 +1,53 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BuildMachine : MonoBehaviour
 {
-    public GameObject MachineSelectionUI;
+    public GameObject MachineSelectionTemplate;
+    public GameObject TurbineTemplate;
     private GameObject _machineSelection;
+    private GameObject _plateModel;
 
     // Use this for initialization
 	void Start ()
 	{
-
+	    _plateModel = transform.FindChild("Model").gameObject;
 	}
 
     // Update is called once per frame
-	void Update () {
-	
+	void Update ()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+	    RaycastHit hit;
+        if (Physics.Raycast(ray, out hit) && Input.GetMouseButtonDown(0))
+        {
+           if(hit.collider.gameObject == _plateModel)
+           {
+               TileSelected();
+           }
+        }
 	}
 
-    void OnMouseDown()
+    void TileSelected()
     {
         if(_machineSelection == null)
         {
-            _machineSelection = (GameObject)Instantiate(MachineSelectionUI);
+            _machineSelection = (GameObject)Instantiate(MachineSelectionTemplate);
             _machineSelection.transform.SetParent(transform);
-            _machineSelection.transform.localPosition = new Vector3(0, 5, 0);
+            _machineSelection.transform.localPosition = new Vector3(0, 2.5f, 0);
+            var machineSelectionList = _machineSelection.GetComponent<MachineSelectionList>();
+            machineSelectionList.MachineSelected += Build;
         }
         else
         {
             Destroy(_machineSelection);
         }
+    }
+
+    private void Build(MachineType machineTypeToBuild)
+    {
+        Destroy(_machineSelection);
+        var machine = (GameObject)Instantiate(TurbineTemplate);
+        machine.transform.SetParent(transform, false);
+        machine.transform.localPosition = new Vector3(0, 0, 0);
     }
 }

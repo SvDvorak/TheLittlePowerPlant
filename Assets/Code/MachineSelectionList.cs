@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class FillMachineTypeList : MonoBehaviour
+public class MachineSelectionList : MonoBehaviour
 {
+    public Action<MachineType> MachineSelected;
     public ItemList ItemList;
 
 	// Use this for initialization
@@ -19,17 +21,26 @@ public class FillMachineTypeList : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
+
+    public void Build()
+    {
+        if (MachineSelected != null)
+        {
+            MachineSelected((MachineType) ItemList.Selected);
+        }
+    }
 }
 
 public class MachineType
 {
-    private string _name;
+    public string Name { get; set; }
 
     public MachineType(string name)
     {
-        _name = name;
+        Name = name;
     }
 }
