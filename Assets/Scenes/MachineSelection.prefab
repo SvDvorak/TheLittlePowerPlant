@@ -101,6 +101,7 @@ GameObject:
   - 224: {fileID: 22493908}
   - 222: {fileID: 22293910}
   - 114: {fileID: 11493906}
+  - 114: {fileID: 11497144}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -317,7 +318,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22493904}
   m_Direction: 2
   m_Value: 1
-  m_Size: .549999952
+  m_Size: .550000012
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -483,6 +484,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &11497144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1184210157, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!222 &22235714
 CanvasRenderer:
   m_ObjectHideFlags: 1

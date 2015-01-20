@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class ItemList : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class ItemList : MonoBehaviour
     }
 
     private const int ItemPadding = 10;
-    private ClickScript _selectedItemScript;
 
     private IEnumerable<object> _items;
     public IEnumerable<object> Items
@@ -35,24 +35,19 @@ public class ItemList : MonoBehaviour
     private void CreatePresentationForItems()
     {
         var panelRect = ItemPanel.GetComponent<RectTransform>();
+        var panelToggleGroup = ItemPanel.GetComponent<ToggleGroup>();
         var contentHeight = panelRect.sizeDelta.y/2;
         foreach (var item in _items)
         {
             var itemPresentation = (GameObject)Instantiate(ItemPresentationTemplate);
-            itemPresentation.GetComponent<ClickScript>().ItemClicked += OnItemClicked;
             itemPresentation.transform.SetParent(ItemPanel.transform, false);
             var itemHeight = itemPresentation.GetComponent<RectTransform>().sizeDelta.y;
             itemPresentation.transform.localPosition = new Vector3(0, contentHeight - itemHeight/2);
             contentHeight -= itemHeight + ItemPadding;
+            var toggle = itemPresentation.GetComponent<Toggle>();
+            toggle.group = panelToggleGroup;
         }
 
         panelRect.sizeDelta = new Vector2(panelRect.sizeDelta.x, panelRect.sizeDelta.y/2 - contentHeight - ItemPadding);
-    }
-
-    private void OnItemClicked(ClickScript clickedScript)
-    {
-        _selectedItemScript.Unselect();
-        clickedScript.Select();
-        _selectedItemScript = clickedScript;
     }
 }
