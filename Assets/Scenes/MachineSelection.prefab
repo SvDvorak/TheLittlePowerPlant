@@ -102,6 +102,8 @@ GameObject:
   - 222: {fileID: 22293910}
   - 114: {fileID: 11493906}
   - 114: {fileID: 11497144}
+  - 114: {fileID: 11455070}
+  - 114: {fileID: 11455072}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -244,6 +246,39 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Build
+--- !u!114 &11455070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+--- !u!114 &11455072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!114 &11472450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,7 +365,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22493904}
   m_Direction: 2
   m_Value: 1
-  m_Size: .550000012
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -670,8 +705,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -500}
-  m_SizeDelta: {x: 650, y: 1000}
+  m_AnchoredPosition: {x: 0, y: -275.000061}
+  m_SizeDelta: {x: 650, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22493910
 RectTransform:
