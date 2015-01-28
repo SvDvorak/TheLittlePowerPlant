@@ -13,7 +13,7 @@ public class SliderSetter : MonoBehaviour
     void Start()
     {
         _data = gameObject.GetDataContext();
-        _property = _data.GetType().GetProperty(PropertyName);
+        _property = _data.GetProperty(PropertyName);
     }
 
     void Update()

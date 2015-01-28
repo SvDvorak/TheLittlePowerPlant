@@ -17,7 +17,10 @@ public class MachineSetup : MonoBehaviour
 
     public void Update()
     {
-        var outputChangeMaxDelta = (OutputAdjustPerSecond * Time.deltaTime);
-        _machineType.Output = Mathf.MoveTowards(_machineType.Output, _machineType.RequestedOutput, outputChangeMaxDelta);
+        if(_machineType.IsPoweredOn)
+        {
+            var outputChangeMaxDelta = (OutputAdjustPerSecond * Time.deltaTime);
+            _machineType.Output = Mathf.MoveTowards(_machineType.Output, _machineType.RequestedOutput, outputChangeMaxDelta);
+        }
     }
 }

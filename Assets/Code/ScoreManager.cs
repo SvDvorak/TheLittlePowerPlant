@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
 
     public void Update()
     {
-        CityValue += (969 + Random.Range(-3, 3))*Time.deltaTime;
+        CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
         Output = _machineOutputs.Values.Sum();
     }
 }
