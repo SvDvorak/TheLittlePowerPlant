@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BuildMachine : MonoBehaviour
 {
     public GameObject MachineSelectionTemplate;
     public GameObject TurbineTemplate;
+    public ScoreManager OutputManager;
     private GameObject _machineSelection;
     private GameObject _plateModel;
 
@@ -43,11 +45,12 @@ public class BuildMachine : MonoBehaviour
         }
     }
 
-    private void Build(MachineType machineTypeToBuild)
+    private void Build(IMachineType machineTypeToBuild)
     {
         Destroy(_machineSelection);
+
         var machine = (GameObject)Instantiate(TurbineTemplate);
         machine.transform.SetParent(transform, false);
-        machine.transform.localPosition = new Vector3(0, 0, 0);
+        machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
     }
 }

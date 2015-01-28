@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class MachineSelectionList : MonoBehaviour
 {
-    public Action<MachineType> MachineSelected;
+    public Action<Turbine> MachineSelected;
     public ItemList ItemList;
 
 	// Use this for initialization
@@ -13,34 +13,23 @@ public class MachineSelectionList : MonoBehaviour
 	{
 	    ItemList.Items = new List<object>()
 	        {
-	            new MachineType("Turbine"),
-                new MachineType("Coal"),
-                new MachineType("Nuclear"),
-                new MachineType("Wind"),
+	            new Turbine() { Name = "Turbine" },
+                new Turbine() { Name = "Coal" },
+                new Turbine() { Name = "Nuclear" },
+                new Turbine() { Name = "Wind" },
 	        };
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	
 	}
 
     public void Build()
     {
         if (MachineSelected != null)
         {
-            MachineSelected((MachineType) ItemList.Selected);
+            MachineSelected((Turbine) ItemList.Selected);
         }
-    }
-}
-
-public class MachineType
-{
-    public string Name { get; set; }
-
-    public MachineType(string name)
-    {
-        Name = name;
     }
 }

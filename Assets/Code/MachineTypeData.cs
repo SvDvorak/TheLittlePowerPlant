@@ -18,7 +18,7 @@ public class MachineTypeData : MonoBehaviour
 
     public void SetMachineType(object machineType)
     {
-        var type = (MachineType)machineType;
+        var type = (Turbine)machineType;
         Name.text = type.Name;
         MachineType = machineType;
     }

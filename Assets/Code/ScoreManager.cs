@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -37,6 +38,6 @@ public class ScoreManager : MonoBehaviour
     public void Update()
     {
         CityValue += (969 + Random.Range(-3, 3))*Time.deltaTime;
-        Output += (5 +Random.Range(-5, 6))*Time.deltaTime;
+        Output = _machineOutputs.Values.Sum();
     }
 }
