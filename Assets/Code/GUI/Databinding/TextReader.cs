@@ -4,7 +4,7 @@ using Assets.Code;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextSetter : MonoBehaviour
+public class TextReader : MonoBehaviour
 {
     public string PropertyName;
     public string Format;

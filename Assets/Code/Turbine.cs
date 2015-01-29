@@ -9,6 +9,7 @@ public interface IMachineType
     float MaxOutput { get; }
 
     void TogglePower();
+    void Repair();
 }
 
 public class Turbine : IMachineType
@@ -17,6 +18,7 @@ public class Turbine : IMachineType
     public float Output { get; set; }
     public float RequestedOutput { get; set; }
     public bool IsPoweredOn { get; private set; }
+    public bool IsRepairing { get; private set; }
     public float Durability { get; set; }
 
     public float MinOutput { get { return 50; } }
@@ -31,7 +33,37 @@ public class Turbine : IMachineType
 
     public void TogglePower()
     {
-        IsPoweredOn = !IsPoweredOn;
-        Output = IsPoweredOn ? MinOutput : 0;
+        if (IsPoweredOn)
+        {
+            PowerOff();
+        }
+        else
+        {
+            PowerOn();
+        }
+    }
+
+    private void PowerOn()
+    {
+        IsPoweredOn = true;
+        Output = MinOutput;
+    }
+
+    private void PowerOff()
+    {
+        IsPoweredOn = false;
+        Output = 0;
+    }
+
+    public void Repair()
+    {
+        PowerOff();
+        IsRepairing = true;
+    }
+
+    public void RepairFinished()
+    {
+        PowerOn();
+        IsRepairing = false;
     }
 }
