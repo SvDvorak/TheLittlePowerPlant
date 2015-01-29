@@ -20,8 +20,8 @@ public class SingleMachineOutputBar : MonoBehaviour
         ActualOutput.localScale = new Vector3(Mathf.Max(GetOutputInUnitInterval(), 0.02f), 1, 1);
 	}
 
-    private float GetOutputInUnitInterval()
+    public float GetOutputInUnitInterval()
     {
-        return (_machineType.Output - _machineType.MinOutput)/(_machineType.MaxOutput - _machineType.MinOutput);
+        return (_machineType.Output - _machineType.MinOutput) / (_machineType.MaxOutput - _machineType.MinOutput);
     }
 }

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class MachineSetup : MonoBehaviour
 {
-    public float OutputAdjustPerSecond = 5;
+    private const float DurabilityMultiplier = 0.02f;
+    public const float OutputAdjustPerSecond = 10;
     private Turbine _machineType;
 
     public void Initialize(ScoreManager outputManager, IMachineType machineType)
@@ -22,5 +23,8 @@ public class MachineSetup : MonoBehaviour
             var outputChangeMaxDelta = (OutputAdjustPerSecond * Time.deltaTime);
             _machineType.Output = Mathf.MoveTowards(_machineType.Output, _machineType.RequestedOutput, outputChangeMaxDelta);
         }
+
+        var outputRatio = _machineType.Output/_machineType.MaxOutput;
+        _machineType.Durability -= DurabilityMultiplier*outputRatio*outputRatio*Time.deltaTime;
     }
 }

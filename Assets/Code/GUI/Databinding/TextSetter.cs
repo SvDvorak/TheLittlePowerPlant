@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TextSetter : MonoBehaviour
 {
     public string PropertyName;
+    public string Format;
     private object _data;
     private PropertyInfo _property;
 
@@ -20,7 +21,19 @@ public class TextSetter : MonoBehaviour
     // Update is called once per frame
 	void Update ()
 	{
-	    var propertyValue = (string)_property.GetValue(_data, null);
-	    GetComponent<Text>().text = propertyValue;
+	    var propertyValue = _property.GetValue(_data, null);
+
+	    string output;
+	    if (!string.IsNullOrEmpty(Format))
+	    {
+	        var typedValue = (float) propertyValue;
+	        output = string.Format(Format, typedValue);
+	    }
+	    else
+	    {
+	        output = propertyValue.ToString();
+	    }
+
+	    GetComponent<Text>().text = output;
 	}
 }

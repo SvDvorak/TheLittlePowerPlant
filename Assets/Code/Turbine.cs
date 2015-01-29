@@ -17,6 +17,7 @@ public class Turbine : IMachineType
     public float Output { get; set; }
     public float RequestedOutput { get; set; }
     public bool IsPoweredOn { get; private set; }
+    public float Durability { get; set; }
 
     public float MinOutput { get { return 50; } }
     public float MaxOutput { get { return 150; } }
@@ -25,6 +26,7 @@ public class Turbine : IMachineType
     {
         IsPoweredOn = true;
         Output = MinOutput;
+        Durability = 1;
     }
 
     public void TogglePower()

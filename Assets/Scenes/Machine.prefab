@@ -278,6 +278,7 @@ GameObject:
   - 114: {fileID: 11490992}
   - 114: {fileID: 11490996}
   - 114: {fileID: 11412586}
+  - 114: {fileID: 11403912}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -313,6 +314,7 @@ GameObject:
   - 222: {fileID: 22291006}
   - 114: {fileID: 11490998}
   - 114: {fileID: 11491014}
+  - 114: {fileID: 11495378}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -454,6 +456,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11403912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89345b5e471ba33469f3aedb5da329aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11409288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -819,7 +832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69498a3398ccf6b44a85ea8f35778a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OutputAdjustPerSecond: 5
 --- !u!114 &11444854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -946,6 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyName: Name
+  Format: 
 --- !u!114 &11490988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1246,6 +1259,19 @@ MonoBehaviour:
   m_PreferredHeight: 0
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!114 &11495378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3a68de1bc457843b6243947daa8579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropertyName: DurabilityInPercent
+  Format: '{0:0}%'
 --- !u!222 &22209288
 CanvasRenderer:
   m_ObjectHideFlags: 1
