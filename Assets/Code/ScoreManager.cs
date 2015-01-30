@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     public float CityValue { get; private set; }
     public float Output { get; private set; }
+    public float Income { get; private set; }
 
     private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
 
@@ -39,5 +40,6 @@ public class ScoreManager : MonoBehaviour
     {
         CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
         Output = _machineOutputs.Values.Sum();
+        Income += (Output - MinimumOutputRequired)*Time.deltaTime;
     }
 }
