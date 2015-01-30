@@ -66,4 +66,9 @@ public class Turbine : IMachineType
         PowerOn();
         IsRepairing = false;
     }
+
+    public void Break()
+    {
+        Repair();
+    }
 }
