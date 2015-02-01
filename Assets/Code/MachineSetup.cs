@@ -56,7 +56,7 @@ public class MachineSetup : MonoBehaviour
 
     private void PerformBreakCheck()
     {
-        var randomBreakChance = Math.Pow(UnityEngine.Random.Range(0, 1f), 10) - BreakdownSafeZone;
+        var randomBreakChance = Math.Min(0.0001, Math.Pow(UnityEngine.Random.Range(0, 1f), 10) - BreakdownSafeZone);
         if (_machineType.IsPoweredOn && randomBreakChance > _machineType.Durability)
         {
             _machineType.Break();

@@ -23,7 +23,7 @@ public class ItemList : MonoBehaviour
         get
         {
             var selectedToggle = ItemPanel.GetComponent<ToggleGroup>().GetActive();
-            return selectedToggle.GetComponent<MachineTypeData>().MachineType;
+            return selectedToggle.GetComponent<DataContext>().Data;
         }
     }
 
@@ -38,8 +38,7 @@ public class ItemList : MonoBehaviour
             
             var toggle = itemPresentation.GetComponent<Toggle>();
             toggle.group = panelToggleGroup;
-            var dataContext = itemPresentation.GetComponent<MachineTypeData>();
-            dataContext.SetMachineType(item);
+            itemPresentation.AddComponent<DataContext>().Data = item;
         }
     }
 }

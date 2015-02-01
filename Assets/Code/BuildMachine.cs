@@ -47,10 +47,14 @@ public class BuildMachine : MonoBehaviour
 
     private void Build(IMachineType machineTypeToBuild)
     {
-        Destroy(_machineSelection);
+        if(OutputManager.Income > machineTypeToBuild.Cost)
+        {
+            Destroy(_machineSelection);
 
-        var machine = (GameObject)Instantiate(TurbineTemplate);
-        machine.transform.SetParent(transform, false);
-        machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
+            var machine = (GameObject)Instantiate(TurbineTemplate);
+            machine.transform.SetParent(transform, false);
+            machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
+            OutputManager.Income -= machineTypeToBuild.Cost;
+        }
     }
 }

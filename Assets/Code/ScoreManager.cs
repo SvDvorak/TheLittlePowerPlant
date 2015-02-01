@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     public float CityValue { get; private set; }
     public float Output { get; private set; }
-    public float Income { get; private set; }
+    public float Income { get; set; }
 
     private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
 
@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
     {
         CityValue = 0;
         Output = 0;
+        Income = 20000;
     }
 
     public float MinimumOutputRequired

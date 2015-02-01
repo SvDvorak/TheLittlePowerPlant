@@ -26,8 +26,7 @@ public class TextReader : MonoBehaviour
 	    string output;
 	    if (!string.IsNullOrEmpty(Format))
 	    {
-	        var typedValue = (float) propertyValue;
-	        output = string.Format(Format, typedValue);
+	        output = string.Format(Format, propertyValue);
 	    }
 	    else
 	    {

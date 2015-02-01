@@ -3,6 +3,7 @@
 public interface IMachineType
 {
     string Name { get; set; }
+    int Cost { get; set; }
     bool IsPoweredOn { get; }
     float Output { get; set; }
     float MinOutput { get; }
@@ -15,6 +16,7 @@ public interface IMachineType
 public class Turbine : IMachineType
 {
     public string Name { get; set; }
+    public int Cost { get; set; }
     public float Output { get; set; }
     public float RequestedOutput { get; set; }
     public bool IsPoweredOn { get; private set; }
@@ -45,8 +47,11 @@ public class Turbine : IMachineType
 
     private void PowerOn()
     {
-        IsPoweredOn = true;
-        Output = MinOutput;
+        if(!IsRepairing)
+        {
+            IsPoweredOn = true;
+            Output = MinOutput;
+        }
     }
 
     private void PowerOff()
