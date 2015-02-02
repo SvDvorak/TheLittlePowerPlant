@@ -21,6 +21,7 @@ public class Turbine : IMachineType
     public float RequestedOutput { get; set; }
     public bool IsPoweredOn { get; private set; }
     public bool IsRepairing { get; private set; }
+    public bool IsBroke { get; private set; }
     public float Durability { get; set; }
 
     public float MinOutput { get { return 50; } }
@@ -47,7 +48,7 @@ public class Turbine : IMachineType
 
     private void PowerOn()
     {
-        if(!IsRepairing)
+        if(!IsBroke)
         {
             IsPoweredOn = true;
             Output = MinOutput;
@@ -62,18 +63,20 @@ public class Turbine : IMachineType
 
     public void Repair()
     {
-        PowerOff();
         IsRepairing = true;
+        PowerOff();
     }
 
     public void RepairFinished()
     {
-        PowerOn();
+        IsBroke = false;
         IsRepairing = false;
+        PowerOn();
     }
 
     public void Break()
     {
-        Repair();
+        IsBroke = true;
+        PowerOff();
     }
 }
