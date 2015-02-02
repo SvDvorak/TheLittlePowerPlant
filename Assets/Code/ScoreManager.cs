@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
 
     public ScoreManager()
     {
-        CityValue = 0;
+        CityValue = 5000;
         Output = 0;
         Income = 20000;
     }
@@ -41,6 +41,13 @@ public class ScoreManager : MonoBehaviour
     {
         CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
         Output = _machineOutputs.Values.Sum();
-        Income += (Output - MinimumOutputRequired)*Time.deltaTime;
+
+        var outputDiff = Output - MinimumOutputRequired;
+        var incomeChangeMultiplier = 1f;
+        if (outputDiff < 0)
+        {
+            incomeChangeMultiplier = 1f;
+        }
+        Income += outputDiff*incomeChangeMultiplier*Time.deltaTime;
     }
 }

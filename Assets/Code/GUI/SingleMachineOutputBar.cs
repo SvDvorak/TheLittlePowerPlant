@@ -22,6 +22,6 @@ public class SingleMachineOutputBar : MonoBehaviour
 
     public float GetOutputInUnitInterval()
     {
-        return (_machineType.Output - _machineType.MinOutput) / (_machineType.MaxOutput - _machineType.MinOutput);
+        return (_machineType.Output - _machineType.MinOutput) / (_machineType.OverloadOutput - _machineType.MinOutput);
     }
 }

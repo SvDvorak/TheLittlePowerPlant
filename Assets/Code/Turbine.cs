@@ -7,7 +7,7 @@ public interface IMachineType
     bool IsPoweredOn { get; }
     float Output { get; set; }
     float MinOutput { get; }
-    float MaxOutput { get; }
+    float OverloadOutput { get; }
 
     void TogglePower();
     void Repair();
@@ -25,7 +25,8 @@ public class Turbine : IMachineType
     public float Durability { get; set; }
 
     public float MinOutput { get { return 50; } }
-    public float MaxOutput { get { return 150; } }
+    public float MaxNormalOutput { get { return 100; } }
+    public float OverloadOutput { get { return 120; } }
 
     public Turbine()
     {

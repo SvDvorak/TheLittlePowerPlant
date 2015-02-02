@@ -4,9 +4,8 @@ using UnityEngine;
 public class MachineSetup : MonoBehaviour
 {
     private const float WearMultiplier = 0.02f;
-    private const float RepairPerSecond = 0.04f;
+    private const float RepairPerSecond = 0.025f;
     private const float MaxDurability = 1f;
-    private const float BreakdownSafeZone = 0.3f;
     private const float OutputAdjustPerSecond = 10;
     private Turbine _machineType;
 
@@ -38,8 +37,23 @@ public class MachineSetup : MonoBehaviour
 
     private void CalculateWear()
     {
-        var outputRatio = _machineType.Output/_machineType.MaxOutput;
-        _machineType.Durability -= WearMultiplier*outputRatio*outputRatio*Time.deltaTime;
+        if(_machineType.IsPoweredOn)
+        {
+            var outputRatio = WearCurve(_machineType.Output);
+            _machineType.Durability -= WearMultiplier*outputRatio*Time.deltaTime;
+        }
+    }
+
+    // Output 50-100: 0-0.5
+    // Output 100-120: 0.5-1
+    private float WearCurve(float output)
+    {
+        if (output < _machineType.MaxNormalOutput)
+        {
+            return (output - _machineType.MinOutput)/_machineType.MaxNormalOutput;
+        }
+
+        return 0.5f + (output - _machineType.MaxNormalOutput)/((_machineType.OverloadOutput - _machineType.MaxNormalOutput)*2);
     }
 
     private void CalculateRepair()
@@ -56,7 +70,7 @@ public class MachineSetup : MonoBehaviour
 
     private void PerformBreakCheck()
     {
-        var randomBreakChance = Math.Min(0.0001, Math.Pow(UnityEngine.Random.Range(0, 1f), 10) - BreakdownSafeZone);
+        var randomBreakChance = Math.Pow(UnityEngine.Random.Range(0, 1f), 10);
         if (_machineType.IsPoweredOn && randomBreakChance > _machineType.Durability)
         {
             _machineType.Break();
