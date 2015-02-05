@@ -13,6 +13,26 @@ public interface IMachineType
     void Repair();
 }
 
+public class Nuclear : IMachineType
+{
+    public string Name { get; set; }
+    public int Cost { get; set; }
+    public bool IsPoweredOn { get; private set; }
+    public float Output { get; set; }
+    public float MinOutput { get; private set; }
+    public float OverloadOutput { get; private set; }
+
+    public void TogglePower()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Repair()
+    {
+        throw new System.NotImplementedException();
+    }
+}
+
 public class Turbine : IMachineType
 {
     public string Name { get; set; }

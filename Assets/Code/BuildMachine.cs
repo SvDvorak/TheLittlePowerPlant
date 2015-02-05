@@ -5,6 +5,7 @@ public class BuildMachine : MonoBehaviour
 {
     public GameObject MachineSelectionTemplate;
     public GameObject TurbineTemplate;
+    public GameObject NuclearTemplate;
     public ScoreManager OutputManager;
     private GameObject _machineSelection;
     private GameObject _plateModel;
@@ -51,10 +52,25 @@ public class BuildMachine : MonoBehaviour
         {
             Destroy(_machineSelection);
 
-            var machine = (GameObject)Instantiate(TurbineTemplate);
-            machine.transform.SetParent(transform, false);
-            machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
-            OutputManager.Income -= machineTypeToBuild.Cost;
+            CreateMachine(machineTypeToBuild);
         }
+    }
+
+    private void CreateMachine(IMachineType machineTypeToBuild)
+    {
+        var machine = new GameObject();
+        if(machineTypeToBuild is Turbine)
+        {
+            machine = (GameObject) Instantiate(TurbineTemplate);
+            machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
+        }
+        else if(machineTypeToBuild is Nuclear)
+        {
+            machine = (GameObject)Instantiate(NuclearTemplate);
+            //machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
+        }
+
+        machine.transform.SetParent(transform, false);
+        OutputManager.Income -= machineTypeToBuild.Cost;
     }
 }

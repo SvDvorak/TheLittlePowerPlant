@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     {
         CityValue = 5000;
         Output = 0;
-        Income = 20000;
+        Income = 250000;
     }
 
     public float MinimumOutputRequired
