@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class MachineSetup : MonoBehaviour
+public class TurbineProcess : MonoBehaviour
 {
     private const float WearMultiplier = 0.02f;
     private const float RepairPerSecond = 0.025f;

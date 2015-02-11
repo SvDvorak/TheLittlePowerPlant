@@ -12,7 +12,7 @@ public class SingleMachineOutputBar : MonoBehaviour
 
     void Start ()
     {
-        _machineType = (IMachineType)gameObject.GetDataContext();
+        _machineType = gameObject.GetDataContext<IMachineType>();
     }
 
     void Update ()

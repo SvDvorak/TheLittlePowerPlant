@@ -21,8 +21,9 @@ public class Nuclear : IMachineType
     public float Output { get; set; }
     public float MinOutput { get; private set; }
     public float OverloadOutput { get; private set; }
+	public float ControlRodEffect { get; set; }
 
-    public void TogglePower()
+	public void TogglePower()
     {
         throw new System.NotImplementedException();
     }

@@ -9,7 +9,7 @@ public class DurabilityPresentation : MonoBehaviour
 
     void Start ()
 	{
-	    _turbine = (Turbine)gameObject.GetDataContext();
+	    _turbine = gameObject.GetDataContext<Turbine>();
 	    var newDataContext = gameObject.AddComponent<DataContext>();
 	    _durabilityData = new DurabilityData();
 	    newDataContext.Data = _durabilityData;

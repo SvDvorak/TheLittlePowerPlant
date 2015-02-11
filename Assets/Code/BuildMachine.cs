@@ -10,13 +10,11 @@ public class BuildMachine : MonoBehaviour
     private GameObject _machineSelection;
     private GameObject _plateModel;
 
-    // Use this for initialization
 	void Start ()
 	{
 	    _plateModel = transform.FindChild("Model").gameObject;
 	}
 
-    // Update is called once per frame
 	void Update ()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -62,12 +60,12 @@ public class BuildMachine : MonoBehaviour
         if(machineTypeToBuild is Turbine)
         {
             machine = (GameObject) Instantiate(TurbineTemplate);
-            machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
+            machine.GetComponent<TurbineProcess>().Initialize(OutputManager, machineTypeToBuild);
         }
         else if(machineTypeToBuild is Nuclear)
         {
             machine = (GameObject)Instantiate(NuclearTemplate);
-            //machine.GetComponent<MachineSetup>().Initialize(OutputManager, machineTypeToBuild);
+            machine.GetComponent<NuclearProcess>().Initialize(OutputManager, machineTypeToBuild);
         }
 
         machine.transform.SetParent(transform, false);
