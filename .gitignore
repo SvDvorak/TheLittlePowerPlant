@@ -3,6 +3,7 @@
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
+.vs
 
 # Everything but code
 #[Aa]ssets/

@@ -7,6 +7,8 @@ public class AdjustControlRods : MonoBehaviour
 	private const float FrictionMultiplier = 0.8f;
 	public float TopYPosition = 0;
 	public float BottomYPosition = 0;
+	private float RodPositionRange;
+
 
 	private bool _isLocked;
 	private float _previousCameraY;
@@ -15,6 +17,7 @@ public class AdjustControlRods : MonoBehaviour
 	void Start()
 	{
 		_nuclear = gameObject.GetDataContext<Nuclear>();
+		RodPositionRange = TopYPosition - BottomYPosition;
 	}
 
 	void Update()
@@ -24,7 +27,6 @@ public class AdjustControlRods : MonoBehaviour
 		if (_isLocked)
 		{
 			MoveRods();
-			UpdateDataContext();
 		}
 	}
 
@@ -50,15 +52,11 @@ public class AdjustControlRods : MonoBehaviour
 	private void MoveRods()
 	{
 		var currentCameraY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-		var localPosition = transform.localPosition;
 		var verticalMovement = (currentCameraY - _previousCameraY) * (1 - FrictionMultiplier);
-		var clampedVerticalPosition = Mathf.Clamp(localPosition.y + verticalMovement, BottomYPosition, TopYPosition);
-		transform.localPosition = new Vector3(localPosition.x, clampedVerticalPosition, localPosition.z);
-		_previousCameraY = currentCameraY;
-	}
+		var newControlRodEffect = _nuclear.ControlRodEffect + verticalMovement / RodPositionRange;
+		_nuclear.ControlRodEffect = Mathf.Clamp(newControlRodEffect, 0, 1);
 
-	private void UpdateDataContext()
-	{
-		_nuclear.ControlRodEffect = (transform.localPosition.y - BottomYPosition) / (TopYPosition - BottomYPosition);
+		transform.localPosition = new Vector3(transform.localPosition.x, _nuclear.ControlRodEffect * RodPositionRange + BottomYPosition, transform.localPosition.z);
+		_previousCameraY = currentCameraY;
 	}
 }
