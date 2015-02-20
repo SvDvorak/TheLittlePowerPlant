@@ -30,8 +30,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663a901b23cd12d4888a69f4fdfdb952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FreshRodColor: {r: 1, g: .360294104, b: .360294104, a: 0}
-  FullyDegradedRodColor: {r: 0, g: 0, b: 0, a: 0}
+  FreshRodColor: {r: 1, g: .360294104, b: .360294104, a: 1}
+  FullyDegradedRodColor: {r: 0, g: 0, b: 0, a: 1}
   FuelRodIndex: 0
 --- !u!114 &11418834
 MonoBehaviour:
@@ -71,7 +71,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11418836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11409992}
+        m_MethodName: SwapRod
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11418836

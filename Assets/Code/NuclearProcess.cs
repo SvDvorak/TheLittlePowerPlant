@@ -12,7 +12,8 @@ public class NuclearProcess : MonoBehaviour
 	private Nuclear _nuclear;
 	private float _newBarHeight;
 	private const float MaxTemperature = FuelRodProcess.RodBaseTemperature*9;
-	private const float TemperatureBarMaxHeight = 210;
+	private const float CooldownPerSecond = 0.5f;
+	public const float TemperatureBarMaxHeight = 210;
 
 	public void Awake()
 	{
@@ -30,10 +31,31 @@ public class NuclearProcess : MonoBehaviour
 
 	void Update ()
 	{
-		_nuclear.Output = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Output)*_nuclear.ControlRodDepth;
-		_nuclear.Temperature = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Temperature)*_nuclear.ControlRodDepth;
+		if(_nuclear.IsPoweredOn)
+		{
+			_nuclear.Output = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Output)*_nuclear.ControlRodDepth;
+			_nuclear.Temperature = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Temperature)*_nuclear.ControlRodDepth;
+		}
+		else
+		{
+			_nuclear.Output = 0;
+			_nuclear.Temperature -= CooldownPerSecond*Time.deltaTime;
+		}
 
-		_newBarHeight = (_nuclear.Temperature/MaxTemperature)*TemperatureBarMaxHeight;
+		_newBarHeight = (_nuclear.Temperature / MaxTemperature) * TemperatureBarMaxHeight;
 		TemperatureBar.sizeDelta = new Vector2(TemperatureBar.sizeDelta.x, _newBarHeight);
+
+		if (_nuclear.Temperature < 3 || _nuclear.Temperature > 7)
+		{
+			_nuclear.PowerOff();
+		}
+	}
+
+	public void TogglePower()
+	{
+		if(_nuclear.IsPoweredOn || _nuclear.Temperature <= 0)
+		{
+			_nuclear.TogglePower();
+		}
 	}
 }

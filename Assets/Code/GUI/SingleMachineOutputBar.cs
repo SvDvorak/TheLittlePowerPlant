@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class SingleMachineOutputBar : MonoBehaviour
 {
     public RectTransform ActualOutput;
-
-    public float OutputAdjustPerSecond = 5;
     private IMachineType _machineType;
 
     void Start ()

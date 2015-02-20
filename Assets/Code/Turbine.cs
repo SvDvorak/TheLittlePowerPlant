@@ -42,17 +42,23 @@ public class Nuclear : IMachineType
 				new FuelRod(),
 				new FuelRod(),
 			};
+		IsPoweredOn = true;
 	}
 
 	public void TogglePower()
-    {
-        throw new System.NotImplementedException();
-    }
+	{
+		IsPoweredOn = !IsPoweredOn;
+	}
 
     public void Repair()
     {
         throw new System.NotImplementedException();
     }
+
+	public void PowerOff()
+	{
+		IsPoweredOn = false;
+	}
 }
 
 public class FuelRod
