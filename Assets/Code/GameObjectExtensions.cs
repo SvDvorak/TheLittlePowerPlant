@@ -7,21 +7,31 @@ namespace Assets.Code
     {
         public static object GetDataContext(this GameObject gameObject)
         {
-            var dataContext = (DataContext)gameObject.GetComponentInParent(typeof(DataContext));
-            if (dataContext == null)
-            {
-                throw new Exception("DataContext behavior not found!");
-            }
+            var dataContext = gameObject.GetComponent<DataContext>();
+	        if (dataContext == null)
+	        {
+		        dataContext = gameObject.GetComponentInParent<DataContext>();
+	        }
 
-			if (dataContext.Data == null)
-			{
-				throw new Exception("DataContext is empty");
-			}
+            VerifyDataContext(dataContext);
 
-            return dataContext.Data;
+	        return dataContext.Data;
         }
 
-		public static T GetDataContext<T>(this GameObject gameObject) where T : class
+	    private static void VerifyDataContext(DataContext dataContext)
+	    {
+		    if (dataContext == null)
+		    {
+			    throw new Exception("DataContext behavior not found!");
+		    }
+
+		    if (dataContext.Data == null)
+		    {
+			    throw new Exception("DataContext is empty");
+		    }
+	    }
+
+	    public static T GetDataContext<T>(this GameObject gameObject) where T : class
 		{
 			var unknownContext = gameObject.GetDataContext();
 			var typedDataContext = unknownContext as T;

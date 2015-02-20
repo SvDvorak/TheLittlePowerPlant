@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class SingleMachineOutputBar : MonoBehaviour
 {
-    public Slider SelectedOutput;
     public RectTransform ActualOutput;
 
     public float OutputAdjustPerSecond = 5;

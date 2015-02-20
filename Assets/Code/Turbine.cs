@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public interface IMachineType
 {
@@ -21,7 +22,27 @@ public class Nuclear : IMachineType
     public float Output { get; set; }
     public float MinOutput { get; private set; }
     public float OverloadOutput { get; private set; }
-	public float ControlRodEffect { get; set; }
+	public float ControlRodDepth { get; set; }
+
+	public List<FuelRod> FuelRods { get; set; }
+	public float Temperature { get; set; }
+
+	public Nuclear()
+	{
+		Name = "Nuclear";
+		FuelRods = new List<FuelRod>()
+			{
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+				new FuelRod(),
+			};
+	}
 
 	public void TogglePower()
     {
@@ -32,6 +53,13 @@ public class Nuclear : IMachineType
     {
         throw new System.NotImplementedException();
     }
+}
+
+public class FuelRod
+{
+	public float Degradation { get; set; }
+	public float Output { get; set; }
+	public float Temperature { get; set; }
 }
 
 public class Turbine : IMachineType
