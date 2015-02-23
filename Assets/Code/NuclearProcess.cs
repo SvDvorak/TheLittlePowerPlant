@@ -15,6 +15,11 @@ public class NuclearProcess : MonoBehaviour
 	private const float CooldownPerSecond = 0.5f;
 	public const float TemperatureBarMaxHeight = 210;
 
+	private const float MaxRodOutput = 10;
+	private const float DegradationPerSecond = 0.01f;
+	private const float MaxTemperatureShift = 0.2f;
+
+
 	public void Initialize(ScoreManager outputManager, IMachineType machineType)
 	{
 		_nuclear = (Nuclear)machineType;
@@ -26,7 +31,15 @@ public class NuclearProcess : MonoBehaviour
 
 	void Update ()
 	{
-		if(_nuclear.IsPoweredOn)
+		foreach (var fuelRod in _nuclear.FuelRods)
+		{
+			if(_nuclear.IsPoweredOn)
+			{
+				UpdateRodStatus(fuelRod);
+			}
+		}
+
+		if (_nuclear.IsPoweredOn)
 		{
 			_nuclear.Output = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Output)*_nuclear.ControlRodDepth;
 			_nuclear.Temperature = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Temperature)*_nuclear.ControlRodDepth;
@@ -46,11 +59,27 @@ public class NuclearProcess : MonoBehaviour
 		}
 	}
 
+	private static void UpdateRodStatus(FuelRod fuelRod)
+	{
+		var degradationInverse = 1 - fuelRod.Degradation;
+		fuelRod.Degradation += DegradationPerSecond*Time.deltaTime;
+		fuelRod.Output = degradationInverse*MaxRodOutput;
+
+		var rodTemperatureShift = MaxTemperatureShift*degradationInverse;
+		fuelRod.Temperature = FuelRod.BaseTemperature*degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);
+	}
+
 	public void TogglePower()
 	{
 		if(_nuclear.IsPoweredOn || _nuclear.Temperature <= 0)
 		{
 			_nuclear.TogglePower();
 		}
+	}
+
+	public void SwapRod(int index)
+	{
+		var fuelRod = new FuelRod();
+		_nuclear.FuelRods[index] = fuelRod;
 	}
 }
