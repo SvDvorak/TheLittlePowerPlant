@@ -1838,6 +1838,7 @@ GameObject:
   - 224: {fileID: 363150947}
   - 222: {fileID: 363150949}
   - 114: {fileID: 363150948}
+  - 114: {fileID: 363150950}
   m_Layer: 0
   m_Name: Min
   m_TagString: Untagged
@@ -1860,7 +1861,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 70}
   m_Pivot: {x: .5, y: 0}
 --- !u!114 &363150948
 MonoBehaviour:
@@ -1889,6 +1890,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 363150946}
+--- !u!114 &363150950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 363150946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb5cf1b41a8af419b1f8fc0c65d287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RangePropertyName: NoReactionTemperature
+  MaxValuePropertyName: MaxTemperature
+  MaxHeight: 210
 --- !u!1 &363791543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,7 +3787,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActualOutput: {fileID: 585403844}
-  OutputAdjustPerSecond: 5
 --- !u!114 &609223618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6006,7 +6020,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActualOutput: {fileID: 2035146789}
-  OutputAdjustPerSecond: 5
 --- !u!114 &963406475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9112,6 +9125,7 @@ GameObject:
   - 224: {fileID: 1491551101}
   - 222: {fileID: 1491551103}
   - 114: {fileID: 1491551102}
+  - 114: {fileID: 1491551104}
   m_Layer: 0
   m_Name: Max
   m_TagString: Untagged
@@ -9131,10 +9145,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1134041879}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: 1}
-  m_AnchorMax: {x: .5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 50}
+  m_SizeDelta: {x: 0, y: 70}
   m_Pivot: {x: .5, y: 1}
 --- !u!114 &1491551102
 MonoBehaviour:
@@ -9163,6 +9177,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1491551100}
+--- !u!114 &1491551104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1491551100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb5cf1b41a8af419b1f8fc0c65d287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RangePropertyName: OverHeatTemperature
+  MaxValuePropertyName: MaxTemperature
+  MaxHeight: 210
 --- !u!1 &1545569921
 GameObject:
   m_ObjectHideFlags: 0

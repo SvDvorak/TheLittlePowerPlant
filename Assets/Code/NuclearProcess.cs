@@ -11,14 +11,9 @@ public class NuclearProcess : MonoBehaviour
 
 	private Nuclear _nuclear;
 	private float _newBarHeight;
-	private const float MaxTemperature = FuelRodProcess.RodBaseTemperature*9;
+	private const float MaxTemperature = FuelRod.BaseTemperature*9;
 	private const float CooldownPerSecond = 0.5f;
 	public const float TemperatureBarMaxHeight = 210;
-
-	public void Awake()
-	{
-		Initialize(ScoreManager, new Nuclear());
-	}
 
 	public void Initialize(ScoreManager outputManager, IMachineType machineType)
 	{
@@ -45,7 +40,7 @@ public class NuclearProcess : MonoBehaviour
 		_newBarHeight = (_nuclear.Temperature / MaxTemperature) * TemperatureBarMaxHeight;
 		TemperatureBar.sizeDelta = new Vector2(TemperatureBar.sizeDelta.x, _newBarHeight);
 
-		if (_nuclear.Temperature < 3 || _nuclear.Temperature > 7)
+		if (_nuclear.Temperature < _nuclear.NoReactionUnit.High*_nuclear.MaxTemperature || _nuclear.Temperature > _nuclear.OverHeatUnit.Low*_nuclear.MaxTemperature)
 		{
 			_nuclear.PowerOff();
 		}

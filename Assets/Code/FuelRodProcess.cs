@@ -15,7 +15,6 @@ public class FuelRodProcess : MonoBehaviour
 	private Nuclear _nuclearMachine;
 
 	private const float DegradationPerSecond = 0.01f;
-	public const float RodBaseTemperature = 1;
 	private const float MaxTemperatureShift = 0.2f;
 
 	void Start ()
@@ -34,7 +33,7 @@ public class FuelRodProcess : MonoBehaviour
 		_fuelRod.Output = degradationInverse*MaxRodOutput;
 
 		var rodTemperatureShift = MaxTemperatureShift*degradationInverse;
-        _fuelRod.Temperature = RodBaseTemperature*degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);
+        _fuelRod.Temperature = FuelRod.BaseTemperature*degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);
 	}
 
 	public void SwapRod()

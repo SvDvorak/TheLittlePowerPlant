@@ -14,7 +14,7 @@ public static class ObjectExtensions
         return propertyInfo;
     }
 
-    public static MethodInfo GetMethod(this object affectedObject, string methodName)
+	public static MethodInfo GetMethod(this object affectedObject, string methodName)
     {
         var type = affectedObject.GetType();
         var methodInfo = type.GetMethod(methodName);
@@ -24,4 +24,17 @@ public static class ObjectExtensions
         }
         return methodInfo;
     }
+}
+
+public static class PropertyInfoExtensions
+{
+	public static T GetValue<T>(this PropertyInfo property, object affectedObject)
+	{
+		var value = property.GetValue(affectedObject, null);
+		if (!(value is T))
+		{
+			throw new Exception(string.Format("Property {0} is not of type {1} but of type {2}.", property.Name, typeof(T), value.GetType()));
+		}
+		return (T)value;
+	}
 }
