@@ -15,7 +15,7 @@ public class TurbineProcess : MonoBehaviour
         var outputUpdaterComponent = GetComponent<OutputUpdater>();
         outputUpdaterComponent.Initialize(outputManager, machineType);
 
-        GetComponentInChildren<DataContext>().Data = machineType;
+	    GetComponent<DataContext>().Data = machineType;
         InvokeRepeating("PerformBreakCheck", 0, 1);
     }
 

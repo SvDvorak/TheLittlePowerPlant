@@ -1,5 +1,7 @@
 ﻿using System;
+using Assets.Code;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildMachine : MonoBehaviour
 {
@@ -8,29 +10,11 @@ public class BuildMachine : MonoBehaviour
     public GameObject NuclearTemplate;
     public ScoreManager OutputManager;
     private GameObject _machineSelection;
-    private GameObject _plateModel;
+	private GameObject _builtMachine;
 
-	void Start ()
-	{
-	    _plateModel = transform.FindChild("Model").gameObject;
-	}
-
-	void Update ()
+    public void TileSelected()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-	    RaycastHit hit;
-        if (Physics.Raycast(ray, out hit) && Input.GetMouseButtonDown(0))
-        {
-           if(hit.collider.gameObject == _plateModel)
-           {
-               TileSelected();
-           }
-        }
-	}
-
-    void TileSelected()
-    {
-        if(_machineSelection == null)
+        if(_machineSelection == null && _builtMachine == null)
         {
             _machineSelection = (GameObject)Instantiate(MachineSelectionTemplate);
             _machineSelection.transform.SetParent(transform);
@@ -50,16 +34,16 @@ public class BuildMachine : MonoBehaviour
         {
             Destroy(_machineSelection);
 
-            CreateMachine(machineTypeToBuild);
+            _builtMachine = CreateMachine(machineTypeToBuild);
         }
     }
 
-    private void CreateMachine(IMachineType machineTypeToBuild)
+    private GameObject CreateMachine(IMachineType machineTypeToBuild)
     {
         var machine = new GameObject();
         if(machineTypeToBuild is Turbine)
         {
-            machine = (GameObject) Instantiate(TurbineTemplate);
+            machine = (GameObject)Instantiate(TurbineTemplate);
             machine.GetComponent<TurbineProcess>().Initialize(OutputManager, machineTypeToBuild);
         }
         else if(machineTypeToBuild is Nuclear)
@@ -70,5 +54,7 @@ public class BuildMachine : MonoBehaviour
 
         machine.transform.SetParent(transform, false);
         OutputManager.Income -= machineTypeToBuild.Cost;
+
+	    return machine;
     }
 }

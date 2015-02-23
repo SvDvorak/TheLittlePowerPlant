@@ -42,5 +42,5 @@ namespace Assets.Code
 
 			return typedDataContext;
 		}
-    }
+	}
 }
