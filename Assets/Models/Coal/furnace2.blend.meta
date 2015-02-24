@@ -1,56 +1,13 @@
 fileFormatVersion: 2
-guid: 8c20d88877a5aec488bb3ccc889911bd
+guid: cf7dcf34b20eeed4882a9d0b802b1e6c
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Cube
-    100002: Cube_001
-    100004: Cylinder
-    100006: Cylinder_001
-    100008: Cylinder_002
-    100010: Empty
-    100012: //RootNode
-    100014: Bottom
-    100016: Shaft
-    100018: Supports
-    100020: Top
-    400000: Cube
-    400002: Cube_001
-    400004: Cylinder
-    400006: Cylinder_001
-    400008: Cylinder_002
-    400010: Empty
-    400012: //RootNode
-    400014: Bottom
-    400016: Shaft
-    400018: Supports
-    400020: Top
-    2300000: Cube
-    2300002: Cube_001
-    2300004: Cylinder
-    2300006: Cylinder_001
-    2300008: Cylinder_002
-    2300010: Bottom
-    2300012: Shaft
-    2300014: Supports
-    2300016: Top
-    3300000: Cube
-    3300002: Cube_001
-    3300004: Cylinder
-    3300006: Cylinder_001
-    3300008: Cylinder_002
-    3300010: Bottom
-    3300012: Shaft
-    3300014: Supports
-    3300016: Top
-    4300000: Bottom
-    4300002: Cylinder_002
-    4300004: Cylinder_001
-    4300006: Cube
-    4300008: Cylinder
-    4300010: Shaft
-    4300012: Top
-    4300014: Supports
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
     7400000: Default Take
     9500000: //RootNode
   materials:

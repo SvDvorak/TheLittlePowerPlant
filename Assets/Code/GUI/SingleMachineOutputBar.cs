@@ -5,11 +5,11 @@ using UnityEngine.UI;
 public class SingleMachineOutputBar : MonoBehaviour
 {
     public RectTransform ActualOutput;
-    private IMachineType _machineType;
+    private Turbine _machineType;
 
     void Start ()
     {
-        _machineType = gameObject.GetDataContext<IMachineType>();
+        _machineType = gameObject.GetDataContext<Turbine>();
     }
 
     void Update ()

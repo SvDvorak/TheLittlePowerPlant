@@ -1,29 +1,17 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public interface IMachineType
 {
 	string Name { get; set; }
 	int Cost { get; set; }
-	bool IsPoweredOn { get; }
 	float Output { get; set; }
-	float MinOutput { get; }
-	float OverloadOutput { get; }
-
-	void TogglePower();
-	void Repair();
 }
 
-public struct Range
+public class Coal : IMachineType
 {
-	public Range(float low, float high)
-	{
-		Low = low;
-		High = high;
-	}
-
-	public float Low { get; private set; }
-	public float High { get; private set; }
+	public string Name { get; set; }
+	public int Cost { get; set; }
+	public float Output { get; set; }
 }
 
 public class Nuclear : IMachineType

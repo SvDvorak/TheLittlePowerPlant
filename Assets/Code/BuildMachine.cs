@@ -8,7 +8,8 @@ public class BuildMachine : MonoBehaviour
     public GameObject MachineSelectionTemplate;
     public GameObject TurbineTemplate;
     public GameObject NuclearTemplate;
-    public ScoreManager OutputManager;
+    public GameObject CoalTemplate;
+	public ScoreManager OutputManager;
     private GameObject _machineSelection;
 	private GameObject _builtMachine;
 
@@ -51,8 +52,13 @@ public class BuildMachine : MonoBehaviour
             machine = (GameObject)Instantiate(NuclearTemplate);
             machine.GetComponent<NuclearProcess>().Initialize(OutputManager, machineTypeToBuild);
         }
+		else if (machineTypeToBuild is Coal)
+		{
+			machine = (GameObject)Instantiate(CoalTemplate);
+			machine.GetComponent<CoalProcess>().Initialize(OutputManager, machineTypeToBuild);
+		}
 
-        machine.transform.SetParent(transform, false);
+		machine.transform.SetParent(transform, false);
         OutputManager.Income -= machineTypeToBuild.Cost;
 
 	    return machine;

@@ -14,9 +14,8 @@ public class MachineSelectionList : MonoBehaviour
 	    ItemList.Items = new List<object>()
 	        {
 	            new Turbine() { Name = "Solar", Cost = 10000 },
-                new Nuclear() { Name = "Coal", Cost = 20000 },
+                new Coal() { Name = "Coal", Cost = 20000 },
                 new Nuclear() { Name = "Nuclear", Cost = 30000},
-                new Nuclear() { Name = "Wind", Cost = 40000 },
 	        };
 	}
 	

@@ -19,7 +19,6 @@ public class NuclearProcess : MonoBehaviour
 	private const float DegradationPerSecond = 0.01f;
 	private const float MaxTemperatureShift = 0.2f;
 
-
 	public void Initialize(ScoreManager outputManager, IMachineType machineType)
 	{
 		_nuclear = (Nuclear)machineType;
