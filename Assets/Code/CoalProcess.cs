@@ -4,7 +4,7 @@ using System.Collections;
 public class CoalProcess : MonoBehaviour
 {
 	public RectTransform TemperatureBar;
-	public float TempToOutputRatio = 100f;
+	public float OutputMax = 100f;
 	public float TemperatureBarMaxLength = 100f;
 	public float TempPerShovel = 0.01f;
 	public float TempDecreasePerSecond = 0.01f;
@@ -23,14 +23,24 @@ public class CoalProcess : MonoBehaviour
 	public void Update()
 	{
 		_coal.Temperature = Mathf.Max(0f, _coal.Temperature - TempDecreasePerSecond*Time.deltaTime);
-		var newBarLength = (_coal.Temperature / _coal.MaxTemperature) * TemperatureBarMaxLength;
+		var newBarLength = (_coal.Temperature / _coal.OptimalTempRange.High) * TemperatureBarMaxLength;
 		TemperatureBar.sizeDelta = new Vector2(newBarLength, TemperatureBar.sizeDelta.y);
 
-		_coal.Output = _coal.Temperature * TempToOutputRatio;
+		_coal.Output = TemperatureToOutput(_coal.Temperature);
 	}
 
 	public void Shovel()
 	{
 		_coal.Temperature = Mathf.Min(_coal.Temperature + TempPerShovel, 1.0f);
+	}
+
+	private float TemperatureToOutput(float temperature)
+	{
+		if (temperature < _coal.OptimalTempRange.Low)
+		{
+			return (temperature/_coal.OptimalTempRange.Low)*OutputMax;
+		}
+
+		return OutputMax;
 	}
 }

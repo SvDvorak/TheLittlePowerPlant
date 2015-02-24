@@ -14,14 +14,13 @@ public class Coal : IMachineType
 	public int Cost { get; set; }
 	public float Output { get; set; }
 	public Range IncreasingTempRange { get; set; }
-	public Range MaxTempRange { get; set; }
+	public Range OptimalTempRange { get; set; }
 	public float Temperature { get; set; }
-	public float MaxTemperature { get { return 1f; } }
 
 	public Coal()
 	{
 		IncreasingTempRange = new Range(0, 0.7f);
-		MaxTempRange = new Range(IncreasingTempRange.High, 1f);
+		OptimalTempRange = new Range(IncreasingTempRange.High, 1f);
 	}
 }
 
