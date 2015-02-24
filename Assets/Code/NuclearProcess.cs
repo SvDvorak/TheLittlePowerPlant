@@ -5,15 +5,14 @@ using UnityEngine;
 public class NuclearProcess : MonoBehaviour
 {
 	public RectTransform TemperatureBar;
+	public float TemperatureBarMaxHeight = 210;
 
 	// Testing
 	public ScoreManager ScoreManager;
 
 	private Nuclear _nuclear;
-	private float _newBarHeight;
 	private const float MaxTemperature = FuelRod.BaseTemperature*9;
 	private const float CooldownPerSecond = 0.5f;
-	public const float TemperatureBarMaxHeight = 210;
 
 	private const float MaxRodOutput = 10;
 	private const float DegradationPerSecond = 0.01f;
@@ -49,8 +48,8 @@ public class NuclearProcess : MonoBehaviour
 			_nuclear.Temperature -= CooldownPerSecond*Time.deltaTime;
 		}
 
-		_newBarHeight = (_nuclear.Temperature / MaxTemperature) * TemperatureBarMaxHeight;
-		TemperatureBar.sizeDelta = new Vector2(TemperatureBar.sizeDelta.x, _newBarHeight);
+		var newBarHeight = (_nuclear.Temperature / MaxTemperature) * TemperatureBarMaxHeight;
+		TemperatureBar.sizeDelta = new Vector2(TemperatureBar.sizeDelta.x, newBarHeight);
 
 		if (_nuclear.Temperature < _nuclear.NoReactionUnit.High*_nuclear.MaxTemperature || _nuclear.Temperature > _nuclear.OverHeatUnit.Low*_nuclear.MaxTemperature)
 		{

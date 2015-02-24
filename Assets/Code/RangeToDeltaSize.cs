@@ -6,7 +6,8 @@ using Assets.Code;
 public class RangeToDeltaSize : MonoBehaviour
 {
 	public string RangePropertyName;
-	public float MaxHeight;
+	public float MaxSize;
+	public bool IsHorizontal;
 	private object _data;
 	private PropertyInfo _rangeProperty;
 
@@ -25,6 +26,7 @@ public class RangeToDeltaSize : MonoBehaviour
 		var range = _rangeProperty.GetValue<Range>(_data);
 
 		var transform = GetComponent<RectTransform>();
-		transform.sizeDelta = new Vector2(1, (range.High - range.Low) * MaxHeight);
+		var value = (range.High - range.Low) * MaxSize;
+		transform.sizeDelta = IsHorizontal ? new Vector2(value, 0) : new Vector2(0, value);
 	}
 }

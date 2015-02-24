@@ -3,6 +3,12 @@ using System.Collections;
 
 public class CoalProcess : MonoBehaviour
 {
+	public RectTransform TemperatureBar;
+	public float TempToOutputRatio = 100f;
+	public float TemperatureBarMaxLength = 100f;
+	public float TempPerShovel = 0.01f;
+	public float TempDecreasePerSecond = 0.01f;
+
 	private Coal _coal;
 
 	public void Initialize(ScoreManager outputManager, IMachineType machineType)
@@ -14,8 +20,17 @@ public class CoalProcess : MonoBehaviour
 		outputUpdaterComponent.Initialize(outputManager, machineType);
 	}
 
-	void Update ()
+	public void Update()
 	{
-	
+		_coal.Temperature = Mathf.Max(0f, _coal.Temperature - TempDecreasePerSecond*Time.deltaTime);
+		var newBarLength = (_coal.Temperature / _coal.MaxTemperature) * TemperatureBarMaxLength;
+		TemperatureBar.sizeDelta = new Vector2(newBarLength, TemperatureBar.sizeDelta.y);
+
+		_coal.Output = _coal.Temperature * TempToOutputRatio;
+	}
+
+	public void Shovel()
+	{
+		_coal.Temperature = Mathf.Min(_coal.Temperature + TempPerShovel, 1.0f);
 	}
 }
