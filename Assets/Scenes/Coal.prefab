@@ -969,10 +969,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemperatureBar: {fileID: 22497898}
-  TempToOutputRatio: 100
+  OutputMax: 100
   TemperatureBarMaxLength: 290
-  TempPerShovel: .00999999978
-  TempDecreasePerSecond: .00999999978
+  TempPerShovel: .0500000007
+  TempDecreasePerSecond: .00700000022
 --- !u!114 &11410958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bb5cf1b41a8af419b1f8fc0c65d287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RangePropertyName: MaxTempRange
+  RangePropertyName: OptimalTempRange
   MaxSize: 290
   IsHorizontal: 1
 --- !u!222 &22210934

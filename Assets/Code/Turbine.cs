@@ -6,13 +6,17 @@ public interface IMachineType
 	string Name { get; set; }
 	int Cost { get; set; }
 	float Output { get; set; }
+	bool IsPoweredOn { get; }
 }
 
 public class Coal : IMachineType
 {
+	private bool _isPoweredOn;
 	public string Name { get; set; }
 	public int Cost { get; set; }
 	public float Output { get; set; }
+	public bool IsPoweredOn { get; private set; }
+
 	public Range IncreasingTempRange { get; set; }
 	public Range OptimalTempRange { get; set; }
 	public float Temperature { get; set; }
@@ -21,6 +25,12 @@ public class Coal : IMachineType
 	{
 		IncreasingTempRange = new Range(0, 0.7f);
 		OptimalTempRange = new Range(IncreasingTempRange.High, 1f);
+		IsPoweredOn = true;
+	}
+
+	public void TogglePower()
+	{
+		IsPoweredOn = !IsPoweredOn;
 	}
 }
 
@@ -55,7 +65,6 @@ public class Nuclear : IMachineType
 				new FuelRod(),
 				new FuelRod()
 			};
-		IsPoweredOn = true;
 		NoReactionUnit = new Range(0f, 0.3f);
 		OverHeatUnit = new Range(0.7f, 1f);
 		MaxTemperature = FuelRod.BaseTemperature*FuelRods.Count;
@@ -102,9 +111,10 @@ public class Turbine : IMachineType
 
 	public Turbine()
 	{
-		IsPoweredOn = true;
 		Output = MinOutput;
+		RequestedOutput = MinOutput;
 		Durability = 1;
+		PowerOn();
 	}
 
 	public void TogglePower()

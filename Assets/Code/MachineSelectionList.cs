@@ -13,7 +13,7 @@ public class MachineSelectionList : MonoBehaviour
 	{
 	    ItemList.Items = new List<object>()
 	        {
-	            new Turbine() { Name = "Solar", Cost = 10000 },
+	            new Turbine() { Name = "Hydro", Cost = 10000 },
                 new Coal() { Name = "Coal", Cost = 20000 },
                 new Nuclear() { Name = "Nuclear", Cost = 30000},
 	        };

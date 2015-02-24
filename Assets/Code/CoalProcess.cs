@@ -7,7 +7,8 @@ public class CoalProcess : MonoBehaviour
 	public float OutputMax = 100f;
 	public float TemperatureBarMaxLength = 100f;
 	public float TempPerShovel = 0.01f;
-	public float TempDecreasePerSecond = 0.01f;
+	public float NormalTempDecreasePerSecond = 0.01f;
+	public float ShutdownTempDecreasePerSecond = 0.005f;
 
 	private Coal _coal;
 
@@ -22,16 +23,21 @@ public class CoalProcess : MonoBehaviour
 
 	public void Update()
 	{
-		_coal.Temperature = Mathf.Max(0f, _coal.Temperature - TempDecreasePerSecond*Time.deltaTime);
-		var newBarLength = (_coal.Temperature / _coal.OptimalTempRange.High) * TemperatureBarMaxLength;
-		TemperatureBar.sizeDelta = new Vector2(newBarLength, TemperatureBar.sizeDelta.y);
+		var tempDecreasePerSecond = _coal.IsPoweredOn ? NormalTempDecreasePerSecond : ShutdownTempDecreasePerSecond;
+		_coal.Temperature = Mathf.Max(0f, _coal.Temperature - tempDecreasePerSecond*Time.deltaTime);
 
 		_coal.Output = TemperatureToOutput(_coal.Temperature);
+
+		var newBarLength = (_coal.Temperature / _coal.OptimalTempRange.High) * TemperatureBarMaxLength;
+		TemperatureBar.sizeDelta = new Vector2(newBarLength, TemperatureBar.sizeDelta.y);
 	}
 
 	public void Shovel()
 	{
-		_coal.Temperature = Mathf.Min(_coal.Temperature + TempPerShovel, 1.0f);
+		if(_coal.IsPoweredOn)
+		{
+			_coal.Temperature = Mathf.Min(_coal.Temperature + TempPerShovel, 1.0f);
+		}
 	}
 
 	private float TemperatureToOutput(float temperature)
