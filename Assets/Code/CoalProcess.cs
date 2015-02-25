@@ -12,13 +12,13 @@ public class CoalProcess : MonoBehaviour
 
 	private Coal _coal;
 
-	public void Initialize(ScoreManager outputManager, IMachineType machineType)
+	public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
 	{
 		_coal = (Coal)machineType;
 		GetComponent<DataContext>().Data = _coal;
 
 		var outputUpdaterComponent = GetComponent<OutputUpdater>();
-		outputUpdaterComponent.Initialize(outputManager, machineType);
+		outputUpdaterComponent.Initialize(outputUpdater, machineType);
 	}
 
 	public void Update()

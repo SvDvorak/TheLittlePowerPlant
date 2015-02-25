@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class OutputUpdater : MonoBehaviour
 {
-    public ScoreManager OutputManager { get; set; }
+    public ScoreUpdater ScoreUpdater { get; set; }
     private IMachineType _machineType;
 
-    public void Initialize(ScoreManager outputManager, IMachineType machineType)
+    public void Initialize(ScoreUpdater scoreUpdater, IMachineType machineType)
     {
         _machineType = machineType;
-        OutputManager = outputManager;
+        ScoreUpdater = scoreUpdater;
     }
 
     void Update()
     {
-        if (OutputManager != null)
+        if (ScoreUpdater != null)
         {
-            OutputManager.SetOutput(gameObject, _machineType.Output);
+            ScoreUpdater.SetOutput(gameObject, _machineType.Output);
         }
     }
 }

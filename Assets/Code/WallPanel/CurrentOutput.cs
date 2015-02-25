@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CurrentOutput : MonoBehaviour
 {
-    public ScoreManager ScoreManager;
+    public ScoreUpdater ScoreUpdater;
     public Text CityValueText;
     public Text MinOutputText;
     public Text IncomeText;
@@ -22,10 +22,10 @@ public class CurrentOutput : MonoBehaviour
 
 	void Update ()
     {
-        CityValueText.text = "City value: " + (int)ScoreManager.CityValue + "$";
-        MinOutputText.text = "Output: " + (int)ScoreManager.MinimumOutputRequired + "kw";
-	    IncomeText.text = "Income: " + (int) ScoreManager.Income + "$";
-        MinOutput.localScale = new Vector3(ScoreManager.MinimumOutputRequired / ScoreManager.MaxOutput * MaxScale, MinOutput.localScale.y, MinOutput.localScale.z);
-        Output.localScale = new Vector3(ScoreManager.Output / ScoreManager.MaxOutput * MaxScale, Output.localScale.y, Output.localScale.z);
+        CityValueText.text = "City value: " + (int)ScoreUpdater.CityValue + "$";
+        MinOutputText.text = "Output: " + (int)ScoreUpdater.MinimumOutputRequired + "kw";
+	    IncomeText.text = "Income: " + (int) ScoreUpdater.Income + "$";
+        MinOutput.localScale = new Vector3(ScoreUpdater.MinimumOutputRequired / ScoreUpdater.MaxOutput * MaxScale, MinOutput.localScale.y, MinOutput.localScale.z);
+        Output.localScale = new Vector3(ScoreUpdater.Output / ScoreUpdater.MaxOutput * MaxScale, Output.localScale.y, Output.localScale.z);
 	}
 }

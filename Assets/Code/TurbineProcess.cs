@@ -9,11 +9,11 @@ public class TurbineProcess : MonoBehaviour
     private const float OutputAdjustPerSecond = 10;
     private Turbine _machineType;
 
-    public void Initialize(ScoreManager outputManager, IMachineType machineType)
+    public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
     {
         _machineType = (Turbine)machineType;
         var outputUpdaterComponent = GetComponent<OutputUpdater>();
-        outputUpdaterComponent.Initialize(outputManager, machineType);
+        outputUpdaterComponent.Initialize(outputUpdater, machineType);
 
 	    GetComponent<DataContext>().Data = machineType;
         InvokeRepeating("PerformBreakCheck", 0, 1);

@@ -8,7 +8,7 @@ public class NuclearProcess : MonoBehaviour
 	public float TemperatureBarMaxHeight = 210;
 
 	// Testing
-	public ScoreManager ScoreManager;
+	public ScoreUpdater ScoreUpdater;
 
 	private Nuclear _nuclear;
 	private const float MaxTemperature = FuelRod.BaseTemperature*9;
@@ -18,13 +18,13 @@ public class NuclearProcess : MonoBehaviour
 	private const float DegradationPerSecond = 0.01f;
 	private const float MaxTemperatureShift = 0.2f;
 
-	public void Initialize(ScoreManager outputManager, IMachineType machineType)
+	public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
 	{
 		_nuclear = (Nuclear)machineType;
 		GetComponent<DataContext>().Data = _nuclear;
 
 		var outputUpdaterComponent = GetComponent<OutputUpdater>();
-		outputUpdaterComponent.Initialize(outputManager, machineType);
+		outputUpdaterComponent.Initialize(outputUpdater, machineType);
 	}
 
 	void Update ()

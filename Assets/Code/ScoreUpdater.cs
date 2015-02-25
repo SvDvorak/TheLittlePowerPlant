@@ -3,21 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class ScoreManager : MonoBehaviour
+public static class ScoreManager
 {
-    public float MaxOutput { get { return 400; }}
+	public static float CityValue { get; set; }
+}
 
-    public float CityValue { get; private set; }
+public class ScoreUpdater : MonoBehaviour
+{
+	public float EnergySellPrice = 1f;
+	public float EnergyBuyCost = 2f;
+	public float OutputOverload;
+	public float MaxOutput = 400f;
+
+    public float CityValue { get { return ScoreManager.CityValue; } }
     public float Output { get; private set; }
     public float Income { get; set; }
 
     private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
 
-    public ScoreManager()
+    public ScoreUpdater()
     {
-        CityValue = 5000;
+        ScoreManager.CityValue = 5000;
         Output = 0;
         Income = 250000;
+	    OutputOverload = MaxOutput*0.8f;
     }
 
     public float MinimumOutputRequired
@@ -39,15 +48,20 @@ public class ScoreManager : MonoBehaviour
 
     public void Update()
     {
-        CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
+        ScoreManager.CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
         Output = _machineOutputs.Values.Sum();
 
         var outputDiff = Output - MinimumOutputRequired;
-        var incomeChangeMultiplier = 1f;
+        var incomeChangeMultiplier = EnergySellPrice;
         if (outputDiff < 0)
         {
-            incomeChangeMultiplier = 1f;
+            incomeChangeMultiplier = EnergyBuyCost;
         }
         Income += outputDiff*incomeChangeMultiplier*Time.deltaTime;
+
+	    if (Output > OutputOverload)
+	    {
+		    Application.LoadLevel("Part2");
+	    }
     }
 }

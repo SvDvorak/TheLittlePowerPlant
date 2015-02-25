@@ -69,8 +69,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 0
+  m_LightmapTilingOffset: {x: .16015625, y: .16015625, z: .31968689, w: .806991577}
   m_Materials:
   - {fileID: 2100000, guid: cd2d57c1ae988ed439d8f50d6cebc2b0, type: 2}
   m_SubsetIndices: 
@@ -145,7 +145,7 @@ MonoBehaviour:
   TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
-  OutputManager: {fileID: 0}
+  OutputUpdater: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
