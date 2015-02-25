@@ -7072,10 +7072,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b98356b69e68fb4fa506faab8a804f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxOutput: 400
   EnergySellPrice: 1
   EnergyBuyCost: 2
-  OutputOverload: 320
-  MaxOutput: 400
+  OutputOverloadLimit: 320
+  OverloadMaxTime: 3
+  OverloadAmount: 0
 --- !u!4 &979065760
 Transform:
   m_ObjectHideFlags: 0
