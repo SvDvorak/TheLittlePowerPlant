@@ -4,11 +4,11 @@ using System.Collections;
 public class CoalProcess : MonoBehaviour
 {
 	public RectTransform TemperatureBar;
-	public float OutputMax = 100f;
-	public float TemperatureBarMaxLength = 100f;
-	public float TempPerShovel = 0.01f;
-	public float NormalTempDecreasePerSecond = 0.01f;
-	public float ShutdownTempDecreasePerSecond = 0.005f;
+	public float OutputMax;
+	public float TemperatureBarMaxLength;
+	public float TempPerShovel;
+	public float NormalTempDecreasePerSecond;
+	public float ShutdownTempDecreasePerSecond;
 
 	private Coal _coal;
 

@@ -974,7 +974,7 @@ MonoBehaviour:
   TemperatureBarMaxLength: 290
   TempPerShovel: .0500000007
   NormalTempDecreasePerSecond: .00999999978
-  ShutdownTempDecreasePerSecond: .0299999993
+  ShutdownTempDecreasePerSecond: .0599999987
 --- !u!114 &11410958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1071,7 +1071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RangePropertyName: IncreasingTempRange
-  MaxSize: 290
   IsHorizontal: 1
 --- !u!114 &11497898
 MonoBehaviour:
@@ -1145,7 +1144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RangePropertyName: OptimalTempRange
-  MaxSize: 290
   IsHorizontal: 1
 --- !u!222 &22210934
 CanvasRenderer:

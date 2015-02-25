@@ -6,15 +6,18 @@ using Assets.Code;
 public class RangeToDeltaSize : MonoBehaviour
 {
 	public string RangePropertyName;
-	public float MaxSize;
 	public bool IsHorizontal;
 	private object _data;
 	private PropertyInfo _rangeProperty;
+	private RectTransform _containerSize;
+	private RectTransform _rectTransform;
 
 	void Start ()
 	{
 		_data = gameObject.GetDataContext();
 		_rangeProperty = _data.GetProperty(RangePropertyName);
+		_rectTransform = GetComponent<RectTransform>();
+		_containerSize = transform.parent.GetComponent<RectTransform>();
 		if (_rangeProperty.PropertyType != typeof(Range))
 		{
 			throw new Exception("Range property is not of type Range.");
@@ -25,8 +28,15 @@ public class RangeToDeltaSize : MonoBehaviour
 	{
 		var range = _rangeProperty.GetValue<Range>(_data);
 
-		var transform = GetComponent<RectTransform>();
-		var value = (range.High - range.Low) * MaxSize;
-		transform.sizeDelta = IsHorizontal ? new Vector2(value, 0) : new Vector2(0, value);
+		if (IsHorizontal)
+		{
+			var value = (range.High - range.Low) * _containerSize.sizeDelta.x;
+			_rectTransform.sizeDelta = new Vector2(value, _rectTransform.sizeDelta.y);
+		}
+		else
+		{
+			var value = (range.High - range.Low) * _containerSize.sizeDelta.y;
+			_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.y, value);
+		}
 	}
 }

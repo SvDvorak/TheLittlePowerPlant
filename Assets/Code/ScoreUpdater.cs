@@ -19,7 +19,12 @@ public class ScoreUpdater : MonoBehaviour
     public float Output { get; private set; }
     public float Income { get; set; }
 
-    private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
+	public float MinimumOutputRequired { get { return CityValue / 100f; } }
+	public Range CurrentOutputInUnit { get { return new Range(0, Output/MaxOutput); } }
+	public Range MinimumOutputInUnit { get { return new Range(0, MinimumOutputRequired / MaxOutput); } }
+	public Range OverloadOutputInUnit { get { return new Range(OutputOverload / MaxOutput, 1.0f); } }
+
+	private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
 
     public ScoreUpdater()
     {
@@ -27,11 +32,6 @@ public class ScoreUpdater : MonoBehaviour
         Output = 0;
         Income = 250000;
 	    OutputOverload = MaxOutput*0.8f;
-    }
-
-    public float MinimumOutputRequired
-    {
-        get { return CityValue/100f; }
     }
 
     public void SetOutput(object machine, float output)
