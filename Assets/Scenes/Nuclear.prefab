@@ -187,6 +187,7 @@ GameObject:
   - 114: {fileID: 11407566}
   - 114: {fileID: 11407588}
   - 114: {fileID: 11431992}
+  - 114: {fileID: 11412950}
   m_Layer: 0
   m_Name: MoveControlRods
   m_TagString: Untagged
@@ -1113,6 +1114,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11412950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7bef3aaef44ef44db0d96636a935710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ComponentTypeName: Slider
+  ComponentPropertyName: enabled
+  DataContextPropertyName: CanAdjustRequestedOutput
 --- !u!114 &11431938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1636,7 +1651,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RangePropertyName: OverHeatUnit
-  MaxSize: 210
   IsHorizontal: 0
 --- !u!114 &11431980
 MonoBehaviour:
@@ -1744,7 +1758,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TemperatureBar: {fileID: 22407590}
   TemperatureBarMaxHeight: 210
-  ScoreManager: {fileID: 0}
+  OverloadDegradationDecreasePerSecond: .100000001
+  CooldownPerSecond: .5
+  MaxRodOutput: 10
+  DegradationPerSecond: .00999999978
+  MaxTemperatureShift: .200000003
 --- !u!114 &11431992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2156,7 +2174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RangePropertyName: NoReactionUnit
-  MaxSize: 210
   IsHorizontal: 0
 --- !u!114 &11432028
 MonoBehaviour:

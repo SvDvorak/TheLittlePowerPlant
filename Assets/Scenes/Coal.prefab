@@ -975,6 +975,7 @@ MonoBehaviour:
   TempPerShovel: .0500000007
   NormalTempDecreasePerSecond: .00999999978
   ShutdownTempDecreasePerSecond: .0599999987
+  OverloadTempIncreasePerSecond: .100000001
 --- !u!114 &11410958
 MonoBehaviour:
   m_ObjectHideFlags: 1

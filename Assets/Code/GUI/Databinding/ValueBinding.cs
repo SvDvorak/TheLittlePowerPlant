@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Assets.Code;
 using UnityEngine;
 
-public class ValueSetter : MonoBehaviour
+public class ValueBinding : MonoBehaviour
 {
     public string ComponentTypeName;
     public string ComponentPropertyName;
@@ -28,7 +28,7 @@ public class ValueSetter : MonoBehaviour
 		_notifyingData = data as INotifyPropertyChanged;
 		if (_notifyingData == null)
 	    {
-		    throw new Exception("Function requires that DataContext " + _notifyingData.GetType().Name + " inherits from INotifyPropertyChanged.");
+		    throw new Exception("Function requires that DataContext " + data.GetType().Name + " inherits from INotifyPropertyChanged.");
 	    }
 
 		_notifyingData.PropertyChanged += PropertyChanged;

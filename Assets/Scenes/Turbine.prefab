@@ -92,6 +92,8 @@ GameObject:
   - 114: {fileID: 11409288}
   - 114: {fileID: 11491010}
   - 114: {fileID: 11471710}
+  - 114: {fileID: 11461416}
+  - 114: {fileID: 11438064}
   m_Layer: 0
   m_Name: SelectedOutput
   m_TagString: Untagged
@@ -805,7 +807,7 @@ MonoBehaviour:
   m_MinValue: 50
   m_MaxValue: 120
   m_WholeNumbers: 0
-  m_Value: 100.099998
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1305,6 +1307,17 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &11438064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfca6632d5ac4b7438059eaf3b196bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11448502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1373,6 +1386,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70b3d91df3988a4b97fdaaa226bf09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11461416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7bef3aaef44ef44db0d96636a935710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ComponentTypeName: Slider
+  ComponentPropertyName: enabled
+  DataContextPropertyName: CanAdjustRequestedOutput
 --- !u!114 &11471710
 MonoBehaviour:
   m_ObjectHideFlags: 1
