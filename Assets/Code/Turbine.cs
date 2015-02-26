@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
+using System.ComponentModel;
 
 public interface IMachineType
 {
@@ -7,6 +7,7 @@ public interface IMachineType
 	int Cost { get; set; }
 	float Output { get; set; }
 	bool IsPoweredOn { get; }
+	bool IsOverloaded { get; set; }
 }
 
 public class Coal : IMachineType
@@ -16,10 +17,10 @@ public class Coal : IMachineType
 	public int Cost { get; set; }
 	public float Output { get; set; }
 	public bool IsPoweredOn { get; private set; }
-
 	public Range IncreasingTempRange { get; set; }
 	public Range OptimalTempRange { get; set; }
 	public float Temperature { get; set; }
+	public bool IsOverloaded { get; set; }
 
 	public Coal()
 	{
@@ -30,19 +31,45 @@ public class Coal : IMachineType
 
 	public void TogglePower()
 	{
-		IsPoweredOn = !IsPoweredOn;
+		if(!IsOverloaded)
+		{
+			IsPoweredOn = !IsPoweredOn;
+		}
 	}
 }
 
-public class Nuclear : IMachineType
+public class Nuclear : IMachineType, INotifyPropertyChanged
 {
+	private bool _isOverloaded;
+	private float _controlRodDepth;
 	public string Name { get; set; }
 	public int Cost { get; set; }
 	public bool IsPoweredOn { get; private set; }
+	public bool IsOverloaded
+	{
+		get { return _isOverloaded; }
+		set
+		{
+			_isOverloaded = value;
+			OnPropertyChanged("IsOverloaded");
+			OnPropertyChanged("CanAdjustRequestedOutput");
+		}
+	}
+	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public float Output { get; set; }
 	public float MinOutput { get; private set; }
 	public float OverloadOutput { get; private set; }
-	public float ControlRodDepth { get; set; }
+
+	public float ControlRodDepth
+	{
+		get { return _controlRodDepth; }
+		set
+		{
+			_controlRodDepth = value;
+			OnPropertyChanged("ControlRodDepth");
+		}
+	}
+
 	public List<FuelRod> FuelRods { get; set; }
 	public float Temperature { get; set; }
 
@@ -84,6 +111,16 @@ public class Nuclear : IMachineType
 	{
 		IsPoweredOn = false;
 	}
+
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected virtual void OnPropertyChanged(string propertyName)
+	{
+		if(PropertyChanged != null)
+		{
+			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
 }
 
 public class FuelRod
@@ -94,13 +131,38 @@ public class FuelRod
 	public const float BaseTemperature = 1;
 }
 
-public class Turbine : IMachineType
+public class Turbine : IMachineType, INotifyPropertyChanged
 {
+	private float _requestedOutput;
+	private bool _isOverloaded;
 	public string Name { get; set; }
 	public int Cost { get; set; }
 	public float Output { get; set; }
-	public float RequestedOutput { get; set; }
+
+	public float RequestedOutput
+	{
+		get { return _requestedOutput; }
+		set
+		{
+			_requestedOutput = value;
+			OnPropertyChanged("RequestedOutput");
+		}
+	}
+
 	public bool IsPoweredOn { get; private set; }
+
+	public bool IsOverloaded
+	{
+		get { return _isOverloaded; }
+		set
+		{
+			_isOverloaded = value;
+			OnPropertyChanged("IsOverloaded");
+			OnPropertyChanged("CanAdjustRequestedOutput");
+		}
+	}
+
+	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public bool IsRepairing { get; private set; }
 	public bool IsBroke { get; private set; }
 	public float Durability { get; set; }
@@ -119,6 +181,11 @@ public class Turbine : IMachineType
 
 	public void TogglePower()
 	{
+		if (IsOverloaded)
+		{
+			return;
+		}
+
 		if (IsPoweredOn)
 		{
 			PowerOff();
@@ -146,8 +213,11 @@ public class Turbine : IMachineType
 
 	public void Repair()
 	{
-		IsRepairing = true;
-		PowerOff();
+		if(!IsOverloaded)
+		{
+			IsRepairing = true;
+			PowerOff();
+		}
 	}
 
 	public void RepairFinished()
@@ -161,5 +231,15 @@ public class Turbine : IMachineType
 	{
 		IsBroke = true;
 		PowerOff();
+	}
+
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected virtual void OnPropertyChanged(string propertyName)
+	{
+		if(PropertyChanged != null)
+		{
+			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }

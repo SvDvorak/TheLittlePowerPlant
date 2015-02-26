@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CoalProcess : MonoBehaviour
+public class CoalProcess : MonoBehaviour, IMachineProcess
 {
 	public RectTransform TemperatureBar;
 	public float OutputMax;
@@ -9,6 +9,7 @@ public class CoalProcess : MonoBehaviour
 	public float TempPerShovel;
 	public float NormalTempDecreasePerSecond;
 	public float ShutdownTempDecreasePerSecond;
+	public float OverloadTempIncreasePerSecond;
 
 	private Coal _coal;
 
@@ -23,9 +24,13 @@ public class CoalProcess : MonoBehaviour
 
 	public void Update()
 	{
+		if (_coal.IsOverloaded)
+		{
+			_coal.Temperature = Mathf.Min(_coal.Temperature + OverloadTempIncreasePerSecond*Time.deltaTime, 1f);
+		}
+
 		var tempDecreasePerSecond = _coal.IsPoweredOn ? NormalTempDecreasePerSecond : ShutdownTempDecreasePerSecond;
 		_coal.Temperature = Mathf.Max(0f, _coal.Temperature - tempDecreasePerSecond*Time.deltaTime);
-
 		_coal.Output = TemperatureToOutput(_coal.Temperature);
 
 		var newBarLength = (_coal.Temperature / _coal.OptimalTempRange.High) * TemperatureBarMaxLength;
@@ -48,5 +53,14 @@ public class CoalProcess : MonoBehaviour
 		}
 
 		return OutputMax;
+	}
+
+	public void Overload()
+	{
+		if (!_coal.IsPoweredOn)
+		{
+			_coal.TogglePower();
+		}
+		_coal.IsOverloaded = true;
 	}
 }

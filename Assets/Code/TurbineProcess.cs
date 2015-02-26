@@ -1,17 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-public class TurbineProcess : MonoBehaviour
+public class TurbineProcess : MonoBehaviour, IMachineProcess
 {
     private const float WearMultiplier = 0.02f;
     private const float RepairPerSecond = 0.025f;
     private const float MaxDurability = 1f;
     private const float OutputAdjustPerSecond = 10;
-    private Turbine _machineType;
+    private Turbine _turbine;
 
     public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
     {
-        _machineType = (Turbine)machineType;
+        _turbine = (Turbine)machineType;
         var outputUpdaterComponent = GetComponent<OutputUpdater>();
         outputUpdaterComponent.Initialize(outputUpdater, machineType);
 
@@ -28,19 +28,19 @@ public class TurbineProcess : MonoBehaviour
 
     private void CalculateOutput()
     {
-        if (_machineType.IsPoweredOn)
+        if (_turbine.IsPoweredOn)
         {
             var outputChangeMaxDelta = (OutputAdjustPerSecond*Time.deltaTime);
-            _machineType.Output = Mathf.MoveTowards(_machineType.Output, _machineType.RequestedOutput, outputChangeMaxDelta);
+            _turbine.Output = Mathf.MoveTowards(_turbine.Output, _turbine.RequestedOutput, outputChangeMaxDelta);
         }
     }
 
     private void CalculateWear()
     {
-        if(_machineType.IsPoweredOn)
+        if(_turbine.IsPoweredOn)
         {
-            var outputRatio = WearCurve(_machineType.Output);
-            _machineType.Durability -= WearMultiplier*outputRatio*Time.deltaTime;
+            var outputRatio = WearCurve(_turbine.Output);
+            _turbine.Durability -= Mathf.Max(0f, WearMultiplier*outputRatio*Time.deltaTime);
         }
     }
 
@@ -48,32 +48,42 @@ public class TurbineProcess : MonoBehaviour
     // Output 100-120: 0.5-1
     private float WearCurve(float output)
     {
-        if (output < _machineType.MaxNormalOutput)
+        if (output < _turbine.MaxNormalOutput)
         {
-            return (output - _machineType.MinOutput)/_machineType.MaxNormalOutput;
+            return (output - _turbine.MinOutput)/_turbine.MaxNormalOutput;
         }
 
-        return 0.5f + (output - _machineType.MaxNormalOutput)/((_machineType.OverloadOutput - _machineType.MaxNormalOutput)*2);
+        return 0.5f + (output - _turbine.MaxNormalOutput)/((_turbine.OverloadOutput - _turbine.MaxNormalOutput)*2);
     }
 
     private void CalculateRepair()
     {
-        if (_machineType.IsRepairing)
+        if (_turbine.IsRepairing)
         {
-            if (_machineType.Durability >= MaxDurability)
+            if (_turbine.Durability >= MaxDurability)
             {
-                _machineType.RepairFinished();
+                _turbine.RepairFinished();
             }
-            _machineType.Durability += RepairPerSecond*Time.deltaTime;
+            _turbine.Durability += RepairPerSecond*Time.deltaTime;
         }
     }
 
     private void PerformBreakCheck()
     {
         var randomBreakChance = Math.Pow(UnityEngine.Random.Range(0, 1f), 10);
-        if (_machineType.IsPoweredOn && randomBreakChance > _machineType.Durability)
+        if (!_turbine.IsOverloaded && _turbine.IsPoweredOn && randomBreakChance > _turbine.Durability)
         {
-            _machineType.Break();
+            _turbine.Break();
         }
     }
+
+	public void Overload()
+	{
+		if(!_turbine.IsPoweredOn)
+		{
+			_turbine.TogglePower();
+		}
+		_turbine.IsOverloaded = true;
+		_turbine.RequestedOutput = _turbine.OverloadOutput;
+	}
 }

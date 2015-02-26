@@ -2,21 +2,19 @@
 using System.Linq;
 using UnityEngine;
 
-public class NuclearProcess : MonoBehaviour
+public class NuclearProcess : MonoBehaviour, IMachineProcess
 {
 	public RectTransform TemperatureBar;
 	public float TemperatureBarMaxHeight = 210;
-
-	// Testing
-	public ScoreUpdater ScoreUpdater;
+	public float OverloadDegradationDecreasePerSecond;
 
 	private Nuclear _nuclear;
 	private const float MaxTemperature = FuelRod.BaseTemperature*9;
-	private const float CooldownPerSecond = 0.5f;
+	public float CooldownPerSecond = 0.5f;
 
-	private const float MaxRodOutput = 10;
-	private const float DegradationPerSecond = 0.01f;
-	private const float MaxTemperatureShift = 0.2f;
+	public float MaxRodOutput = 10;
+	public float DegradationPerSecond = 0.01f;
+	public float MaxTemperatureShift = 0.2f;
 
 	public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
 	{
@@ -40,7 +38,7 @@ public class NuclearProcess : MonoBehaviour
 		if (_nuclear.IsPoweredOn)
 		{
 			_nuclear.Output = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Output)*_nuclear.ControlRodDepth;
-			_nuclear.Temperature = _nuclear.FuelRods.Sum(fuelRod => fuelRod.Temperature)*_nuclear.ControlRodDepth;
+			_nuclear.Temperature = Mathf.Min(_nuclear.FuelRods.Sum(fuelRod => fuelRod.Temperature)*_nuclear.ControlRodDepth, MaxTemperature);
 		}
 		else
 		{
@@ -51,25 +49,31 @@ public class NuclearProcess : MonoBehaviour
 		var newBarHeight = (_nuclear.Temperature / MaxTemperature) * TemperatureBarMaxHeight;
 		TemperatureBar.sizeDelta = new Vector2(TemperatureBar.sizeDelta.x, newBarHeight);
 
-		if (_nuclear.Temperature < _nuclear.NoReactionUnit.High*_nuclear.MaxTemperature || _nuclear.Temperature > _nuclear.OverHeatUnit.Low*_nuclear.MaxTemperature)
+		var isOutsideOperationTemperature = 
+			_nuclear.Temperature < _nuclear.NoReactionUnit.High*_nuclear.MaxTemperature ||
+			_nuclear.Temperature > _nuclear.OverHeatUnit.Low*_nuclear.MaxTemperature;
+		if (isOutsideOperationTemperature && !_nuclear.IsOverloaded)
 		{
 			_nuclear.PowerOff();
 		}
 	}
 
-	private static void UpdateRodStatus(FuelRod fuelRod)
+	private void UpdateRodStatus(FuelRod fuelRod)
 	{
-		var degradationInverse = 1 - fuelRod.Degradation;
-		fuelRod.Degradation += DegradationPerSecond*Time.deltaTime;
-		fuelRod.Output = degradationInverse*MaxRodOutput;
+		fuelRod.Degradation = fuelRod.Degradation + (!_nuclear.IsOverloaded
+			? DegradationPerSecond*Time.deltaTime
+			: -OverloadDegradationDecreasePerSecond*Time.deltaTime);
 
-		var rodTemperatureShift = MaxTemperatureShift*degradationInverse;
-		fuelRod.Temperature = FuelRod.BaseTemperature*degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);
+		var degradationInverse = 1 - fuelRod.Degradation;
+		fuelRod.Output = degradationInverse * MaxRodOutput;
+
+		var rodTemperatureShift = MaxTemperatureShift * degradationInverse;
+		fuelRod.Temperature = FuelRod.BaseTemperature * degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);
 	}
 
 	public void TogglePower()
 	{
-		if(_nuclear.IsPoweredOn || _nuclear.Temperature <= 0)
+		if(!_nuclear.IsOverloaded && (_nuclear.IsPoweredOn || _nuclear.Temperature <= 0))
 		{
 			_nuclear.TogglePower();
 		}
@@ -79,5 +83,15 @@ public class NuclearProcess : MonoBehaviour
 	{
 		var fuelRod = new FuelRod();
 		_nuclear.FuelRods[index] = fuelRod;
+	}
+
+	public void Overload()
+	{
+		if (!_nuclear.IsPoweredOn)
+		{
+			_nuclear.TogglePower();
+		}
+		_nuclear.IsOverloaded = true;
+		_nuclear.ControlRodDepth = 1f;
 	}
 }
