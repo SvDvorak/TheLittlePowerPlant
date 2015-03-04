@@ -6,8 +6,9 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
     private const float WearMultiplier = 0.02f;
     private const float RepairPerSecond = 0.025f;
     private const float MaxDurability = 1f;
-    private const float OutputAdjustPerSecond = 10;
-    private Hydro _hydro;
+    private const float FlowAdjustPerSecond = 10;
+	private const float FlowToOutputRatio = 1f;
+	private Hydro _hydro;
 
     public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
     {
@@ -21,39 +22,45 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
 
     public void Update()
     {
-        CalculateOutput();
+        UpdateFlow();
+	    UpdateOutput();
         CalculateWear();
         CalculateRepair();
     }
 
-    private void CalculateOutput()
+	private void UpdateFlow()
     {
         if (_hydro.IsPoweredOn)
         {
-            var outputChangeMaxDelta = (OutputAdjustPerSecond*Time.deltaTime);
-            _hydro.Output = Mathf.MoveTowards(_hydro.Output, _hydro.RequestedOutput, outputChangeMaxDelta);
+            var flowChangeMaxDelta = (FlowAdjustPerSecond*Time.deltaTime);
+            _hydro.CurrentFlow = Mathf.MoveTowards(_hydro.CurrentFlow, _hydro.RequestedFlow, flowChangeMaxDelta);
         }
     }
 
-    private void CalculateWear()
+	private void UpdateOutput()
+	{
+		_hydro.Output = _hydro.CurrentFlow*FlowToOutputRatio;
+	}
+
+	private void CalculateWear()
     {
         if(_hydro.IsPoweredOn)
         {
-            var outputRatio = WearCurve(_hydro.Output);
-            _hydro.Durability -= Mathf.Max(0f, WearMultiplier*outputRatio*Time.deltaTime);
+            var flowRatio = WearCurve(_hydro.CurrentFlow);
+            _hydro.Durability -= Mathf.Max(0f, WearMultiplier*flowRatio*Time.deltaTime);
         }
     }
 
-    // Output 50-100: 0-0.5
-    // Output 100-120: 0.5-1
-    private float WearCurve(float output)
+    // Flow 50-100: 0-0.5
+    // Flow 100-120: 0.5-1
+    private float WearCurve(float flow)
     {
-        if (output < _hydro.MaxNormalOutput)
+        if (flow < _hydro.MaxNormalFlow)
         {
-            return (output - _hydro.MinOutput)/_hydro.MaxNormalOutput;
+            return (flow - _hydro.MinFlow)/_hydro.MaxNormalFlow;
         }
 
-        return 0.5f + (output - _hydro.MaxNormalOutput)/((_hydro.OverloadOutput - _hydro.MaxNormalOutput)*2);
+        return 0.5f + (flow - _hydro.MaxNormalFlow)/((_hydro.OverloadFlow - _hydro.MaxNormalFlow)*2);
     }
 
     private void CalculateRepair()
@@ -80,7 +87,7 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
 	public void Overload()
 	{
 		_hydro.IsBroke = false;
-		_hydro.RequestedOutput = _hydro.OverloadOutput;
+		_hydro.RequestedFlow = _hydro.OverloadFlow;
 		if (!_hydro.IsPoweredOn)
 		{
 			_hydro.TogglePower();

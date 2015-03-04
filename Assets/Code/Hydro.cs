@@ -2,24 +2,31 @@
 
 public class Hydro : IMachineType, INotifyPropertyChanged
 {
-	private float _requestedOutput;
+	private float _requestedFlow;
 	private bool _isOverloaded;
 	public string Name { get; set; }
 	public int Cost { get; set; }
 	public float Output { get; set; }
+	public float CurrentFlow { get; set; }
 
-	public float RequestedOutput
+	public float RequestedFlow
 	{
-		get { return _requestedOutput; }
+		get { return _requestedFlow; }
 		set
 		{
-			_requestedOutput = value;
-			OnPropertyChanged("RequestedOutput");
+			_requestedFlow = value;
+			OnPropertyChanged("RequestedFlow");
 		}
 	}
+	public Range CurrentFlowRange { get { return new Range(0, (CurrentFlow - MinFlow)/(MaxFlow - MinFlow)); } }
+	public float MaxFlow { get { return 120; } }
+	public float MinFlow { get { return 50; } }
+	public float MaxNormalFlow { get { return 100; } }
+	public float OverloadFlow { get { return 120; } }
+	public float MaxOutputPerSecond { get { return OverloadFlow; } }
+
 
 	public bool IsPoweredOn { get; private set; }
-
 	public bool IsOverloaded
 	{
 		get { return _isOverloaded; }
@@ -31,21 +38,16 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 		}
 	}
 
-	public float MaxOutputPerSecond { get { return OverloadOutput; } }
-
 	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public bool IsRepairing { get; private set; }
 	public bool IsBroke { get; set; }
 	public float Durability { get; set; }
 
-	public float MinOutput { get { return 50; } }
-	public float MaxNormalOutput { get { return 100; } }
-	public float OverloadOutput { get { return 120; } }
 
 	public Hydro()
 	{
-		Output = MinOutput;
-		RequestedOutput = MinOutput;
+		RequestedFlow = MaxNormalFlow;
+		CurrentFlow = RequestedFlow;
 		Durability = 1;
 		PowerOn();
 	}
@@ -72,14 +74,14 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 		if (!IsBroke)
 		{
 			IsPoweredOn = true;
-			Output = MinOutput;
+			CurrentFlow = MinFlow;
 		}
 	}
 
 	private void PowerOff()
 	{
 		IsPoweredOn = false;
-		Output = 0;
+		CurrentFlow = 0;
 	}
 
 	public void Repair()
