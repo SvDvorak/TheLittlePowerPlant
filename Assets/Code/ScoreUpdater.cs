@@ -17,6 +17,8 @@ public class ScoreUpdater : MonoBehaviour
 	public float OverloadMaxTime = 3f;
 	public float OverloadAmount;
 
+	public ForcedOverload ForcedOverload;
+
 	private float OverloadPerSecond { get { return 1/OverloadMaxTime;} }
 
 	public float CityValue { get { return ScoreManager.CityValue; } }
@@ -34,7 +36,7 @@ public class ScoreUpdater : MonoBehaviour
     {
         ScoreManager.CityValue = 5000;
         Output = 0;
-        Income = 250000;
+        Income = 500;
 	    OutputOverloadLimit = MaxOutput*0.8f;
 	}
 
@@ -56,7 +58,16 @@ public class ScoreUpdater : MonoBehaviour
 		UpdateOutput();
 	    UpdateIncome();
 	    CheckOverloading();
+	    CheckBroke();
     }
+
+	private void CheckBroke()
+	{
+		if (!ForcedOverload.Overloaded && Income < 0 && Output - MinimumOutputRequired < 0)
+		{
+			ForcedOverload.ForceOverload();
+		}
+	}
 
 	private static void UpdateCityValue()
 	{

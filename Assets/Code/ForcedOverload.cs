@@ -4,7 +4,7 @@ using System.Linq;
 
 public class ForcedOverload : MonoBehaviour
 {
-	private bool _overloaded;
+	public bool Overloaded;
 
 	public void ForceOverload()
 	{
@@ -22,7 +22,7 @@ public class ForcedOverload : MonoBehaviour
 		var speed = 1;
 		var time = 0f;
 
-		if (_overloaded)
+		if (Overloaded)
 		{
 			speed = -1;
 			time = animation["Flip"].length;
@@ -31,7 +31,7 @@ public class ForcedOverload : MonoBehaviour
 		animation["Flip"].speed = speed;
 		animation["Flip"].time = time;
 		animation.Play("Flip");
-		_overloaded = !_overloaded;
+		Overloaded = !Overloaded;
 	}
 
 	private void OverloadAllMachines()
