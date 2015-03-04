@@ -19,6 +19,7 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 		}
 	}
 
+	public float MaxTemperature { get; set; }
 	public float MaxOutputPerSecond { get; private set; }
 	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public float Output { get; set; }
@@ -37,10 +38,9 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 
 	public List<FuelRod> FuelRods { get; set; }
 	public float Temperature { get; set; }
-
 	public Range NoReactionUnit { get; set; }
 	public Range OverHeatUnit { get; set; }
-	public float MaxTemperature { get; set; }
+	public Range TemperatureUnit { get { return new Range(0, Temperature/MaxTemperature); } }
 
 	public Nuclear()
 	{
