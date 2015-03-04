@@ -8,11 +8,11 @@ public interface IMachineType
 	float Output { get; set; }
 	bool IsPoweredOn { get; }
 	bool IsOverloaded { get; set; }
+	float MaxOutputPerSecond { get; }
 }
 
 public class Coal : IMachineType
 {
-	private bool _isPoweredOn;
 	public string Name { get; set; }
 	public int Cost { get; set; }
 	public float Output { get; set; }
@@ -21,12 +21,14 @@ public class Coal : IMachineType
 	public Range OptimalTempRange { get; set; }
 	public float Temperature { get; set; }
 	public bool IsOverloaded { get; set; }
+	public float MaxOutputPerSecond { get; private set; }
 
 	public Coal()
 	{
 		IncreasingTempRange = new Range(0, 0.7f);
 		OptimalTempRange = new Range(IncreasingTempRange.High, 1f);
 		IsPoweredOn = true;
+		MaxOutputPerSecond = 100;
 	}
 
 	public void TogglePower()
@@ -55,6 +57,8 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 			OnPropertyChanged("CanAdjustRequestedOutput");
 		}
 	}
+
+	public float MaxOutputPerSecond { get; private set; }
 	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public float Output { get; set; }
 	public float MinOutput { get; private set; }
@@ -95,6 +99,7 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 		NoReactionUnit = new Range(0f, 0.3f);
 		OverHeatUnit = new Range(0.7f, 1f);
 		MaxTemperature = FuelRod.BaseTemperature*FuelRods.Count;
+		MaxOutputPerSecond = FuelRod.MaxRodOutput*FuelRods.Count;
 	}
 
 	public void TogglePower()
@@ -129,6 +134,7 @@ public class FuelRod
 	public float Output { get; set; }
 	public float Temperature { get; set; }
 	public const float BaseTemperature = 1;
+	public const float MaxRodOutput = 10;
 }
 
 public class Turbine : IMachineType, INotifyPropertyChanged
@@ -161,6 +167,8 @@ public class Turbine : IMachineType, INotifyPropertyChanged
 			OnPropertyChanged("CanAdjustRequestedOutput");
 		}
 	}
+
+	public float MaxOutputPerSecond { get { return OverloadOutput; } }
 
 	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public bool IsRepairing { get; private set; }

@@ -6484,7 +6484,6 @@ MonoBehaviour:
   MaxOutput: 400
   EnergySellPrice: 1
   EnergyBuyCost: 2
-  OutputOverloadLimit: 320
   MaxIncomeLoss: -500
   OverloadMaxTime: 3
   OverloadAmount: 0
@@ -7027,7 +7026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemperatureBar: {fileID: 1631399678}
-  OutputMax: 100
   TemperatureBarMaxLength: 290
   TempPerShovel: .0500000007
   NormalTempDecreasePerSecond: .00999999978
@@ -8292,7 +8290,6 @@ MonoBehaviour:
   TemperatureBarMaxHeight: 210
   OverloadDegradationDecreasePerSecond: .100000001
   CooldownPerSecond: .5
-  MaxRodOutput: 10
   DegradationPerSecond: .00999999978
   MaxTemperatureShift: .200000003
 --- !u!114 &1333712716

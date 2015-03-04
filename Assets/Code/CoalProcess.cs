@@ -4,7 +4,6 @@ using System.Collections;
 public class CoalProcess : MonoBehaviour, IMachineProcess
 {
 	public RectTransform TemperatureBar;
-	public float OutputMax;
 	public float TemperatureBarMaxLength;
 	public float TempPerShovel;
 	public float NormalTempDecreasePerSecond;
@@ -49,10 +48,10 @@ public class CoalProcess : MonoBehaviour, IMachineProcess
 	{
 		if (temperature < _coal.OptimalTempRange.Low)
 		{
-			return (temperature/_coal.OptimalTempRange.Low)*OutputMax;
+			return (temperature/_coal.OptimalTempRange.Low)*_coal.MaxOutputPerSecond;
 		}
 
-		return OutputMax;
+		return _coal.MaxOutputPerSecond;
 	}
 
 	public void Overload()

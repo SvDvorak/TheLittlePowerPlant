@@ -12,7 +12,6 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 	private const float MaxTemperature = FuelRod.BaseTemperature*9;
 	public float CooldownPerSecond = 0.5f;
 
-	public float MaxRodOutput = 10;
 	public float DegradationPerSecond = 0.01f;
 	public float MaxTemperatureShift = 0.2f;
 
@@ -65,7 +64,7 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 			: -OverloadDegradationDecreasePerSecond*Time.deltaTime);
 
 		var degradationInverse = Mathf.Clamp(1 - fuelRod.Degradation, 0f, 1f);
-		fuelRod.Output = degradationInverse * MaxRodOutput;
+		fuelRod.Output = degradationInverse * FuelRod.MaxRodOutput;
 
 		var rodTemperatureShift = MaxTemperatureShift * degradationInverse;
 		fuelRod.Temperature = FuelRod.BaseTemperature * degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);

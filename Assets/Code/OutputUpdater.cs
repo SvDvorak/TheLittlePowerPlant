@@ -16,7 +16,7 @@ public class OutputUpdater : MonoBehaviour
     {
         if (ScoreUpdater != null)
         {
-            ScoreUpdater.SetOutput(gameObject, _machineType.Output);
+            ScoreUpdater.SetOutput(_machineType);
         }
     }
 }

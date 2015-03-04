@@ -10,10 +10,9 @@ public static class ScoreManager
 
 public class ScoreUpdater : MonoBehaviour
 {
-	public float MaxOutput = 400f;
+	public float MaxOutput;
 	public float EnergySellPrice = 1f;
 	public float EnergyBuyCost = 2f;
-	public float OutputOverloadLimit;
 	public float MaxIncomeLoss;
 	public float OverloadMaxTime = 3f;
 	public float OverloadAmount;
@@ -30,28 +29,31 @@ public class ScoreUpdater : MonoBehaviour
 	public Range CurrentOutputInUnit { get { return new Range(0, Output/MaxOutput); } }
 	public Range MinimumOutputInUnit { get { return new Range(0, MinimumOutputRequired / MaxOutput); } }
 	public Range OverloadOutputInUnit { get { return new Range(OutputOverloadLimit / MaxOutput, 1.0f); } }
+	public float OutputOverloadLimit { get { return MaxOutput*0.8f; } }
 
 	private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
+	private readonly Dictionary<object, float> _machineMaxOutputs = new Dictionary<object, float>();
 
     public ScoreUpdater()
     {
         ScoreManager.CityValue = 5000;
         Output = 0;
-        Income = 500;
-	    OutputOverloadLimit = MaxOutput*0.8f;
+        Income = 500000;
 	}
 
-    public void SetOutput(object machine, float output)
+    public void SetOutput(IMachineType machine)
     {
         if (!_machineOutputs.ContainsKey(machine))
         {
-            _machineOutputs.Add(machine, output);
+            _machineOutputs.Add(machine, machine.Output);
+	        _machineMaxOutputs.Add(machine, machine.MaxOutputPerSecond);
         }
         else
         {
-            _machineOutputs[machine] = output;
+            _machineOutputs[machine] = machine.Output;
+	        _machineMaxOutputs[machine] = machine.MaxOutputPerSecond;
         }
-    }
+	}
 
     public void Update()
     {
@@ -70,6 +72,7 @@ public class ScoreUpdater : MonoBehaviour
 	private void UpdateOutput()
 	{
 		Output = Mathf.Min(_machineOutputs.Values.Sum(), MaxOutput);
+		MaxOutput = _machineMaxOutputs.Count == 0 ? 100 : _machineMaxOutputs.Values.Sum();
 	}
 
 	private void UpdateIncome()
