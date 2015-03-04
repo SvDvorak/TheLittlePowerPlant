@@ -6487,6 +6487,7 @@ MonoBehaviour:
   OutputOverloadLimit: 320
   OverloadMaxTime: 3
   OverloadAmount: 0
+  ForcedOverload: {fileID: 1314464431}
 --- !u!4 &979065760
 Transform:
   m_ObjectHideFlags: 0
@@ -8157,6 +8158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79264b6a1bab8443a7378fc0952f3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Overloaded: 0
 --- !u!114 &1314464432
 MonoBehaviour:
   m_ObjectHideFlags: 0
