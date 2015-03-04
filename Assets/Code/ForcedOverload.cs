@@ -38,7 +38,7 @@ public class ForcedOverload : MonoBehaviour
 	{
 		var machineProcesses = new List<IMachineProcess>()
 			.Concat(FindObjectsOfType<CoalProcess>())
-			.Concat(FindObjectsOfType<TurbineProcess>())
+			.Concat(FindObjectsOfType<HydroProcess>())
 			.Concat(FindObjectsOfType<NuclearProcess>());
 
 		foreach (var machineProcess in machineProcesses)

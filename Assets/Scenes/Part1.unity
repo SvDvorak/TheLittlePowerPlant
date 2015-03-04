@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -2183,7 +2183,7 @@ GameObject:
   - 114: {fileID: 344260649}
   - 114: {fileID: 344260650}
   m_Layer: 0
-  m_Name: Turbine
+  m_Name: Hydro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3694,7 +3694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -5631,7 +5631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -8347,7 +8347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -8726,7 +8726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -9388,7 +9388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -10798,7 +10798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}
@@ -11151,7 +11151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MachineSelectionTemplate: {fileID: 193906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7,
     type: 2}
-  TurbineTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
+  HydroTemplate: {fileID: 187444, guid: bee3106d2a83c7746b1625661d015654, type: 2}
   NuclearTemplate: {fileID: 107566, guid: 274bfc1f2a194b3479bdc65a3b8f9f19, type: 2}
   CoalTemplate: {fileID: 110936, guid: 853fd40ab05a40e43ace7a1be7e4edc7, type: 2}
   OutputUpdater: {fileID: 979065759}

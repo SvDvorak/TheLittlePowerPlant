@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class BuildMachine : MonoBehaviour
 {
     public GameObject MachineSelectionTemplate;
-    public GameObject TurbineTemplate;
+    public GameObject HydroTemplate;
     public GameObject NuclearTemplate;
     public GameObject CoalTemplate;
 	public ScoreUpdater OutputUpdater;
@@ -42,10 +42,10 @@ public class BuildMachine : MonoBehaviour
     private GameObject CreateMachine(IMachineType machineTypeToBuild)
     {
         var machine = new GameObject();
-        if(machineTypeToBuild is Turbine)
+        if(machineTypeToBuild is Hydro)
         {
-            machine = (GameObject)Instantiate(TurbineTemplate);
-            machine.GetComponent<TurbineProcess>().Initialize(OutputUpdater, machineTypeToBuild);
+            machine = (GameObject)Instantiate(HydroTemplate);
+            machine.GetComponent<HydroProcess>().Initialize(OutputUpdater, machineTypeToBuild);
         }
         else if(machineTypeToBuild is Nuclear)
         {

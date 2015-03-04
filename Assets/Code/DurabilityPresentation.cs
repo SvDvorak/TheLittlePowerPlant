@@ -4,12 +4,12 @@ using Assets.Code;
 
 public class DurabilityPresentation : MonoBehaviour
 {
-    private Turbine _turbine;
+    private Hydro _hydro;
     private DurabilityData _durabilityData;
 
     void Start ()
 	{
-	    _turbine = gameObject.GetDataContext<Turbine>();
+	    _hydro = gameObject.GetDataContext<Hydro>();
 	    var newDataContext = gameObject.AddComponent<DataContext>();
 	    _durabilityData = new DurabilityData();
 	    newDataContext.Data = _durabilityData;
@@ -17,7 +17,7 @@ public class DurabilityPresentation : MonoBehaviour
 
 	void Update ()
 	{
-	    _durabilityData.DurabilityInPercent = _turbine.Durability*100;
+	    _durabilityData.DurabilityInPercent = _hydro.Durability*100;
 	}
 
     public class DurabilityData
