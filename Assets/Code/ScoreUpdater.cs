@@ -14,13 +14,14 @@ public class ScoreUpdater : MonoBehaviour
 	public float EnergySellPrice = 1f;
 	public float EnergyBuyCost = 2f;
 	public float OutputOverloadLimit;
+	public float MaxIncomeLoss;
 	public float OverloadMaxTime = 3f;
 	public float OverloadAmount;
 
 	public ForcedOverload ForcedOverload;
 
 	private float OverloadPerSecond { get { return 1/OverloadMaxTime;} }
-
+	
 	public float CityValue { get { return ScoreManager.CityValue; } }
     public float Output { get; private set; }
     public float Income { get; set; }
@@ -61,14 +62,6 @@ public class ScoreUpdater : MonoBehaviour
 	    CheckBroke();
     }
 
-	private void CheckBroke()
-	{
-		if (!ForcedOverload.Overloaded && Income < 0 && Output - MinimumOutputRequired < 0)
-		{
-			ForcedOverload.ForceOverload();
-		}
-	}
-
 	private static void UpdateCityValue()
 	{
 		ScoreManager.CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
@@ -106,6 +99,14 @@ public class ScoreUpdater : MonoBehaviour
 		else
 		{
 			OverloadAmount = 0;
+		}
+	}
+
+	private void CheckBroke()
+	{
+		if (!ForcedOverload.Overloaded && MaxIncomeLoss > Income && (Output - MinimumOutputRequired) < 0)
+		{
+			ForcedOverload.ForceOverload();
 		}
 	}
 }

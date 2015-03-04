@@ -6485,6 +6485,7 @@ MonoBehaviour:
   EnergySellPrice: 1
   EnergyBuyCost: 2
   OutputOverloadLimit: 320
+  MaxIncomeLoss: -500
   OverloadMaxTime: 3
   OverloadAmount: 0
   ForcedOverload: {fileID: 1314464431}
