@@ -36,7 +36,7 @@ public class RangeToDeltaSize : MonoBehaviour
 		else
 		{
 			var value = (range.High - range.Low) * _containerSize.sizeDelta.y;
-			_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.y, value);
+			_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, value);
 		}
 	}
 }

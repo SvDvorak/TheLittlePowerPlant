@@ -18,7 +18,7 @@ public class CurrentOutput : MonoBehaviour
 	void Update ()
 	{
 		CityValueText.text = "City value: " + (int)ScoreUpdater.CityValue + "$";
-        MinOutputText.text = "Output: " + (int)ScoreUpdater.MinimumOutputRequired + "kw";
+        MinOutputText.text = "Min output: " + (int)ScoreUpdater.MinimumOutputRequired + "kw";
 	    IncomeText.text = "Income: " + (int) ScoreUpdater.Income + "$";
 	}
 }

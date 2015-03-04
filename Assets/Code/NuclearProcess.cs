@@ -64,7 +64,7 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 			? DegradationPerSecond*Time.deltaTime
 			: -OverloadDegradationDecreasePerSecond*Time.deltaTime);
 
-		var degradationInverse = 1 - fuelRod.Degradation;
+		var degradationInverse = Mathf.Clamp(1 - fuelRod.Degradation, 0f, 1f);
 		fuelRod.Output = degradationInverse * MaxRodOutput;
 
 		var rodTemperatureShift = MaxTemperatureShift * degradationInverse;

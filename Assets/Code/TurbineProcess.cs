@@ -79,11 +79,12 @@ public class TurbineProcess : MonoBehaviour, IMachineProcess
 
 	public void Overload()
 	{
-		if(!_turbine.IsPoweredOn)
+		_turbine.IsBroke = false;
+		_turbine.RequestedOutput = _turbine.OverloadOutput;
+		if (!_turbine.IsPoweredOn)
 		{
 			_turbine.TogglePower();
 		}
 		_turbine.IsOverloaded = true;
-		_turbine.RequestedOutput = _turbine.OverloadOutput;
 	}
 }

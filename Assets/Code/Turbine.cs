@@ -164,7 +164,7 @@ public class Turbine : IMachineType, INotifyPropertyChanged
 
 	public bool CanAdjustRequestedOutput { get { return !IsOverloaded; } }
 	public bool IsRepairing { get; private set; }
-	public bool IsBroke { get; private set; }
+	public bool IsBroke { get; set; }
 	public float Durability { get; set; }
 
 	public float MinOutput { get { return 50; } }

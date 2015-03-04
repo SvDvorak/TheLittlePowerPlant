@@ -30,6 +30,10 @@ public class DataContextOutput : Editor
 		{
 			newValue = EditorGUILayout.TextField(property.Name, property.GetValue<string>(dataContext));
 		}
+		else if (property.PropertyType == typeof(bool))
+		{
+			newValue = EditorGUILayout.Toggle(property.Name, property.GetValue<bool>(dataContext));
+		}
 		else if (property.PropertyType == typeof(int))
 		{
 			newValue = EditorGUILayout.IntField(property.Name, property.GetValue<int>(dataContext));

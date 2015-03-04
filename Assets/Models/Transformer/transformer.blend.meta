@@ -6,20 +6,109 @@ ModelImporter:
     100000: //RootNode
     100002: Bushing
     100004: Tank
+    100006: Bushing_l_1
+    100008: Bushing_l_2
+    100010: Bushing_l_3
+    100012: Bushing_r_1
+    100014: Bushing_r_2
+    100016: Bushing_r_3
+    100018: Armature
+    100020: Backbone
+    100022: Body
+    100024: Leg_IK_l
+    100026: Leg_IK_l_001
+    100028: Leg_IK_l_002
+    100030: Leg_IK_r
+    100032: Leg_IK_r_001
+    100034: Leg_IK_r_002
+    100036: Leg_l
+    100038: Leg_l_001
+    100040: Leg_l_002
+    100042: Leg_Pole_l
+    100044: Leg_Pole_l_001
+    100046: Leg_Pole_l_002
+    100048: Leg_Pole_r
+    100050: Leg_Pole_r_001
+    100052: Leg_Pole_r_002
+    100054: Leg_r
+    100056: Leg_r_001
+    100058: Leg_r_002
+    100060: Root
+    100062: Thigh_l
+    100064: Thigh_l_001
+    100066: Thigh_l_002
+    100068: Thigh_r
+    100070: Thigh_r_001
+    100072: Thigh_r_002
     400000: //RootNode
     400002: Bushing
     400004: Tank
+    400006: Bushing_l_1
+    400008: Bushing_l_2
+    400010: Bushing_l_3
+    400012: Bushing_r_1
+    400014: Bushing_r_2
+    400016: Bushing_r_3
+    400018: Armature
+    400020: Backbone
+    400022: Body
+    400024: Leg_IK_l
+    400026: Leg_IK_l_001
+    400028: Leg_IK_l_002
+    400030: Leg_IK_r
+    400032: Leg_IK_r_001
+    400034: Leg_IK_r_002
+    400036: Leg_l
+    400038: Leg_l_001
+    400040: Leg_l_002
+    400042: Leg_Pole_l
+    400044: Leg_Pole_l_001
+    400046: Leg_Pole_l_002
+    400048: Leg_Pole_r
+    400050: Leg_Pole_r_001
+    400052: Leg_Pole_r_002
+    400054: Leg_r
+    400056: Leg_r_001
+    400058: Leg_r_002
+    400060: Root
+    400062: Thigh_l
+    400064: Thigh_l_001
+    400066: Thigh_l_002
+    400068: Thigh_r
+    400070: Thigh_r_001
+    400072: Thigh_r_002
     2300000: //RootNode
     2300002: Bushing
     2300004: Tank
+    2300006: Bushing_l_1
+    2300008: Bushing_l_2
+    2300010: Bushing_l_3
+    2300012: Bushing_r_1
+    2300014: Bushing_r_2
+    2300016: Bushing_r_3
     3300000: //RootNode
     3300002: Bushing
     3300004: Tank
+    3300006: Bushing_l_1
+    3300008: Bushing_l_2
+    3300010: Bushing_l_3
+    3300012: Bushing_r_1
+    3300014: Bushing_r_2
+    3300016: Bushing_r_3
     4300000: Cube
     4300002: Tank
     4300004: Bushing
+    4300006: Bushing_r_3
+    4300008: Bushing_r_2
+    4300010: Bushing_r_1
+    4300012: Bushing_l_1
+    4300014: Bushing_l_2
+    4300016: Bushing_l_3
+    4300018: Body
     7400000: Default Take
+    7400002: walk
     9500000: //RootNode
+    13700000: Body
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +124,79 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walk
+      takeName: walk
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Backbone
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l/Leg_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001/Leg_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002/Leg_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r/Leg_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001/Leg_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002/Leg_r_002
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Leg_Pole_l
+        weight: 1
+      - path: Leg_Pole_l_001
+        weight: 1
+      - path: Leg_Pole_l_002
+        weight: 1
+      - path: Leg_Pole_r
+        weight: 1
+      - path: Leg_Pole_r_001
+        weight: 1
+      - path: Leg_Pole_r_002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
