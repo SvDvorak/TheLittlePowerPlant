@@ -39,7 +39,8 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
 
 	private void UpdateOutput()
 	{
-		_hydro.Output = _hydro.CurrentFlow*FlowToOutputRatio;
+		var flowInUnit = (_hydro.CurrentFlow - _hydro.MinFlow)/(_hydro.OverloadFlow - _hydro.MinFlow);
+		_hydro.Output = flowInUnit*_hydro.MaxOutputPerSecond;
 	}
 
 	private void CalculateWear()

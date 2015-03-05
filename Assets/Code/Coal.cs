@@ -15,7 +15,7 @@ public class Coal : IMachineType
 		IncreasingTempRange = new Range(0, 0.7f);
 		OptimalTempRange = new Range(IncreasingTempRange.High, 1f);
 		IsPoweredOn = true;
-		MaxOutputPerSecond = 100;
+		MaxOutputPerSecond = 45;
 	}
 
 	public void TogglePower()

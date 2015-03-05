@@ -12,14 +12,15 @@ public static class ScoreManager
 public class ScoreUpdater : MonoBehaviour
 {
 	public float MaxOutput;
-	public float EnergySellPrice = 1f;
-	public float EnergyBuyCost = 2f;
+	public float EnergySellPrice;
+	public float EnergyBuyCost;
 	public float MaxIncomeLoss;
-	public float OverloadMaxTime = 3f;
+	public float OverloadMaxTime;
 	public float OverloadAmount;
 	public float Income;
 	public float BaseOutput;
-	public float CityGrowthPerSecond = 69;
+	public float CityGrowthPerSecond;
+	public float CityValueToMinimumOutputRatio;
 
 	public ForcedOverload ForcedOverload;
 
@@ -28,7 +29,7 @@ public class ScoreUpdater : MonoBehaviour
 	public float CityValue { get { return ScoreManager.CityValue; } }
     public float Output { get; private set; }
 
-	public float MinimumOutputRequired { get { return CityValue / 100f; } }
+	public float MinimumOutputRequired { get { return CityValue * CityValueToMinimumOutputRatio; } }
 	public Range CurrentOutputInUnit { get { return new Range(0, Output/MaxOutput); } }
 	public Range MinimumOutputInUnit { get { return new Range(0, MinimumOutputRequired / MaxOutput); } }
 	public Range OverloadOutputInUnit { get { return new Range(OutputOverloadLimit / MaxOutput, 1.0f); } }
@@ -39,7 +40,7 @@ public class ScoreUpdater : MonoBehaviour
 
 	public ScoreUpdater()
     {
-        ScoreManager.CityValue = 5000;
+        ScoreManager.CityValue = 350000;
         Output = 0;
         Income = 500000;
 	}
@@ -75,7 +76,8 @@ public class ScoreUpdater : MonoBehaviour
 	private void UpdateOutput()
 	{
 		Output = Mathf.Min(_machineOutputs.Values.Sum(), MaxOutput) + BaseOutput;
-		MaxOutput = _machineMaxOutputs.Count == 0 ? 100 : _machineMaxOutputs.Values.Sum();
+		var maxMachineOutputs = _machineMaxOutputs.Count == 0 ? BaseOutput : _machineMaxOutputs.Values.Sum();
+		MaxOutput = maxMachineOutputs + BaseOutput;
 	}
 
 	private void UpdateIncome()

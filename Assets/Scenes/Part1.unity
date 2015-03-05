@@ -1293,14 +1293,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxOutput: 400
-  EnergySellPrice: 1
-  EnergyBuyCost: 2
-  MaxIncomeLoss: -500
+  EnergySellPrice: 14
+  EnergyBuyCost: 20
+  MaxIncomeLoss: -3000
   OverloadMaxTime: 3
   OverloadAmount: 0
-  Income: 500000
-  BaseOutput: 0
-  CityGrowthPerSecond: 69
+  Income: 15000
+  BaseOutput: 30
+  CityGrowthPerSecond: 11000
+  CityValueToMinimumOutputRatio: 6.39999998e-05
   ForcedOverload: {fileID: 1314464431}
 --- !u!4 &979065760
 Transform:

@@ -23,7 +23,7 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 	public float MinFlow { get { return 50; } }
 	public float MaxNormalFlow { get { return 100; } }
 	public float OverloadFlow { get { return 120; } }
-	public float MaxOutputPerSecond { get { return OverloadFlow; } }
+	public float MaxOutputPerSecond { get { return 45; } }
 
 
 	public bool IsPoweredOn { get; private set; }

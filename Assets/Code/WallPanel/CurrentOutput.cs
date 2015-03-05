@@ -13,12 +13,18 @@ public class CurrentOutput : MonoBehaviour
 	public void Awake()
 	{
 		GetComponent<DataContext>().Data = ScoreUpdater;
+		InvokeRepeating("UpdateCityValue", 0, 1);
+		InvokeRepeating("UpdateIncome", 1, 1);
 	}
 
-	void Update ()
+	public void UpdateCityValue()
 	{
-		CityValueText.text = "City value: " + (int)ScoreUpdater.CityValue + "$";
-        MinOutputText.text = "Min output: " + (int)ScoreUpdater.MinimumOutputRequired + "kw";
+		CityValueText.text = "City value: " + (int)ScoreUpdater.CityValue + "K$";
+		MinOutputText.text = "Min output: " + (int)ScoreUpdater.MinimumOutputRequired + "MWh";
+	}
+
+	public void UpdateIncome()
+	{
 	    IncomeText.text = "Income: " + (int) ScoreUpdater.Income + "$";
 	}
 }
