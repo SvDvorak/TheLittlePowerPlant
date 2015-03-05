@@ -1,8 +1,6 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public static class ScoreManager
 {
@@ -17,6 +15,7 @@ public class ScoreUpdater : MonoBehaviour
 	public float MaxIncomeLoss;
 	public float OverloadMaxTime;
 	public float OverloadAmount;
+	public float FixedIncomePerSecond;
 	public float Income;
 	public float BaseOutput;
 	public float CityGrowthPerSecond;
@@ -83,13 +82,9 @@ public class ScoreUpdater : MonoBehaviour
 	private void UpdateIncome()
 	{
 		var outputDiff = Output - MinimumOutputRequired;
-		var incomeChangeMultiplier = EnergySellPrice;
-		if (outputDiff < 0)
-		{
-			incomeChangeMultiplier = EnergyBuyCost;
-		}
+		var incomeChangeMultiplier = outputDiff < 0 ? EnergyBuyCost : EnergySellPrice;
 
-		Income += outputDiff*incomeChangeMultiplier*Time.deltaTime;
+		Income += FixedIncomePerSecond*Time.deltaTime + outputDiff*incomeChangeMultiplier*Time.deltaTime;
 	}
 
 	private void CheckOverloading()

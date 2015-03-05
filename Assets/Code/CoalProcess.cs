@@ -11,14 +11,16 @@ public class CoalProcess : MonoBehaviour, IMachineProcess
 	public float OverloadTempIncreasePerSecond;
 
 	private Coal _coal;
+	private ScoreUpdater _scoreUpdater;
 
-	public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
+	public void Initialize(ScoreUpdater scoreInfo, IMachineType machineType)
 	{
+		_scoreUpdater = scoreInfo;
 		_coal = (Coal)machineType;
 		GetComponent<DataContext>().Data = _coal;
 
 		var outputUpdaterComponent = GetComponent<OutputUpdater>();
-		outputUpdaterComponent.Initialize(outputUpdater, machineType);
+		outputUpdaterComponent.Initialize(scoreInfo, machineType);
 	}
 
 	public void Update()
@@ -38,9 +40,10 @@ public class CoalProcess : MonoBehaviour, IMachineProcess
 
 	public void Shovel()
 	{
-		if(_coal.IsPoweredOn)
+		if(_coal.IsPoweredOn && _scoreUpdater.Income > _coal.ShovelCost)
 		{
 			_coal.Temperature = Mathf.Min(_coal.Temperature + TempPerShovel, 1.0f);
+			_scoreUpdater.Income -= _coal.ShovelCost;
 		}
 	}
 

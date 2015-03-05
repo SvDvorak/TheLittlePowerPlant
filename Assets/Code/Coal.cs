@@ -9,6 +9,7 @@ public class Coal : IMachineType
 	public float Temperature { get; set; }
 	public bool IsOverloaded { get; set; }
 	public float MaxOutputPerSecond { get; private set; }
+	public float ShovelCost { get; set; }
 
 	public Coal()
 	{
@@ -16,6 +17,7 @@ public class Coal : IMachineType
 		OptimalTempRange = new Range(IncreasingTempRange.High, 1f);
 		IsPoweredOn = true;
 		MaxOutputPerSecond = 45;
+		ShovelCost = 1000;
 	}
 
 	public void TogglePower()

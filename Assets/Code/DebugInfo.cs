@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class DebugInfo : MonoBehaviour
 {
-    public Text CityValue;
+    public Text OutputVelocity;
+	public ScoreUpdater ScoreUpdater;
+	private float _previousIncome;
 
 	void Update ()
 	{
-	    CityValue.text = "CityValue: " + ScoreManager.CityValue;
-    }
+		OutputVelocity.text = "IncomeVelocity: " + (ScoreUpdater.Income - _previousIncome);
+		_previousIncome = ScoreUpdater.Income;
+	}
 }

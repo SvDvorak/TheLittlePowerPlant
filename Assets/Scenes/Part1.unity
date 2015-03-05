@@ -382,11 +382,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
+  m_Color: {r: .632352948, g: .632352948, b: .632352948, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -416,8 +416,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -512, y: 308.600006}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -512, y: 325.559998}
+  m_SizeDelta: {x: 230.399994, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &137063217
 GameObject:
@@ -437,7 +437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &137063218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -467,7 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf1315f9b6e86f4b8d5d3a7f5302cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CityValue: {fileID: 120512917}
+  OutputVelocity: {fileID: 120512917}
+  ScoreUpdater: {fileID: 979065759}
 --- !u!114 &137063220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,14 +1294,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxOutput: 400
-  EnergySellPrice: 14
-  EnergyBuyCost: 20
+  EnergySellPrice: 25
+  EnergyBuyCost: 50
   MaxIncomeLoss: -3000
   OverloadMaxTime: 3
   OverloadAmount: 0
-  Income: 15000
+  FixedIncomePerSecond: 1000
+  Income: 250000
   BaseOutput: 30
-  CityGrowthPerSecond: 11000
+  CityGrowthPerSecond: 8000
   CityValueToMinimumOutputRatio: 6.39999998e-05
   ForcedOverload: {fileID: 1314464431}
 --- !u!4 &979065760
