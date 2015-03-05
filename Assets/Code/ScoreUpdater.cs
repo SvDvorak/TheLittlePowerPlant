@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ public class ScoreUpdater : MonoBehaviour
 	public float MaxIncomeLoss;
 	public float OverloadMaxTime = 3f;
 	public float OverloadAmount;
+	public float Income;
+	public float BaseOutput;
+	public float CityGrowthPerSecond = 69;
 
 	public ForcedOverload ForcedOverload;
 
@@ -23,7 +27,6 @@ public class ScoreUpdater : MonoBehaviour
 	
 	public float CityValue { get { return ScoreManager.CityValue; } }
     public float Output { get; private set; }
-    public float Income { get; set; }
 
 	public float MinimumOutputRequired { get { return CityValue / 100f; } }
 	public Range CurrentOutputInUnit { get { return new Range(0, Output/MaxOutput); } }
@@ -34,7 +37,7 @@ public class ScoreUpdater : MonoBehaviour
 	private readonly Dictionary<object, float> _machineOutputs = new Dictionary<object, float>();
 	private readonly Dictionary<object, float> _machineMaxOutputs = new Dictionary<object, float>();
 
-    public ScoreUpdater()
+	public ScoreUpdater()
     {
         ScoreManager.CityValue = 5000;
         Output = 0;
@@ -64,14 +67,14 @@ public class ScoreUpdater : MonoBehaviour
 	    CheckBroke();
     }
 
-	private static void UpdateCityValue()
+	private void UpdateCityValue()
 	{
-		ScoreManager.CityValue += (69 + Random.Range(-3, 3))*Time.deltaTime;
+		ScoreManager.CityValue += CityGrowthPerSecond*Time.deltaTime;
 	}
 
 	private void UpdateOutput()
 	{
-		Output = Mathf.Min(_machineOutputs.Values.Sum(), MaxOutput);
+		Output = Mathf.Min(_machineOutputs.Values.Sum(), MaxOutput) + BaseOutput;
 		MaxOutput = _machineMaxOutputs.Count == 0 ? 100 : _machineMaxOutputs.Values.Sum();
 	}
 

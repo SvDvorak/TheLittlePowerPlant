@@ -45,9 +45,6 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 			_nuclear.Temperature -= CooldownPerSecond*Time.deltaTime;
 		}
 
-		//var newBarHeight = (_nuclear.Temperature / MaxTemperature) * TemperatureBarMaxHeight;
-		//TemperatureBar.sizeDelta = new Vector2(TemperatureBar.sizeDelta.x, newBarHeight);
-
 		var isOutsideOperationTemperature = 
 			_nuclear.Temperature < _nuclear.NoReactionUnit.High*_nuclear.MaxTemperature ||
 			_nuclear.Temperature > _nuclear.OverHeatUnit.Low*_nuclear.MaxTemperature;

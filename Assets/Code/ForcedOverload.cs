@@ -5,10 +5,16 @@ using System.Linq;
 public class ForcedOverload : MonoBehaviour
 {
 	public bool Overloaded;
+	private Animation _animation;
+
+	public void Start()
+	{
+		_animation = GetComponent<Animation>();
+	}
 
 	public void ForceOverload()
 	{
-		if (animation.IsPlaying("Flip"))
+		if (_animation.IsPlaying("Flip"))
 		{
 			return;
 		}
@@ -25,12 +31,12 @@ public class ForcedOverload : MonoBehaviour
 		if (Overloaded)
 		{
 			speed = -1;
-			time = animation["Flip"].length;
+			time = _animation["Flip"].length;
 		}
 
-		animation["Flip"].speed = speed;
-		animation["Flip"].time = time;
-		animation.Play("Flip");
+		_animation["Flip"].speed = speed;
+		_animation["Flip"].time = time;
+		_animation.Play("Flip");
 		Overloaded = !Overloaded;
 	}
 
