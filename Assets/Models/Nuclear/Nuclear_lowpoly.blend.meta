@@ -1,13 +1,43 @@
 fileFormatVersion: 2
 guid: a10a14171ea3dfb4da9b6a9848c0001f
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Cube
+    100004: Reactor
+    100006: ControlRods
+    100008: FuelRods
+    100010: Plate
+    100012: WarningLights
     400000: //RootNode
+    400002: Cube
+    400004: Reactor
+    400006: ControlRods
+    400008: FuelRods
+    400010: Plate
+    400012: WarningLights
     2300000: //RootNode
+    2300002: Cube
+    2300004: Reactor
+    2300006: ControlRods
+    2300008: FuelRods
+    2300010: Plate
+    2300012: WarningLights
     3300000: //RootNode
+    3300002: Cube
+    3300004: Reactor
+    3300006: ControlRods
+    3300008: FuelRods
+    3300010: Plate
+    3300012: WarningLights
     4300000: Cylinder
+    4300002: Cube
+    4300004: Reactor
+    4300006: ControlRods
+    4300008: FuelRods
+    4300010: Plate
+    4300012: WarningLights
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -37,11 +67,13 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -64,3 +96,5 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

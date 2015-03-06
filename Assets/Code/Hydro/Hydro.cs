@@ -98,7 +98,6 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 	{
 		IsBroke = false;
 		IsRepairing = false;
-		PowerOn();
 	}
 
 	public void Break()

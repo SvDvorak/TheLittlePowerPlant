@@ -25,6 +25,7 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 	public float Output { get; set; }
 	public float MinOutput { get; private set; }
 	public float OverloadOutput { get; private set; }
+	public double OutsideLimitAccumulated { get; set; }
 
 	public float ControlRodDepth
 	{
@@ -42,6 +43,7 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 	public Range NoReactionUnit { get; set; }
 	public Range OverHeatUnit { get; set; }
 	public Range TemperatureUnit { get { return new Range(0, Temperature/MaxTemperature); } }
+	public bool IsOutsideSafeLimit { get { return OutsideLimitAccumulated > 0.0001f; } }
 
 	public Nuclear()
 	{
@@ -62,11 +64,14 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 		OverHeatUnit = new Range(0.7f, 1f);
 		MaxTemperature = FuelRod.BaseTemperature*FuelRods.Count;
 		MaxOutputPerSecond = FuelRod.MaxRodOutput*FuelRods.Count;
+		ControlRodDepth = 0.5f;
+		TogglePower();
 	}
 
 	public void TogglePower()
 	{
 		IsPoweredOn = !IsPoweredOn;
+		ControlRodEffect = 0;
 	}
 
 	public void Repair()
@@ -77,6 +82,7 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 	public void PowerOff()
 	{
 		IsPoweredOn = false;
+		ControlRodEffect = 0;
 	}
 
 	public event PropertyChangedEventHandler PropertyChanged;

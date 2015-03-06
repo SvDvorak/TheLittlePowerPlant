@@ -11,13 +11,12 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 	private Nuclear _nuclear;
 	private const float MaxTemperature = FuelRod.BaseTemperature*9;
 	public float CooldownPerSecond = 0.5f;
-	public float ControlRodAlterSpeed = 0.0001f;
+	public float ControlRodAlterSpeed = 0.1f;
 
 	public float DegradationPerSecond = 0.01f;
 	public float MaxTemperatureShift = 0.2f;
 	public double MaxTimeOutsideLimit = 3;
 	public double MaxOutsideLimitTimePerSecond { get { return 1/MaxTimeOutsideLimit; } }
-	private double _outsideLimitAccumulated;
 
 	public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
 	{
@@ -48,12 +47,12 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 		else
 		{
 			_nuclear.Output = 0;
-			_nuclear.Temperature -= CooldownPerSecond*Time.deltaTime;
+			_nuclear.Temperature = Mathf.Max(0, _nuclear.Temperature - CooldownPerSecond*Time.deltaTime);
 		}
 
 		UpdateTimeOutsideLimits();
 
-		if (_outsideLimitAccumulated > 1 && !_nuclear.IsOverloaded)
+		if (_nuclear.OutsideLimitAccumulated > 1 && !_nuclear.IsOverloaded)
 		{
 			_nuclear.PowerOff();
 		}
@@ -63,6 +62,12 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 	{
 		var temperatureUnit = _nuclear.Temperature/_nuclear.MaxTemperature;
 		var outsideLimitAmount = 0f;
+
+		if (!_nuclear.IsPoweredOn)
+		{
+			_nuclear.OutsideLimitAccumulated = 0;
+			return;
+		}
 
 		if (temperatureUnit < _nuclear.NoReactionUnit.High)
 		{
@@ -77,10 +82,10 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 		}
 		else
 		{
-			_outsideLimitAccumulated = 0f;
+			_nuclear.OutsideLimitAccumulated = 0f;
 		}
 
-		_outsideLimitAccumulated += outsideLimitAmount*MaxOutsideLimitTimePerSecond*Time.deltaTime;
+		_nuclear.OutsideLimitAccumulated += outsideLimitAmount*MaxOutsideLimitTimePerSecond*Time.deltaTime;
 	}
 
 	private void UpdateRodStatus(FuelRod fuelRod)
