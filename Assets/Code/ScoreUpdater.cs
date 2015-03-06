@@ -21,7 +21,10 @@ public class ScoreUpdater : MonoBehaviour
 	public float CityGrowthPerSecond;
 	public float CityValueToMinimumOutputRatio;
 
+	private bool _gameEnded = false;
+
 	public ForcedOverload ForcedOverload;
+	public GameObject GameOverScreen;
 
 	private float OverloadPerSecond { get { return 1/OverloadMaxTime;} }
 	
@@ -60,11 +63,14 @@ public class ScoreUpdater : MonoBehaviour
 
     public void Update()
     {
-		UpdateCityValue();
-		UpdateOutput();
-	    UpdateIncome();
-	    CheckOverloading();
-	    CheckBroke();
+		if(!_gameEnded)
+		{
+			UpdateCityValue();
+			UpdateOutput();
+			UpdateIncome();
+			CheckOverloading();
+			CheckBroke();
+		}
     }
 
 	private void UpdateCityValue()
@@ -96,7 +102,8 @@ public class ScoreUpdater : MonoBehaviour
 
 			if (OverloadAmount > 1)
 			{
-				Application.LoadLevel("Part2");
+				_gameEnded = true;
+				GameOverScreen.SetActive(true);
 			}
 		}
 		else
