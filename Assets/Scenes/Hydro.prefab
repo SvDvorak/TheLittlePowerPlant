@@ -1458,6 +1458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69498a3398ccf6b44a85ea8f35778a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WearMultiplier: .0199999996
+  RepairPerSecond: .0350000001
+  MaxDurability: 1
+  FlowAdjustPerSecond: 10
 --- !u!114 &11442514
 MonoBehaviour:
   m_ObjectHideFlags: 1

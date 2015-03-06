@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class HydroProcess : MonoBehaviour, IMachineProcess
 {
-    private const float WearMultiplier = 0.02f;
-    private const float RepairPerSecond = 0.025f;
-    private const float MaxDurability = 1f;
-    private const float FlowAdjustPerSecond = 10;
+    public float WearMultiplier = 0.02f;
+    public float RepairPerSecond = 0.025f;
+    public float MaxDurability = 1f;
+    public float FlowAdjustPerSecond = 10;
 	private Hydro _hydro;
 
     public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)

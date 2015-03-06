@@ -16,8 +16,8 @@ public class Coal : IMachineType
 		IncreasingTempRange = new Range(0, 0.7f);
 		OptimalTempRange = new Range(IncreasingTempRange.High, 1f);
 		IsPoweredOn = true;
-		MaxOutputPerSecond = 45;
-		ShovelCost = 2000;
+		MaxOutputPerSecond = 30;
+		ShovelCost = 1600;
 	}
 
 	public void TogglePower()

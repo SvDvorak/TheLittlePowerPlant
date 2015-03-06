@@ -13,11 +13,11 @@ public class BuildMachine : MonoBehaviour
     private GameObject _machineSelection;
 	private GameObject _builtMachine;
 
-    public void TileSelected()
+	public void TileSelected()
     {
         if(_machineSelection == null && _builtMachine == null)
         {
-            _machineSelection = (GameObject)Instantiate(MachineSelectionTemplate);
+            _machineSelection = Instantiate(MachineSelectionTemplate);
             _machineSelection.transform.SetParent(transform);
             _machineSelection.transform.localPosition = new Vector3(0, 2.5f, 0);
             var machineSelectionList = _machineSelection.GetComponent<MachineSelectionList>();
@@ -44,17 +44,17 @@ public class BuildMachine : MonoBehaviour
         var machine = new GameObject();
         if(machineTypeToBuild is Hydro)
         {
-            machine = (GameObject)Instantiate(HydroTemplate);
+            machine = Instantiate(HydroTemplate);
             machine.GetComponent<HydroProcess>().Initialize(OutputUpdater, machineTypeToBuild);
         }
         else if(machineTypeToBuild is Nuclear)
         {
-            machine = (GameObject)Instantiate(NuclearTemplate);
+            machine = Instantiate(NuclearTemplate);
             machine.GetComponent<NuclearProcess>().Initialize(OutputUpdater, machineTypeToBuild);
         }
 		else if (machineTypeToBuild is Coal)
 		{
-			machine = (GameObject)Instantiate(CoalTemplate);
+			machine = Instantiate(CoalTemplate);
 			machine.GetComponent<CoalProcess>().Initialize(OutputUpdater, machineTypeToBuild);
 		}
 

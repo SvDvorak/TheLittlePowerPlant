@@ -24,7 +24,7 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 	public float MinFlow { get { return 50; } }
 	public float MaxNormalFlow { get { return 100; } }
 	public float OverloadFlow { get { return 120; } }
-	public float MaxOutputPerSecond { get { return 45; } }
+	public float MaxOutputPerSecond { get; set; }
 
 
 	public bool IsPoweredOn { get; private set; }
@@ -50,6 +50,7 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 		RequestedFlow = MaxNormalFlow;
 		CurrentFlow = RequestedFlow;
 		Durability = 1;
+		MaxOutputPerSecond = 55;
 		PowerOn();
 	}
 
@@ -90,6 +91,7 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 		if(!IsOverloaded)
 		{
 			IsRepairing = true;
+			IsBroke = true;
 			PowerOff();
 		}
 	}
