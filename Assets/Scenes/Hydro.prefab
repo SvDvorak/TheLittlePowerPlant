@@ -445,6 +445,7 @@ GameObject:
   - 114: {fileID: 11461144}
   - 114: {fileID: 11423976}
   - 114: {fileID: 11400958}
+  - 114: {fileID: 11461884}
   m_Layer: 0
   m_Name: Hydro
   m_TagString: Untagged
@@ -1457,7 +1458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69498a3398ccf6b44a85ea8f35778a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 9592192}
 --- !u!114 &11442514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1615,6 +1615,18 @@ MonoBehaviour:
   ComponentTypeName: Slider
   ComponentPropertyName: enabled
   DataContextPropertyName: CanAdjustRequestedOutput
+--- !u!114 &11461884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5635f3f82759e904dbc85b2f0b127d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerOnAnimator: {fileID: 9592192}
 --- !u!114 &11471710
 MonoBehaviour:
   m_ObjectHideFlags: 1

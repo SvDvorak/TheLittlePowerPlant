@@ -18,7 +18,8 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 			OnPropertyChanged("RequestedFlow");
 		}
 	}
-	public Range CurrentFlowRange { get { return new Range(0, (CurrentFlow - MinFlow)/(MaxFlow - MinFlow)); } }
+	public Range CurrentFlowRange { get { return new Range(0, CurrentFlowUnit); } }
+	public float CurrentFlowUnit { get { return (CurrentFlow - MinFlow)/(MaxFlow - MinFlow); } }
 	public float MaxFlow { get { return 120; } }
 	public float MinFlow { get { return 50; } }
 	public float MaxNormalFlow { get { return 100; } }

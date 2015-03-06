@@ -2,7 +2,7 @@
 using System.Collections;
 using Assets.Code;
 
-public class SetAnimatorPowerOn : MonoBehaviour
+public class UpdateAnimatorOnMachineState : MonoBehaviour
 {
 	public Animator PowerOnAnimator;
 	private Hydro _hydro;
@@ -19,5 +19,7 @@ public class SetAnimatorPowerOn : MonoBehaviour
 		{
 			PowerOnAnimator.SetBool("IsPoweredOn", _hydro.IsPoweredOn);
 		}
+
+		PowerOnAnimator.SetFloat("Effect", _hydro.CurrentFlowUnit);
 	}
 }
