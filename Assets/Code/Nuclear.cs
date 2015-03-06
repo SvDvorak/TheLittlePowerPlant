@@ -35,6 +35,7 @@ public class Nuclear : IMachineType, INotifyPropertyChanged
 			OnPropertyChanged("ControlRodDepth");
 		}
 	}
+	public float ControlRodEffect { get; set; }
 
 	public List<FuelRod> FuelRods { get; set; }
 	public float Temperature { get; set; }
