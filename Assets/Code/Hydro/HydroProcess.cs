@@ -10,8 +10,6 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
     private const float FlowAdjustPerSecond = 10;
 	private Hydro _hydro;
 
-	public Animator Animator;
-
     public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
     {
         _hydro = (Hydro)machineType;
@@ -28,12 +26,6 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
 	    UpdateOutput();
         CalculateWear();
         CalculateRepair();
-
-	    var matchesState = Animator.GetBool("IsPoweredOn") == _hydro.IsPoweredOn;
-	    if (!matchesState)
-	    {
-			Animator.SetBool("IsPoweredOn", _hydro.IsPoweredOn);
-		}
 	}
 
 	private void UpdateFlow()
