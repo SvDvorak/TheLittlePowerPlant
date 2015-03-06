@@ -95,5 +95,5 @@ public class FuelRod
 	public float Output { get; set; }
 	public float Temperature { get; set; }
 	public const float BaseTemperature = 1;
-	public const float MaxRodOutput = 5;
+	public const float MaxRodOutput = 9;
 }

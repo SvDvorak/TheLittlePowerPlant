@@ -39,7 +39,7 @@ public class ScoreUpdater : MonoBehaviour
 
 	public ScoreUpdater()
     {
-        ScoreManager.CityValue = 350000;
+        ScoreManager.CityValue = 150000;
         Output = 0;
         Income = 500000;
 	}

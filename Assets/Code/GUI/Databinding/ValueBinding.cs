@@ -52,7 +52,10 @@ public class ValueBinding : MonoBehaviour
 
 	void OnDestroy()
 	{
-		_notifyingData.PropertyChanged -= PropertyChanged;
+		if(_notifyingData != null)
+		{
+			_notifyingData.PropertyChanged -= PropertyChanged;
+		}
 	}
 
 	private void PropertyChanged(object sender, PropertyChangedEventArgs propertyArgs)

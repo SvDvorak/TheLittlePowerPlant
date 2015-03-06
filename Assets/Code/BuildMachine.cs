@@ -59,6 +59,7 @@ public class BuildMachine : MonoBehaviour
 		}
 
 		machine.transform.SetParent(transform, false);
+		machine.transform.localPosition = new Vector3(0, 0.26f, 0);
         OutputUpdater.Income -= machineTypeToBuild.Cost;
 
 	    return machine;

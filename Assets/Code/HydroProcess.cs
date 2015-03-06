@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class HydroProcess : MonoBehaviour, IMachineProcess
@@ -7,8 +8,9 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
     private const float RepairPerSecond = 0.025f;
     private const float MaxDurability = 1f;
     private const float FlowAdjustPerSecond = 10;
-	private const float FlowToOutputRatio = 1f;
 	private Hydro _hydro;
+
+	public Animator Animator;
 
     public void Initialize(ScoreUpdater outputUpdater, IMachineType machineType)
     {
@@ -26,7 +28,13 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
 	    UpdateOutput();
         CalculateWear();
         CalculateRepair();
-    }
+
+	    var matchesState = Animator.GetBool("IsPoweredOn") == _hydro.IsPoweredOn;
+	    if (!matchesState)
+	    {
+			Animator.SetBool("IsPoweredOn", _hydro.IsPoweredOn);
+		}
+	}
 
 	private void UpdateFlow()
     {
@@ -39,7 +47,7 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
 
 	private void UpdateOutput()
 	{
-		var flowInUnit = (_hydro.CurrentFlow - _hydro.MinFlow)/(_hydro.OverloadFlow - _hydro.MinFlow);
+		var flowInUnit = _hydro.CurrentFlow/_hydro.OverloadFlow;
 		_hydro.Output = flowInUnit*_hydro.MaxOutputPerSecond;
 	}
 
@@ -52,16 +60,16 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
         }
     }
 
-    // Flow 50-100: 0-0.5
-    // Flow 100-120: 0.5-1
+    // Flow 50-100: 0.3-0.6
+    // Flow 100-120: 0.6-1
     private float WearCurve(float flow)
     {
         if (flow < _hydro.MaxNormalFlow)
         {
-            return (flow - _hydro.MinFlow)/_hydro.MaxNormalFlow;
+            return flow/_hydro.MaxNormalFlow*0.6f;
         }
 
-        return 0.5f + (flow - _hydro.MaxNormalFlow)/((_hydro.OverloadFlow - _hydro.MaxNormalFlow)*2);
+        return 0.6f + (flow - _hydro.MaxNormalFlow)/(_hydro.OverloadFlow - _hydro.MaxNormalFlow)*0.4f;
     }
 
     private void CalculateRepair()
@@ -79,7 +87,7 @@ public class HydroProcess : MonoBehaviour, IMachineProcess
     private void PerformBreakCheck()
     {
         var randomBreakChance = Math.Pow(UnityEngine.Random.Range(0, 1f), 10);
-        if (!_hydro.IsOverloaded && _hydro.IsPoweredOn && randomBreakChance > _hydro.Durability)
+        if (!_hydro.IsOverloaded && _hydro.IsPoweredOn && _hydro.Durability < _hydro.BreakdownRiskArea && randomBreakChance > _hydro.Durability)
         {
             _hydro.Break();
         }

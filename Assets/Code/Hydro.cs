@@ -42,7 +42,7 @@ public class Hydro : IMachineType, INotifyPropertyChanged
 	public bool IsRepairing { get; private set; }
 	public bool IsBroke { get; set; }
 	public float Durability { get; set; }
-
+	public float BreakdownRiskArea { get { return 0.5f; } }
 
 	public Hydro()
 	{
