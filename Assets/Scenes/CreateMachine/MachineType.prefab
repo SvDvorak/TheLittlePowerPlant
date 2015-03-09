@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyName: Cost
-  Format: '{0}$'
+  Format: '{0}K$'
 --- !u!114 &11430682
 MonoBehaviour:
   m_ObjectHideFlags: 1

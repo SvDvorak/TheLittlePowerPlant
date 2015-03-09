@@ -42,9 +42,8 @@ public class ScoreUpdater : MonoBehaviour
 
 	public ScoreUpdater()
     {
-        ScoreManager.CityValue = 150000;
+        ScoreManager.CityValue = 15;
         Output = 0;
-        Income = 500000;
 	}
 
     public void SetOutput(IMachineType machine)

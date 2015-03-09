@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyName: ShovelCost
-  Format: Shovel ({0}$)
+  Format: Shovel ({0}K$)
 --- !u!114 &11429152
 MonoBehaviour:
   m_ObjectHideFlags: 1
