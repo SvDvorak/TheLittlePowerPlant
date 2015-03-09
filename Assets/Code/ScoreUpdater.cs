@@ -24,6 +24,7 @@ public class ScoreUpdater : MonoBehaviour
 	private bool _gameEnded = false;
 
 	public ForcedOverload ForcedOverload;
+	public Animator TransformAnimator;
 	public GameObject GameOverScreen;
 
 	private float OverloadPerSecond { get { return 1/OverloadMaxTime;} }
@@ -102,7 +103,8 @@ public class ScoreUpdater : MonoBehaviour
 			if (OverloadAmount > 1)
 			{
 				_gameEnded = true;
-				GameOverScreen.SetActive(true);
+				//GameOverScreen.SetActive(true);
+				TransformAnimator.SetBool("IsTransformed", true);
 			}
 		}
 		else

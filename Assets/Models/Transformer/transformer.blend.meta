@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c65aa1fc47c17dc4f8591f41220e007e
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
     100002: Bushing
@@ -107,6 +107,8 @@ ModelImporter:
     4300018: Body
     7400000: Default Take
     7400002: walk
+    7400004: plantSitting
+    7400006: transform
     9500000: //RootNode
     13700000: Body
   materials:
@@ -117,7 +119,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -197,6 +199,150 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: plantSitting
+      takeName: plantSitting
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Backbone
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l/Leg_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001/Leg_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002/Leg_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r/Leg_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001/Leg_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002/Leg_r_002
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Leg_Pole_l
+        weight: 1
+      - path: Leg_Pole_l_001
+        weight: 1
+      - path: Leg_Pole_l_002
+        weight: 1
+      - path: Leg_Pole_r
+        weight: 1
+      - path: Leg_Pole_r_001
+        weight: 1
+      - path: Leg_Pole_r_002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: transform
+      takeName: transform
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Backbone
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l/Leg_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001/Leg_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002/Leg_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r/Leg_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001/Leg_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002/Leg_r_002
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Leg_Pole_l
+        weight: 1
+      - path: Leg_Pole_l_001
+        weight: 1
+      - path: Leg_Pole_l_002
+        weight: 1
+      - path: Leg_Pole_r
+        weight: 1
+      - path: Leg_Pole_r_001
+        weight: 1
+      - path: Leg_Pole_r_002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -208,11 +354,13 @@ ModelImporter:
     generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -230,8 +378,10 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Root
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   additionalBone: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
