@@ -109,6 +109,8 @@ ModelImporter:
     7400002: walk
     7400004: plantSitting
     7400006: transform
+    7400008: strafeLeft
+    7400010: strafeRight
     9500000: //RootNode
     13700000: Body
   materials:
@@ -282,6 +284,150 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Backbone
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l/Leg_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001/Leg_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002/Leg_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r/Leg_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001/Leg_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002/Leg_r_002
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Leg_Pole_l
+        weight: 1
+      - path: Leg_Pole_l_001
+        weight: 1
+      - path: Leg_Pole_l_002
+        weight: 1
+      - path: Leg_Pole_r
+        weight: 1
+      - path: Leg_Pole_r_001
+        weight: 1
+      - path: Leg_Pole_r_002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: strafeLeft
+      takeName: strafeLeft
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/Backbone
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l/Leg_l
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_001/Leg_l_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_l_002/Leg_l_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r/Leg_r
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_001/Leg_r_001
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002
+        weight: 1
+      - path: Armature/Root/Backbone/Thigh_r_002/Leg_r_002
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Leg_Pole_l
+        weight: 1
+      - path: Leg_Pole_l_001
+        weight: 1
+      - path: Leg_Pole_l_002
+        weight: 1
+      - path: Leg_Pole_r
+        weight: 1
+      - path: Leg_Pole_r_001
+        weight: 1
+      - path: Leg_Pole_r_002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: strafeRight
+      takeName: strafeRight
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
