@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 5ff9784b2ff587346bb2dacd5ca85d8e
+timeCreated: 1426176592
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: House_proxy
+    100004: House_proxy_001
+    100006: House_proxy_002
+    100008: House_proxy_003
+    100010: House_proxy_004
+    100012: House_proxy_005
+    100014: House_proxy_006
+    100016: House_proxy_007
+    100018: House_proxy_008
+    100020: Exit_E_L
+    100022: Exit_E_R
+    100024: Exit_N_L
+    100026: Exit_N_R
+    100028: Exit_S_L
+    100030: Exit_S_R
+    100032: Exit_W_L
+    100034: Exit_W_R
+    100036: House_proxy_009
+    100038: House_proxy_010
+    100040: House_proxy_011
+    100042: House_proxy_012
+    100044: House_proxy_013
+    100046: House_proxy_014
+    100048: House_proxy_015
+    100050: House_proxy_016
+    100052: House_proxy_017
+    100054: House_proxy_018
+    100056: House_proxy_019
+    100058: House_proxy_020
+    100060: Plane
+    400000: //RootNode
+    400002: House_proxy
+    400004: House_proxy_001
+    400006: House_proxy_002
+    400008: House_proxy_003
+    400010: House_proxy_004
+    400012: House_proxy_005
+    400014: House_proxy_006
+    400016: House_proxy_007
+    400018: House_proxy_008
+    400020: Exit_E_L
+    400022: Exit_E_R
+    400024: Exit_N_L
+    400026: Exit_N_R
+    400028: Exit_S_L
+    400030: Exit_S_R
+    400032: Exit_W_L
+    400034: Exit_W_R
+    400036: House_proxy_009
+    400038: House_proxy_010
+    400040: House_proxy_011
+    400042: House_proxy_012
+    400044: House_proxy_013
+    400046: House_proxy_014
+    400048: House_proxy_015
+    400050: House_proxy_016
+    400052: House_proxy_017
+    400054: House_proxy_018
+    400056: House_proxy_019
+    400058: House_proxy_020
+    400060: Plane
+    2300000: House_proxy
+    2300002: House_proxy_001
+    2300004: House_proxy_002
+    2300006: House_proxy_003
+    2300008: House_proxy_004
+    2300010: House_proxy_005
+    2300012: House_proxy_006
+    2300014: House_proxy_007
+    2300016: House_proxy_008
+    2300018: House_proxy_009
+    2300020: House_proxy_010
+    2300022: House_proxy_011
+    2300024: House_proxy_012
+    2300026: House_proxy_013
+    2300028: House_proxy_014
+    2300030: House_proxy_015
+    2300032: House_proxy_016
+    2300034: House_proxy_017
+    2300036: House_proxy_018
+    2300038: House_proxy_019
+    2300040: House_proxy_020
+    2300042: Plane
+    3300000: House_proxy
+    3300002: House_proxy_001
+    3300004: House_proxy_002
+    3300006: House_proxy_003
+    3300008: House_proxy_004
+    3300010: House_proxy_005
+    3300012: House_proxy_006
+    3300014: House_proxy_007
+    3300016: House_proxy_008
+    3300018: House_proxy_009
+    3300020: House_proxy_010
+    3300022: House_proxy_011
+    3300024: House_proxy_012
+    3300026: House_proxy_013
+    3300028: House_proxy_014
+    3300030: House_proxy_015
+    3300032: House_proxy_016
+    3300034: House_proxy_017
+    3300036: House_proxy_018
+    3300038: House_proxy_019
+    3300040: House_proxy_020
+    3300042: Plane
+    4300000: House_proxy
+    4300002: House_proxy_007
+    4300004: House_proxy_006
+    4300006: House_proxy_005
+    4300008: House_proxy_004
+    4300010: House_proxy_003
+    4300012: House_proxy_002
+    4300014: House_proxy_001
+    4300016: House_proxy_008
+    4300018: Plane
+    4300020: House_proxy_020
+    4300022: House_proxy_019
+    4300024: House_proxy_018
+    4300026: House_proxy_017
+    4300028: House_proxy_015
+    4300030: House_proxy_010
+    4300032: House_proxy_016
+    4300034: House_proxy_014
+    4300036: House_proxy_013
+    4300038: House_proxy_012
+    4300040: House_proxy_011
+    4300042: House_proxy_009
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

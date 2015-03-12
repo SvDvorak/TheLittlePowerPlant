@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class NuclearProcess : MonoBehaviour, IMachineProcess
 {
@@ -98,7 +98,7 @@ public class NuclearProcess : MonoBehaviour, IMachineProcess
 		fuelRod.Output = degradationInverse * FuelRod.MaxRodOutput;
 
 		var rodTemperatureShift = MaxTemperatureShift * degradationInverse;
-		fuelRod.Temperature = FuelRod.BaseTemperature * degradationInverse + Random.Range(-rodTemperatureShift, rodTemperatureShift);
+		fuelRod.Temperature = FuelRod.BaseTemperature * degradationInverse + UnityEngine.Random.Range(-rodTemperatureShift, rodTemperatureShift);
 	}
 
 	public void TogglePower()
