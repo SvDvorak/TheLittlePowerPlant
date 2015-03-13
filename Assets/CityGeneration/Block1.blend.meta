@@ -36,6 +36,49 @@ ModelImporter:
     100056: House_proxy_019
     100058: House_proxy_020
     100060: Plane
+    100062: House_proxy_021
+    100064: House_proxy_022
+    100066: House_proxy_023
+    100068: House_proxy_024
+    100070: House_proxy_025
+    100072: House_proxy_026
+    100074: House_proxy_027
+    100076: House_proxy_028
+    100078: House_proxy_029
+    100080: House_proxy_030
+    100082: House_proxy_031
+    100084: House_proxy_032
+    100086: House_proxy_033
+    100088: House_proxy_034
+    100090: House_proxy_035
+    100092: House_proxy_036
+    100094: House_proxy_037
+    100096: House_proxy_038
+    100098: House_proxy_039
+    100100: House_proxy_040
+    100102: House_proxy_041
+    100104: House_proxy_042
+    100106: House_proxy_043
+    100108: House_proxy_044
+    100110: House_proxy_045
+    100112: House_proxy_046
+    100114: House_proxy_047
+    100116: House_proxy_048
+    100118: House_proxy_049
+    100120: House_proxy_050
+    100122: House_proxy_051
+    100124: House_proxy_052
+    100126: House_proxy_053
+    100128: House_proxy_054
+    100130: House_proxy_055
+    100132: House_proxy_056
+    100134: House_proxy_057
+    100136: House_proxy_058
+    100138: House_proxy_059
+    100140: House_proxy_060
+    100142: House_proxy_062
+    100144: House_proxy_063
+    100146: Format
     400000: //RootNode
     400002: House_proxy
     400004: House_proxy_001
@@ -67,6 +110,49 @@ ModelImporter:
     400056: House_proxy_019
     400058: House_proxy_020
     400060: Plane
+    400062: House_proxy_021
+    400064: House_proxy_022
+    400066: House_proxy_023
+    400068: House_proxy_024
+    400070: House_proxy_025
+    400072: House_proxy_026
+    400074: House_proxy_027
+    400076: House_proxy_028
+    400078: House_proxy_029
+    400080: House_proxy_030
+    400082: House_proxy_031
+    400084: House_proxy_032
+    400086: House_proxy_033
+    400088: House_proxy_034
+    400090: House_proxy_035
+    400092: House_proxy_036
+    400094: House_proxy_037
+    400096: House_proxy_038
+    400098: House_proxy_039
+    400100: House_proxy_040
+    400102: House_proxy_041
+    400104: House_proxy_042
+    400106: House_proxy_043
+    400108: House_proxy_044
+    400110: House_proxy_045
+    400112: House_proxy_046
+    400114: House_proxy_047
+    400116: House_proxy_048
+    400118: House_proxy_049
+    400120: House_proxy_050
+    400122: House_proxy_051
+    400124: House_proxy_052
+    400126: House_proxy_053
+    400128: House_proxy_054
+    400130: House_proxy_055
+    400132: House_proxy_056
+    400134: House_proxy_057
+    400136: House_proxy_058
+    400138: House_proxy_059
+    400140: House_proxy_060
+    400142: House_proxy_062
+    400144: House_proxy_063
+    400146: Format
     2300000: House_proxy
     2300002: House_proxy_001
     2300004: House_proxy_002
@@ -89,6 +175,49 @@ ModelImporter:
     2300038: House_proxy_019
     2300040: House_proxy_020
     2300042: Plane
+    2300044: House_proxy_021
+    2300046: House_proxy_022
+    2300048: House_proxy_023
+    2300050: House_proxy_024
+    2300052: House_proxy_025
+    2300054: House_proxy_026
+    2300056: House_proxy_027
+    2300058: House_proxy_028
+    2300060: House_proxy_029
+    2300062: House_proxy_030
+    2300064: House_proxy_031
+    2300066: House_proxy_032
+    2300068: House_proxy_033
+    2300070: House_proxy_034
+    2300072: House_proxy_035
+    2300074: House_proxy_036
+    2300076: House_proxy_037
+    2300078: House_proxy_038
+    2300080: House_proxy_039
+    2300082: House_proxy_040
+    2300084: House_proxy_041
+    2300086: House_proxy_042
+    2300088: House_proxy_043
+    2300090: House_proxy_044
+    2300092: House_proxy_045
+    2300094: House_proxy_046
+    2300096: House_proxy_047
+    2300098: House_proxy_048
+    2300100: House_proxy_049
+    2300102: House_proxy_050
+    2300104: House_proxy_051
+    2300106: House_proxy_052
+    2300108: House_proxy_053
+    2300110: House_proxy_054
+    2300112: House_proxy_055
+    2300114: House_proxy_056
+    2300116: House_proxy_057
+    2300118: House_proxy_058
+    2300120: House_proxy_059
+    2300122: House_proxy_060
+    2300124: House_proxy_062
+    2300126: House_proxy_063
+    2300128: Format
     3300000: House_proxy
     3300002: House_proxy_001
     3300004: House_proxy_002
@@ -111,6 +240,49 @@ ModelImporter:
     3300038: House_proxy_019
     3300040: House_proxy_020
     3300042: Plane
+    3300044: House_proxy_021
+    3300046: House_proxy_022
+    3300048: House_proxy_023
+    3300050: House_proxy_024
+    3300052: House_proxy_025
+    3300054: House_proxy_026
+    3300056: House_proxy_027
+    3300058: House_proxy_028
+    3300060: House_proxy_029
+    3300062: House_proxy_030
+    3300064: House_proxy_031
+    3300066: House_proxy_032
+    3300068: House_proxy_033
+    3300070: House_proxy_034
+    3300072: House_proxy_035
+    3300074: House_proxy_036
+    3300076: House_proxy_037
+    3300078: House_proxy_038
+    3300080: House_proxy_039
+    3300082: House_proxy_040
+    3300084: House_proxy_041
+    3300086: House_proxy_042
+    3300088: House_proxy_043
+    3300090: House_proxy_044
+    3300092: House_proxy_045
+    3300094: House_proxy_046
+    3300096: House_proxy_047
+    3300098: House_proxy_048
+    3300100: House_proxy_049
+    3300102: House_proxy_050
+    3300104: House_proxy_051
+    3300106: House_proxy_052
+    3300108: House_proxy_053
+    3300110: House_proxy_054
+    3300112: House_proxy_055
+    3300114: House_proxy_056
+    3300116: House_proxy_057
+    3300118: House_proxy_058
+    3300120: House_proxy_059
+    3300122: House_proxy_060
+    3300124: House_proxy_062
+    3300126: House_proxy_063
+    3300128: Format
     4300000: House_proxy
     4300002: House_proxy_007
     4300004: House_proxy_006
@@ -133,6 +305,49 @@ ModelImporter:
     4300038: House_proxy_012
     4300040: House_proxy_011
     4300042: House_proxy_009
+    4300044: House_proxy_063
+    4300046: House_proxy_062
+    4300048: House_proxy_060
+    4300050: House_proxy_059
+    4300052: House_proxy_058
+    4300054: House_proxy_057
+    4300056: House_proxy_056
+    4300058: House_proxy_055
+    4300060: House_proxy_054
+    4300062: House_proxy_053
+    4300064: House_proxy_052
+    4300066: House_proxy_051
+    4300068: House_proxy_050
+    4300070: House_proxy_049
+    4300072: House_proxy_048
+    4300074: House_proxy_047
+    4300076: House_proxy_046
+    4300078: House_proxy_045
+    4300080: House_proxy_044
+    4300082: House_proxy_043
+    4300084: House_proxy_042
+    4300086: House_proxy_041
+    4300088: House_proxy_040
+    4300090: House_proxy_039
+    4300092: House_proxy_038
+    4300094: House_proxy_037
+    4300096: House_proxy_036
+    4300098: House_proxy_035
+    4300100: House_proxy_034
+    4300102: House_proxy_033
+    4300104: House_proxy_032
+    4300106: House_proxy_031
+    4300108: House_proxy_030
+    4300110: House_proxy_029
+    4300112: House_proxy_028
+    4300114: House_proxy_027
+    4300116: House_proxy_026
+    4300118: House_proxy_025
+    4300120: House_proxy_024
+    4300122: House_proxy_023
+    4300124: House_proxy_022
+    4300126: House_proxy_021
+    4300128: Format
     7400000: Default Take
     9500000: //RootNode
   materials:
