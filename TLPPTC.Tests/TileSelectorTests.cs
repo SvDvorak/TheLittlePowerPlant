@@ -13,7 +13,7 @@ namespace TLPPTC.Tests
 		public TileSelectorTests()
 		{
 			_connectionsFinder = new TestConnectionsFinder();
-			_sut = new TileSelector(_connectionsFinder);
+			_sut = new TileSelector(_connectionsFinder, new TwoDimensionalCollection<PlacedTile>());
 		}
 
 		[Fact]

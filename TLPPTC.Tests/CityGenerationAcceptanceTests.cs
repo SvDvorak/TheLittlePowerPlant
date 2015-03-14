@@ -19,7 +19,8 @@ namespace TLPPTC.Tests
 			var blockTemplate1 = new object();
 			var blockTemplate2 = new object();
 
-			var sut = new CityGeneration(random, testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever)))
+			var twoDimensionalCollection = new TwoDimensionalCollection<PlacedTile>();
+			var sut = new CityGeneration(random, testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), twoDimensionalCollection), twoDimensionalCollection)
 			{
 				NrOfTiles = 2,
 				TileDimension = 2,

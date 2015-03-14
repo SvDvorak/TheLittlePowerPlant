@@ -9,12 +9,14 @@ public class CityGeneration
 	private readonly IRandom _random;
 	private readonly IBlockFactory _blockFactory;
 	private readonly ITileSelector _tileSelector;
+	private readonly TwoDimensionalCollection<PlacedTile> _placedTiles;
 
-	public CityGeneration(IRandom random, IBlockFactory blockFactory, ITileSelector tileSelector)
+	public CityGeneration(IRandom random, IBlockFactory blockFactory, ITileSelector tileSelector, TwoDimensionalCollection<PlacedTile> placedTiles)
 	{
 		_random = random;
 		_blockFactory = blockFactory;
 		_tileSelector = tileSelector;
+		_placedTiles = placedTiles;
 	}
 
 	public void Generate()

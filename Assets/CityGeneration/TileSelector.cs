@@ -15,11 +15,11 @@ public class TileSelector : ITileSelector
 
 	private const int FlipRotation = 2;
 
-	public TileSelector(IConnectionsFinder connectionsFinder)
+	public TileSelector(IConnectionsFinder connectionsFinder, TwoDimensionalCollection<PlacedTile> placedTiles)
 	{
 		_connectionsFinder = connectionsFinder;
 		_connectionToTilesMapping = new NonStupidLookup<string, TileTemplate>();
-		_placedTiles = new TwoDimensionalCollection<PlacedTile>();
+		_placedTiles = placedTiles;
 	}
 
 	public void SetTiles(IEnumerable<object> tiles)
