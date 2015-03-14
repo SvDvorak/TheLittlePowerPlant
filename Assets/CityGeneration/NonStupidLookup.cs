@@ -17,9 +17,9 @@ public class NonStupidLookup<TKey, TValue>
 		get { return _lookup.ContainsKey(key) ? _lookup[key] : _emptyList; }
 	}
 
-	public TValue GetTile()
+	public IEnumerable<TValue> GetKeyGroupByIndex(int index)
 	{
-		return _lookup.Values.First()[0];
+		return _lookup.Values.Skip(index).First();
 	} 
 
 	public void Append(TKey key, IEnumerable<TValue> values)

@@ -10,14 +10,16 @@ public interface ITileSelector
 public class TileSelector : ITileSelector
 {
 	private readonly IConnectionsFinder _connectionsFinder;
+	private readonly IRandom _random;
 	private readonly NonStupidLookup<string, TileTemplate> _connectionToTilesMapping;
 	private readonly TwoDimensionalCollection<PlacedTile> _placedTiles;
 
 	private const int FlipRotation = 2;
 
-	public TileSelector(IConnectionsFinder connectionsFinder, TwoDimensionalCollection<PlacedTile> placedTiles)
+	public TileSelector(IConnectionsFinder connectionsFinder, IRandom random, TwoDimensionalCollection<PlacedTile> placedTiles)
 	{
 		_connectionsFinder = connectionsFinder;
+		_random = random;
 		_connectionToTilesMapping = new NonStupidLookup<string, TileTemplate>();
 		_placedTiles = placedTiles;
 	}
@@ -53,17 +55,18 @@ public class TileSelector : ITileSelector
 			requiredConnections += GetOppositeSide(GetSideConnections(topTile.AllConnections, 2 - topTile.Rotation));
 		}
 
-		TileTemplate tileTemplate;
+		List<TileTemplate> possibleTemplates;
 		if (requiredConnections != "")
 		{
-			tileTemplate = _connectionToTilesMapping[requiredConnections].First();
+			possibleTemplates = _connectionToTilesMapping[requiredConnections].ToList();
 		}
 		else
 		{
-			tileTemplate = _connectionToTilesMapping.GetTile();
+			possibleTemplates = _connectionToTilesMapping.GetKeyGroupByIndex().ToList();
 		}
+		var selectedTemplate = possibleTemplates[_random.Range(0, possibleTemplates.Count())];
 
-		PlaceTile(x, y, tileTemplate.Tile, tileTemplate.Rotation + rotationToRequiredConnections);
+		PlaceTile(x, y, selectedTemplate.Tile, selectedTemplate.Rotation + rotationToRequiredConnections);
 		return _placedTiles[x, y];
 	}
 

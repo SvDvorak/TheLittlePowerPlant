@@ -17,7 +17,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 
 	void Start ()
 	{
-		_cityGeneration = new CityGeneration(new Random(), this, null);
+		_cityGeneration = new CityGeneration(new Random(), this, null, null);
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
 		_cityGeneration.Generate();

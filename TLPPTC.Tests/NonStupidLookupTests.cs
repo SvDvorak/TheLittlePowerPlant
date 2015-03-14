@@ -53,5 +53,17 @@ namespace TLPPTC.Tests
 
 			sut.HasKey("HI").Should().BeFalse();
 		}
+
+		[Fact]
+		public void Retrieves_values_for_key_using_index()
+		{
+			var sut = new NonStupidLookup<string, int>();
+			sut.Append("1", 1);
+			sut.Append("2", 2);
+
+			var keyGroup = sut.GetKeyGroupByIndex(1);
+
+			keyGroup.ShouldAllBeEquivalentTo(new[] { 1 });
+		}
 	}
 }

@@ -20,7 +20,7 @@ namespace TLPPTC.Tests
 			var blockTemplate2 = new object();
 
 			var twoDimensionalCollection = new TwoDimensionalCollection<PlacedTile>();
-			var sut = new CityGeneration(random, testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), twoDimensionalCollection), twoDimensionalCollection)
+			var sut = new CityGeneration(random, testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), new SetRandom(), twoDimensionalCollection), twoDimensionalCollection)
 			{
 				NrOfTiles = 2,
 				TileDimension = 2,
@@ -67,7 +67,7 @@ namespace TLPPTC.Tests
 			var testBlockFactory = new TestBlockFactory();
 			var tileSelector = new TestTileSelector();
 
-			var sut = new CityGeneration(random, testBlockFactory, tileSelector)
+			var sut = new CityGeneration(random, testBlockFactory, tileSelector, new TwoDimensionalCollection<PlacedTile>())
 			{
 				NrOfTiles = 2,
 				TileDimension = 2
@@ -99,7 +99,7 @@ namespace TLPPTC.Tests
 			var testBlockFactory = new TestBlockFactory();
 			var tileSelector = new TestTileSelector();
 
-			var sut = new CityGeneration(random, testBlockFactory, tileSelector)
+			var sut = new CityGeneration(random, testBlockFactory, tileSelector, new TwoDimensionalCollection<PlacedTile>())
 			{
 				NrOfTiles = 1,
 				TileDimension = 1

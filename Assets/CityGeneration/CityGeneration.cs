@@ -25,7 +25,8 @@ public class CityGeneration
 		{
 			for (int z = 0; z < NrOfTiles; z++)
 			{
-				_blockFactory.Create(_tileSelector.Select(x, z), new Vector3(x * TileDimension, 0, z * TileDimension), new Vector3(0, 90 * _random.Range(0, 4)));
+				var tileTemplate = _tileSelector.Select(x, z);
+				_blockFactory.Create(tileTemplate, new Vector3(x * TileDimension, 0, z * TileDimension), new Vector3(0, 90 * _random.Range(0, 4)));
 			}
 		}
 	}

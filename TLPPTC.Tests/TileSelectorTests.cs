@@ -9,11 +9,13 @@ namespace TLPPTC.Tests
 	{
 		private readonly TileSelector _sut;
 		private readonly TestConnectionsFinder _connectionsFinder;
+		private readonly SetRandom _setRandom;
 
 		public TileSelectorTests()
 		{
 			_connectionsFinder = new TestConnectionsFinder();
-			_sut = new TileSelector(_connectionsFinder, new TwoDimensionalCollection<PlacedTile>());
+			_setRandom = new SetRandom();
+			_sut = new TileSelector(_connectionsFinder, _setRandom, new TwoDimensionalCollection<PlacedTile>());
 		}
 
 		[Fact]
@@ -57,6 +59,30 @@ namespace TLPPTC.Tests
 			placedTile2.Rotation.Should().Be(2);
 			placedTile3.Rotation.Should().Be(3);
 			placedTile4.Rotation.Should().Be(1);
+		}
+
+		[Fact]
+		public void Selects_single_tile_from_multiple_options_using_random()
+		{
+			var tile1 = new { Name = "tile1" };
+			var tile2 = new { Name = "tile2" };
+			_connectionsFinder.SetCompleteTileConnections(tile1, "00110100");
+			_connectionsFinder.SetCompleteTileConnections(tile2, "00110100");
+			_connectionsFinder.SetConnectionSet(tile1, new ConnectionSet("00110100", 0));
+			_connectionsFinder.SetConnectionSet(tile1, new ConnectionSet("00", 0));
+			_connectionsFinder.SetConnectionSet(tile1, new ConnectionSet("11", 3));
+			_connectionsFinder.SetConnectionSet(tile2, new ConnectionSet("00110100", 0));
+			_connectionsFinder.SetConnectionSet(tile2, new ConnectionSet("00", 0));
+			_connectionsFinder.SetConnectionSet(tile2, new ConnectionSet("11", 2));
+			_sut.SetTiles(new[] { tile1, tile2 });
+
+			_setRandom.Value = 1;
+
+			var placedTile1 = _sut.Select(0, 0);
+			var placedTile2 = _sut.Select(1, 0);
+
+			placedTile1.Tile.Should().Be(tile2);
+			placedTile2.Tile.Should().Be(tile2);
 		}
 	}
 
