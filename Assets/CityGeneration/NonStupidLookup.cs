@@ -50,4 +50,9 @@ public class NonStupidLookup<TKey, TValue>
 	{
 		return _lookup.ContainsKey(key);
 	}
+
+	public int GetKeyGroupCount()
+	{
+		return _lookup.Count;
+	}
 }

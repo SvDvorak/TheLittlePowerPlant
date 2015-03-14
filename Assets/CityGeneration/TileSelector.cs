@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,11 +13,11 @@ public class TileSelector : ITileSelector
 	private readonly IConnectionsFinder _connectionsFinder;
 	private readonly IRandom _random;
 	private readonly NonStupidLookup<string, TileTemplate> _connectionToTilesMapping;
-	private readonly TwoDimensionalCollection<PlacedTile> _placedTiles;
+	private readonly ITwoDimensionalCollection<PlacedTile> _placedTiles;
 
 	private const int FlipRotation = 2;
 
-	public TileSelector(IConnectionsFinder connectionsFinder, IRandom random, TwoDimensionalCollection<PlacedTile> placedTiles)
+	public TileSelector(IConnectionsFinder connectionsFinder, IRandom random, ITwoDimensionalCollection<PlacedTile> placedTiles)
 	{
 		_connectionsFinder = connectionsFinder;
 		_random = random;
@@ -58,16 +59,20 @@ public class TileSelector : ITileSelector
 		List<TileTemplate> possibleTemplates;
 		if (requiredConnections != "")
 		{
+			if (!_connectionToTilesMapping.HasKey(requiredConnections))
+			{
+				throw new NoTileWithConnections(requiredConnections);
+			}
 			possibleTemplates = _connectionToTilesMapping[requiredConnections].ToList();
 		}
 		else
 		{
-			possibleTemplates = _connectionToTilesMapping.GetKeyGroupByIndex().ToList();
+			var keyGroupIndex = _random.Range(0, _connectionToTilesMapping.GetKeyGroupCount());
+			possibleTemplates = _connectionToTilesMapping.GetKeyGroupByIndex(keyGroupIndex).ToList();
 		}
 		var selectedTemplate = possibleTemplates[_random.Range(0, possibleTemplates.Count())];
 
-		PlaceTile(x, y, selectedTemplate.Tile, selectedTemplate.Rotation + rotationToRequiredConnections);
-		return _placedTiles[x, y];
+		return PlaceTile(x, y, selectedTemplate.Tile, selectedTemplate.Rotation + rotationToRequiredConnections);
 	}
 
 	private string GetSideConnections(string allConnections, int rotation)
@@ -88,13 +93,16 @@ public class TileSelector : ITileSelector
 		return sideConnections.Substring(1, 1) + sideConnections.Substring(0, 1);
 	}
 
-
-	public void PlaceTile(int x, int y, object tile, int rotation)
+	public PlacedTile PlaceTile(int x, int y, object tile, int rotation)
 	{
 		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(tile, rotation);
-		var placedTile = new PlacedTile(tile, completeConnections, GetNormalizedRotation(rotation));
-		_placedTiles[x, y] = placedTile;
+		return new PlacedTile(tile, completeConnections, GetNormalizedRotation(rotation));
 	}
+}
+
+public class NoTileWithConnections : Exception
+{
+	public NoTileWithConnections(string connections) : base("No tile with following connections: " + connections)  { }
 }
 
 public class PlacedTile

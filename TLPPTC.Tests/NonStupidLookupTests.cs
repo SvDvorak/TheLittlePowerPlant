@@ -63,7 +63,20 @@ namespace TLPPTC.Tests
 
 			var keyGroup = sut.GetKeyGroupByIndex(1);
 
-			keyGroup.ShouldAllBeEquivalentTo(new[] { 1 });
+			keyGroup.ShouldAllBeEquivalentTo(new[] { 2 });
+		}
+
+		[Fact]
+		public void Retrieves_key_group_count()
+		{
+			var sut = new NonStupidLookup<string, int>();
+			sut.Append("1", 1);
+			sut.Append("1", 2);
+			sut.Append("2", 2);
+
+			var keyGroupCount = sut.GetKeyGroupCount();
+
+			keyGroupCount.Should().Be(2);
 		}
 	}
 }

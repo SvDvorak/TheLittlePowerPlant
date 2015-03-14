@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CityGenerationAcceptanceTests.cs" />
+    <Compile Include="CityGenerationTests.cs" />
     <Compile Include="ConnectionsFinderTests.cs" />
     <Compile Include="NonStupidLookupTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,9 +75,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnityVS.The Little Power Plant That Could.CSharp.csproj">
-      <Project>{fdee5e22-98c1-5feb-d4e3-c1635f872a55}</Project>
-      <Name>UnityVS.The Little Power Plant That Could.CSharp</Name>
+    <ProjectReference Include="..\UnityVS.TheLittlePowerPlant.CSharp.csproj">
+      <Project>{f769e9ca-ca6a-941c-e1d9-075aa044e92d}</Project>
+      <Name>UnityVS.TheLittlePowerPlant.CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

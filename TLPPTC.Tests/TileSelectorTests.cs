@@ -10,12 +10,14 @@ namespace TLPPTC.Tests
 		private readonly TileSelector _sut;
 		private readonly TestConnectionsFinder _connectionsFinder;
 		private readonly SetRandom _setRandom;
+		private readonly TwoDimensionalCollection<PlacedTile> _placedTiles;
 
 		public TileSelectorTests()
 		{
 			_connectionsFinder = new TestConnectionsFinder();
 			_setRandom = new SetRandom();
-			_sut = new TileSelector(_connectionsFinder, _setRandom, new TwoDimensionalCollection<PlacedTile>());
+			_placedTiles = new TwoDimensionalCollection<PlacedTile>();
+			_sut = new TileSelector(_connectionsFinder, _setRandom, _placedTiles);
 		}
 
 		[Fact]
@@ -46,9 +48,13 @@ namespace TLPPTC.Tests
 			_sut.SetTiles(new[] { tile1, tile2, tile3 });
 
 			var placedTile1 = _sut.Select(0, 0);
+			_placedTiles[0, 0] = placedTile1;
 			var placedTile2 = _sut.Select(1, 0);
+			_placedTiles[1, 0] = placedTile2;
 			var placedTile3 = _sut.Select(0, 1);
+			_placedTiles[0, 1] = placedTile3;
 			var placedTile4 = _sut.Select(1, 1);
+			_placedTiles[1, 0] = placedTile4;
 
 			placedTile1.Tile.Should().Be(tile1);
 			placedTile2.Tile.Should().Be(tile1);
@@ -83,6 +89,20 @@ namespace TLPPTC.Tests
 
 			placedTile1.Tile.Should().Be(tile2);
 			placedTile2.Tile.Should().Be(tile2);
+		}
+
+		[Fact]
+		public void Throws_exception_when_tile_with_matching_connections_does_not_exist()
+		{
+			var tile1 = new { Name = "tile1" };
+			_connectionsFinder.SetCompleteTileConnections(tile1, "00110100");
+			_connectionsFinder.SetConnectionSet(tile1, new ConnectionSet("00", 0));
+			_sut.SetTiles(new[] { tile1 });
+
+			_placedTiles[0, 0] = _sut.Select(0, 0);
+
+			Action invalidSelect = () => _sut.Select(1, 0);
+			invalidSelect.ShouldThrow<NoTileWithConnections>();
 		}
 	}
 

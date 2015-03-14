@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-public class TwoDimensionalCollection<TValue> where TValue : class
+public interface ITwoDimensionalCollection<TValue> where TValue : class
+{
+	TValue this[int x, int y] { get; set; }
+}
+
+public class TwoDimensionalCollection<TValue> : ITwoDimensionalCollection<TValue> where TValue : class
 {
 	private readonly Dictionary<int, Dictionary<int, TValue>> _collection;
 
