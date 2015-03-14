@@ -11,42 +11,48 @@ namespace TLPPTC.Tests
 	public class ConnectionsFinderTests
 	{
 		private readonly ConnectionsFinder _sut;
+		private TestExitRetriever _testExitRetriever;
 
 		public ConnectionsFinderTests()
 		{
-			_sut = new ConnectionsFinder();
+			_testExitRetriever = new TestExitRetriever();
+			_sut = new ConnectionsFinder(_testExitRetriever);
 		}
 
 		[Fact]
 		public void Returns_existing_connections()
 		{
-			var connections = _sut.FindConnections(name => new object());
+			_testExitRetriever.SetExitCondition(name => new object());
+			var connections = _sut.FindConnectionSets(null).ToList();
 
-			connections[0].Should().Be("11111111");
+			connections[0].Connections.Should().Be("11111111");
 		}
 
 		[Fact]
 		public void Returns_missing_connections()
 		{
-			var connections = _sut.FindConnections(name => null);
+			_testExitRetriever.SetExitCondition(name => null);
+			var connections = _sut.FindConnectionSets(null).ToList();
 
-			connections[0].Should().Be("00000000");
+			connections[0].Connections.Should().Be("00000000");
 		}
 
 		[Fact]
 		public void Separates_between_left_and_right_connections()
 		{
-			var connections = _sut.FindConnections(name => name.Contains("_L") ? new object() : null);
+			_testExitRetriever.SetExitCondition(name => name.Contains("_L") ? new object() : null);
+			var connectionSets = _sut.FindConnectionSets(null).ToList();
 
-			connections[0].Should().Be("10101010");
+			connectionSets[0].Connections.Should().Be("10101010");
 		}
 
 		[Fact]
 		public void Subdivides_and_rotates_connections()
 		{
-			var connections = _sut.FindConnections(name => name.Contains("_S_") || name.Contains("_N_") ? new object() : null);
+			_testExitRetriever.SetExitCondition(name => name.Contains("_S_") || name.Contains("_N_") ? new object() : null);
+			var connectionSets = _sut.FindConnectionSets(null);
 
-			connections.ShouldAllBeEquivalentTo(new List<string>()
+			connectionSets.Select(x => x.Connections).ShouldAllBeEquivalentTo(new List<string>()
 				{
 					"11001100",
 					"00110011",
@@ -65,6 +71,50 @@ namespace TLPPTC.Tests
 					"11",
 					"00"
 				});
+
+			connectionSets.Select(x => x.Rotation).ShouldAllBeEquivalentTo(new List<int>
+				{
+					0,
+					90,
+					180,
+					270,
+					0,
+					90,
+					180,
+					270,
+					0,
+					90,
+					180,
+					270,
+					0,
+					90,
+					180,
+					270,
+				});
+		}
+
+		[Fact]
+		public void Retrieves_complete_connections_for_tile()
+		{
+			_testExitRetriever.SetExitCondition(name => name.Contains("_S_") || name.Contains("_N_") ? new object() : null);
+			var connections = _sut.GetCompleteConnectionsOriented(null, 0);
+
+			connections.Should().Be("11001100");
+		}
+	}
+
+	public class TestExitRetriever : IExitRetriever
+	{
+		private Func<string, object> _conditionFunc;
+
+		public void SetExitCondition(Func<string, object> conditionFunc)
+		{
+			_conditionFunc = conditionFunc;
+		}
+
+		public object GetExits(object tile, string name)
+		{
+			return _conditionFunc(name);
 		}
 	}
 }

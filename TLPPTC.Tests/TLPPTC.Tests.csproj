@@ -67,7 +67,10 @@
   <ItemGroup>
     <Compile Include="CityGenerationAcceptanceTests.cs" />
     <Compile Include="ConnectionsFinderTests.cs" />
+    <Compile Include="NonStupidLookupTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TileSelectorTests.cs" />
+    <Compile Include="TwoDimensionalCollectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

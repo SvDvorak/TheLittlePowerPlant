@@ -12,12 +12,12 @@ public class Generation : MonoBehaviour, IBlockFactory
 
 	public Generation()
 	{
-		_connectionsFinder = new ConnectionsFinder();
+		_connectionsFinder = new ConnectionsFinder(new UnityConnectionsRetriever());
 	}
 
 	void Start ()
 	{
-		_cityGeneration = new CityGeneration(new Random(), this);
+		_cityGeneration = new CityGeneration(new Random(), this, null);
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
 		_cityGeneration.Generate();
@@ -34,11 +34,20 @@ public class Generation : MonoBehaviour, IBlockFactory
 	{
 	}
 
-	public void Create(Vector3 position, Vector3 rotation)
+	public object Create(object block, Vector3 position, Vector3 rotation)
 	{
-		var connections = _connectionsFinder.FindConnections(childName => BlockPrefab.transform.FindChild(name));
 		var newBlock = Instantiate(BlockPrefab);
 		newBlock.transform.position = position;
 		newBlock.transform.Rotate(rotation);
+		return newBlock;
+	}
+}
+
+public class UnityConnectionsRetriever : IExitRetriever
+{
+	public object GetExits(object tile, string name)
+	{
+		var gameObject = tile as GameObject;
+		return gameObject.transform.FindChild(name);
 	}
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 public static class ObjectExtensions
@@ -24,6 +25,11 @@ public static class ObjectExtensions
         }
         return methodInfo;
     }
+
+	public static List<T> AsList<T>(this T element)
+	{
+		return new List<T> { element };
+	}
 }
 
 public static class PropertyInfoExtensions

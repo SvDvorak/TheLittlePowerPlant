@@ -4,28 +4,50 @@ using System.Linq;
 
 public interface IConnectionsFinder
 {
-	List<string> FindConnections(Func<string, object> getExit);
+	IEnumerable<ConnectionSet> FindConnectionSets(object tile);
+	string GetCompleteConnectionsOriented(object tile, int rotation);
+}
+
+public class ConnectionSet
+{
+	public string Connections;
+	public int Rotation;
+
+	public ConnectionSet(string connections, int rotation)
+	{
+		Connections = connections;
+		Rotation = rotation;
+	}
 }
 
 public class ConnectionsFinder : IConnectionsFinder
 {
+	private readonly IExitRetriever _exitRetriever;
 	private readonly List<string> _directions;
-	private Func<string, object> _getExit;
+	private object _tile;
+	private const int QuarterRotation = 90;
 
-	public ConnectionsFinder()
+	public ConnectionsFinder(IExitRetriever exitRetriever)
 	{
+		_exitRetriever = exitRetriever;
 		_directions = new List<string> { "N", "E", "S", "W" };
 	}
 
-	public List<string> FindConnections(Func<string, object> getExit)
+	public IEnumerable<ConnectionSet> FindConnectionSets(object tile)
 	{
-		_getExit = getExit;
+		_tile = tile;
 		return SubdivideAndCalculate().ToList();
 	}
 
-	private IEnumerable<string> SubdivideAndCalculate()
+	public string GetCompleteConnectionsOriented(object tile, int rotation)
 	{
-		var connections = new List<string>();
+		_tile = tile;
+		return GetConnections(_directions, rotation).Connections;
+	}
+
+	private IEnumerable<ConnectionSet> SubdivideAndCalculate()
+	{
+		var connections = new List<ConnectionSet>();
 		for (var subdivideCount = _directions.Count; subdivideCount > 0; subdivideCount--)
 		{
 			connections.AddRange(RotateAndCalculate(subdivideCount));
@@ -33,15 +55,15 @@ public class ConnectionsFinder : IConnectionsFinder
 		return connections;
 	}
 
-	private IEnumerable<string> RotateAndCalculate(int takeCount)
+	private IEnumerable<ConnectionSet> RotateAndCalculate(int takeCount)
 	{
 		for (var i = 0; i < _directions.Count; i++)
 		{
-			yield return GetConnections(_directions.SkipAndLoop(i).Take(takeCount));
+			yield return GetConnections(_directions.SkipAndLoop(i).Take(takeCount), i*QuarterRotation);
 		}
 	}
 
-	private string GetConnections(IEnumerable<string> directions)
+	private ConnectionSet GetConnections(IEnumerable<string> directions, int rotation)
 	{
 		var connectionsAvailable = "";
 		foreach (var direction in directions)
@@ -50,12 +72,12 @@ public class ConnectionsFinder : IConnectionsFinder
 			connectionsAvailable += HasExit(direction, "R");
 		}
 
-		return connectionsAvailable;
+		return new ConnectionSet(connectionsAvailable, rotation);
 	}
 
 	private int HasExit(string direction, string side)
 	{
-		var exitR = _getExit(string.Format("Exit_{0}_{1}", direction, side));
+		var exitR = _exitRetriever.GetExits(_tile, string.Format("Exit_{0}_{1}", direction, side));
 		return exitR != null ? 1 : 0;
 	}
 }

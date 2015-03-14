@@ -60,7 +60,11 @@
     <Compile Include="Assets\CityGeneration\ConnectionsFinder.cs" />
     <Compile Include="Assets\CityGeneration\Generation.cs" />
     <Compile Include="Assets\CityGeneration\IEnumerableExtensions.cs" />
+    <Compile Include="Assets\CityGeneration\IExitRetriever.cs" />
+    <Compile Include="Assets\CityGeneration\NonStupidLookup.cs" />
     <Compile Include="Assets\CityGeneration\Random.cs" />
+    <Compile Include="Assets\CityGeneration\TileSelector.cs" />
+    <Compile Include="Assets\CityGeneration\TwoDimensionalCollection.cs" />
     <Compile Include="Assets\Code\BuildMachine.cs" />
     <Compile Include="Assets\Code\Coal\Coal.cs" />
     <Compile Include="Assets\Code\Coal\CoalProcess.cs" />
