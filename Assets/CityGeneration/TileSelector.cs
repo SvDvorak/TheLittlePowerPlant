@@ -4,7 +4,7 @@ using System.Linq;
 public interface ITileSelector
 {
 	void SetTiles(IEnumerable<object> tiles);
-	object Select(int x, int z);
+	PlacedTile Select(int x, int y);
 }
 
 public class TileSelector : ITileSelector
@@ -35,18 +35,18 @@ public class TileSelector : ITileSelector
 		}
 	}
 
-	public object Select(int x, int z)
+	public PlacedTile Select(int x, int y)
 	{
 		var requiredConnections = "";
 		int rotationToRequiredConnections = 0;
 
-		var leftTile = _placedTiles[x - 1, z];
+		var leftTile = _placedTiles[x - 1, y];
 		if (leftTile != null)
 		{
 			rotationToRequiredConnections = 1 + FlipRotation;
 			requiredConnections += GetOppositeSide(GetSideConnections(leftTile.AllConnections, 1 - leftTile.Rotation));
 		}
-		var topTile = _placedTiles[x, z - 1];
+		var topTile = _placedTiles[x, y - 1];
 		if (topTile != null)
 		{
 			rotationToRequiredConnections = requiredConnections == null ? 2 + FlipRotation : rotationToRequiredConnections;
@@ -63,8 +63,8 @@ public class TileSelector : ITileSelector
 			tileTemplate = _connectionToTilesMapping.GetTile();
 		}
 
-		PlaceTile(x, z, tileTemplate.Tile, tileTemplate.Rotation + rotationToRequiredConnections);
-		return tileTemplate.Tile;
+		PlaceTile(x, y, tileTemplate.Tile, tileTemplate.Rotation + rotationToRequiredConnections);
+		return _placedTiles[x, y];
 	}
 
 	private string GetSideConnections(string allConnections, int rotation)
@@ -86,19 +86,19 @@ public class TileSelector : ITileSelector
 	}
 
 
-	public void PlaceTile(int x, int z, object tile, int rotation)
+	public void PlaceTile(int x, int y, object tile, int rotation)
 	{
 		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(tile, rotation);
 		var placedTile = new PlacedTile(tile, completeConnections, GetNormalizedRotation(rotation));
-		_placedTiles[x, z] = placedTile;
+		_placedTiles[x, y] = placedTile;
 	}
 }
 
 public class PlacedTile
 {
-	public object Tile { get; }
-	public string AllConnections { get; }
-	public int Rotation { get; }
+	public object Tile { get; private set; }
+	public string AllConnections { get; private set; }
+	public int Rotation { get; private set; }
 
 	public PlacedTile(object tile, string allConnections, int rotation)
 	{
@@ -116,6 +116,6 @@ public class TileTemplate
 		Rotation = rotation;
 	}
 
-	public object Tile { get; }
-	public int Rotation { get; }
+	public object Tile { get; private set; }
+	public int Rotation { get; private set; }
 }

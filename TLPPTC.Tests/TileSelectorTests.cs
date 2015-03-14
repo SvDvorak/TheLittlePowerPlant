@@ -25,7 +25,7 @@ namespace TLPPTC.Tests
 
 			var actualTile = _sut.Select(0, 0);
 
-			actualTile.Should().Be(expectedTile);
+			actualTile.Tile.Should().Be(expectedTile);
 		}
 
 		[Fact]
@@ -48,10 +48,15 @@ namespace TLPPTC.Tests
 			var placedTile3 = _sut.Select(0, 1);
 			var placedTile4 = _sut.Select(1, 1);
 
-			placedTile1.Should().Be(tile1);
-			placedTile2.Should().Be(tile1);
-			placedTile3.Should().Be(tile2);
-			placedTile4.Should().Be(tile3);
+			placedTile1.Tile.Should().Be(tile1);
+			placedTile2.Tile.Should().Be(tile1);
+			placedTile3.Tile.Should().Be(tile2);
+			placedTile4.Tile.Should().Be(tile3);
+
+			placedTile1.Rotation.Should().Be(0);
+			placedTile2.Rotation.Should().Be(2);
+			placedTile3.Rotation.Should().Be(3);
+			placedTile4.Rotation.Should().Be(1);
 		}
 	}
 

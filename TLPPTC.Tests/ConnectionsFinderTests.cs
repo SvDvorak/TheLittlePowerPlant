@@ -72,24 +72,24 @@ namespace TLPPTC.Tests
 					"00"
 				});
 
-			connectionSets.Select(x => x.Rotation).ShouldAllBeEquivalentTo(new List<int>
+			connectionSets.Select(x => x.Rotation).Should().ContainInOrder(new List<int>
 				{
 					0,
-					90,
-					180,
-					270,
+					3,
+					2,
+					1,
 					0,
-					90,
-					180,
-					270,
+					3,
+					2,
+					1,
 					0,
-					90,
-					180,
-					270,
+					3,
+					2,
+					1,
 					0,
-					90,
-					180,
-					270,
+					3,
+					2,
+					1,
 				});
 		}
 

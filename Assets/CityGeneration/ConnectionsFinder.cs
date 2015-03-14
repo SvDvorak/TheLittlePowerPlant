@@ -25,7 +25,6 @@ public class ConnectionsFinder : IConnectionsFinder
 	private readonly IExitRetriever _exitRetriever;
 	private readonly List<string> _directions;
 	private object _tile;
-	private const int QuarterRotation = 90;
 
 	public ConnectionsFinder(IExitRetriever exitRetriever)
 	{
@@ -59,7 +58,7 @@ public class ConnectionsFinder : IConnectionsFinder
 	{
 		for (var i = 0; i < _directions.Count; i++)
 		{
-			yield return GetConnections(_directions.SkipAndLoop(i).Take(takeCount), i*QuarterRotation);
+			yield return GetConnections(_directions.SkipAndLoop(i).Take(takeCount), (-i + 4) % 4);
 		}
 	}
 

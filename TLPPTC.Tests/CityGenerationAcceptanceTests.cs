@@ -123,9 +123,9 @@ namespace TLPPTC.Tests
 			_tiles = tiles;
 		}
 
-		public object Select(int x, int z)
+		public PlacedTile Select(int x, int y)
 		{
-			return _tiles.LastOrDefault();
+			return new PlacedTile(_tiles.LastOrDefault(), "", 0);
 		}
 	}
 
