@@ -6,7 +6,7 @@ using UnityEngine;
 public interface ITileSelector
 {
 	void SetTiles(IEnumerable<object> tiles);
-	PlacedTile Select(int x, int y);
+	TileInstance Select(int x, int y);
 }
 
 public class TileSelector : ITileSelector
@@ -14,11 +14,14 @@ public class TileSelector : ITileSelector
 	private readonly IConnectionsFinder _connectionsFinder;
 	private readonly IRandom _random;
 	private readonly NonStupidLookup<string, TileTemplate> _connectionToTilesMapping;
-	private readonly ITwoDimensionalCollection<PlacedTile> _placedTiles;
+	private readonly ITwoDimensionalCollection<TileInstance> _placedTiles;
 
 	private const int FlipRotation = 2;
 
-	public TileSelector(IConnectionsFinder connectionsFinder, IRandom random, ITwoDimensionalCollection<PlacedTile> placedTiles)
+	public TileSelector(
+		IConnectionsFinder connectionsFinder,
+		IRandom random,
+		ITwoDimensionalCollection<TileInstance> placedTiles)
 	{
 		_connectionsFinder = connectionsFinder;
 		_random = random;
@@ -39,7 +42,7 @@ public class TileSelector : ITileSelector
 		}
 	}
 
-	public PlacedTile Select(int x, int y)
+	public TileInstance Select(int x, int y)
 	{
 		var requiredConnections = "";
 		int rotationToRequiredConnections = 0;
@@ -75,7 +78,7 @@ public class TileSelector : ITileSelector
 
 		int rotation = GetNormalizedRotation(selectedTemplate.Rotation + rotationToRequiredConnections);
 		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(selectedTemplate.Tile, rotation);
-		return new PlacedTile(selectedTemplate.Tile, completeConnections, rotation);
+		return new TileInstance(selectedTemplate.Tile, completeConnections, rotation);
 	}
 
 	private string GetSideConnections(string allConnections, int rotation)

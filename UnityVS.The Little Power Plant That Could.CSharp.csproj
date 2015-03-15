@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CityGeneration\CityGeneration.cs" />
+    <Compile Include="Assets\CityGeneration\ConnectionSet.cs" />
     <Compile Include="Assets\CityGeneration\ConnectionsFinder.cs" />
     <Compile Include="Assets\CityGeneration\Generation.cs" />
     <Compile Include="Assets\CityGeneration\IBlockFactory.cs" />
@@ -66,7 +67,7 @@
     <Compile Include="Assets\CityGeneration\ILogger.cs" />
     <Compile Include="Assets\CityGeneration\NonStupidLookup.cs" />
     <Compile Include="Assets\CityGeneration\NoTileWithConnections.cs" />
-    <Compile Include="Assets\CityGeneration\PlacedTile.cs" />
+    <Compile Include="Assets\CityGeneration\TileInstance.cs" />
     <Compile Include="Assets\CityGeneration\Random.cs" />
     <Compile Include="Assets\CityGeneration\TileSelector.cs" />
     <Compile Include="Assets\CityGeneration\TileTemplate.cs" />

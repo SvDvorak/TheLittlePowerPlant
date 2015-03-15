@@ -9,13 +9,13 @@ namespace TLPPTC.Tests
 		private readonly TileSelector _sut;
 		private readonly TestConnectionsFinder _connectionsFinder;
 		private readonly SetRandom _setRandom;
-		private readonly TwoDimensionalCollection<PlacedTile> _placedTiles;
+		private readonly TwoDimensionalCollection<TileInstance> _placedTiles;
 
 		public TileSelectorTests()
 		{
 			_connectionsFinder = new TestConnectionsFinder();
 			_setRandom = new SetRandom();
-			_placedTiles = new TwoDimensionalCollection<PlacedTile>();
+			_placedTiles = new TwoDimensionalCollection<TileInstance>();
 			_sut = new TileSelector(_connectionsFinder, _setRandom, _placedTiles);
 		}
 

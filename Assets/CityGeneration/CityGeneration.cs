@@ -7,13 +7,19 @@ public class CityGeneration
 {
 	public int NrOfTiles { get; set; }
 	public int TileDimension { get; set; }
+
 	private readonly IBlockFactory _blockFactory;
 	private readonly ITileSelector _tileSelector;
-	private readonly ITwoDimensionalCollection<PlacedTile> _placedTiles;
+	private readonly ITwoDimensionalCollection<TileInstance> _placedTiles;
 	private readonly ILogger _logger;
 	private readonly ICoordinateTransformer _transformer;
 
-	public CityGeneration(IBlockFactory blockFactory, ITileSelector tileSelector, ITwoDimensionalCollection<PlacedTile> placedTiles, ILogger logger, ICoordinateTransformer transformer)
+	public CityGeneration(
+		IBlockFactory blockFactory,
+		ITileSelector tileSelector,
+		ITwoDimensionalCollection<TileInstance> placedTiles,
+		ILogger logger,
+		ICoordinateTransformer transformer)
 	{
 		_blockFactory = blockFactory;
 		_tileSelector = tileSelector;

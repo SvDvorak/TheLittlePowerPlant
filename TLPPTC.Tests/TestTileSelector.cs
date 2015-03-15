@@ -5,19 +5,19 @@ namespace TLPPTC.Tests
 {
 	public class TestTileSelector : ITileSelector
 	{
-		private Queue<PlacedTile> _tileQueue = new Queue<PlacedTile>();
+		private Queue<TileInstance> _tileQueue = new Queue<TileInstance>();
 
 		public void SetTiles(IEnumerable<object> tiles)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void SetSelectedTiles(IEnumerable<PlacedTile> tiles)
+		public void SetSelectedTiles(IEnumerable<TileInstance> tiles)
 		{
-			_tileQueue = new Queue<PlacedTile>(tiles);
+			_tileQueue = new Queue<TileInstance>(tiles);
 		}
 
-		public PlacedTile Select(int x, int y)
+		public TileInstance Select(int x, int y)
 		{
 			var placedTile = _tileQueue.Dequeue();
 			if (placedTile == null)

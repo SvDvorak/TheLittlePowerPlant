@@ -20,7 +20,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 
 	private void Start()
 	{
-		var collection = new TwoDimensionalCollection<PlacedTile>();
+		var collection = new TwoDimensionalCollection<TileInstance>();
 		var coordinateTransformer = new Unity3DCoordinateTransformer();
 		coordinateTransformer.SetOrigo(new Vector3(-NrOfTiles, 0));
 		_cityGeneration = new CityGeneration(

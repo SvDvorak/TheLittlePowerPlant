@@ -7,7 +7,7 @@ namespace TLPPTC.Tests
 	public class CityGenerationTests
 	{
 		private readonly CityGeneration _sut;
-		private readonly TwoDimensionalCollection<PlacedTile> _collection;
+		private readonly TwoDimensionalCollection<TileInstance> _collection;
 		private readonly TestBlockFactory _testBlockFactory;
 		private readonly TestTileSelector _tileSelector;
 		private readonly DoNothingLogger _logger;
@@ -18,7 +18,7 @@ namespace TLPPTC.Tests
 			_testBlockFactory = new TestBlockFactory();
 			_tileSelector = new TestTileSelector();
 
-			_collection = new TwoDimensionalCollection<PlacedTile>();
+			_collection = new TwoDimensionalCollection<TileInstance>();
 			_logger = new DoNothingLogger();
 			_coordinateTransformer = new TestCoordinateTransformer();
 			_sut = new CityGeneration(_testBlockFactory, _tileSelector, _collection, _logger, _coordinateTransformer)
@@ -33,10 +33,10 @@ namespace TLPPTC.Tests
 		{
 			var selectTiles = new[]
 			{
-				new PlacedTile(new object(), "1234", 0),
-				new PlacedTile(new object(), "5678", 1),
-				new PlacedTile(new object(), "9012", 1),
-				new PlacedTile(new object(), "3456", 3)
+				new TileInstance(new object(), "1234", 0),
+				new TileInstance(new object(), "5678", 1),
+				new TileInstance(new object(), "9012", 1),
+				new TileInstance(new object(), "3456", 3)
 			};
 			_tileSelector.SetSelectedTiles(selectTiles);
 			_sut.Generate();
@@ -61,7 +61,7 @@ namespace TLPPTC.Tests
 		[Fact]
 		public void Places_selected_tiles_into_collection()
 		{
-			var tile = new PlacedTile(new object(), "", 0);
+			var tile = new TileInstance(new object(), "", 0);
 			_tileSelector.SetSelectedTiles(new[] { tile, tile, tile, tile });
 			_sut.Generate();
 
@@ -74,7 +74,7 @@ namespace TLPPTC.Tests
 		[Fact]
 		public void Logs_that_select_cant_find_tile_and_continues()
 		{
-			var tile = new PlacedTile(new object(), "", 0);
+			var tile = new TileInstance(new object(), "", 0);
 			_tileSelector.SetSelectedTiles(new[] { tile, null, tile, tile });
 			_sut.Generate();
 
@@ -90,7 +90,7 @@ namespace TLPPTC.Tests
 		public void Transforms_coordinates_before_sending_to_block_factory()
 		{
 			_sut.NrOfTiles = 1;
-			_tileSelector.SetSelectedTiles(new[] { new PlacedTile(new object(), "", 0) });
+			_tileSelector.SetSelectedTiles(new[] { new TileInstance(new object(), "", 0) });
 			_coordinateTransformer.SetTransformation(x => new Vector3(1, 0, 0));
 
 			_sut.Generate();
