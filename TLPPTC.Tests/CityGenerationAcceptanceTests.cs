@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace TLPPTC.Tests
 			var tileTemplate2 = new {name = "Tile2"};
 
 			var twoDimensionalCollection = new TwoDimensionalCollection<PlacedTile>();
-			var sut = new CityGeneration(testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), random, twoDimensionalCollection), twoDimensionalCollection)
+			var sut = new CityGeneration(testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), random, twoDimensionalCollection), twoDimensionalCollection, new DoNothingLogger())
 			{
 				NrOfTiles = 2,
 				TileDimension = 2,
@@ -56,74 +55,6 @@ namespace TLPPTC.Tests
 			block2.Rotation.Should().Be(new Vector3(0, 180, 0));
 			block3.Rotation.Should().Be(new Vector3(0, 270, 0));
 			block4.Rotation.Should().Be(new Vector3(0, 270, 0));
-		}
-	}
-
-	public class TestTileSelector : ITileSelector
-	{
-		private Queue<PlacedTile> _tileQueue = new Queue<PlacedTile>();
-
-		public void SetTiles(IEnumerable<object> tiles)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void SetSelectedTiles(IEnumerable<PlacedTile> tiles)
-		{
-			_tileQueue = new Queue<PlacedTile>(tiles);
-		}
-
-		public PlacedTile Select(int x, int y)
-		{
-			return _tileQueue.Dequeue();
-		}
-	}
-
-	public class IncrementingRandom : IRandom
-	{
-		private int _incrementingValue;
-
-		public int Range(int min, int max)
-		{
-			return _incrementingValue++ % max;
-		}
-
-		public float Range(float min, float max)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-	public class SetRandom : IRandom
-	{
-		public int Value { get; set; }
-
-		public int Range(int min, int max)
-		{
-			return Value;
-		}
-
-		public float Range(float min, float max)
-		{
-			throw new NotImplementedException();
-		}
-	}
-
-	public class TestBlockFactory : IBlockFactory
-	{
-		public List<TileInfo> CreatedTiles = new List<TileInfo>();
-		public object Create(object tile, Vector3 position, Vector3 rotation)
-		{
-			var blockInfo = new TileInfo() { Tile = tile, Position = position, Rotation = rotation };
-			CreatedTiles.Add(blockInfo);
-			return blockInfo;
-		}
-
-		public class TileInfo
-		{
-			public Vector3 Position;
-			public Vector3 Rotation;
-			public object Tile;
 		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,21 +99,6 @@ namespace TLPPTC.Tests
 			var connections = _sut.GetCompleteConnectionsOriented(null, 0);
 
 			connections.Should().Be("11001100");
-		}
-	}
-
-	public class TestExitRetriever : IExitRetriever
-	{
-		private Func<string, object> _conditionFunc;
-
-		public void SetExitCondition(Func<string, object> conditionFunc)
-		{
-			_conditionFunc = conditionFunc;
-		}
-
-		public object GetExits(object tile, string name)
-		{
-			return _conditionFunc(name);
 		}
 	}
 }

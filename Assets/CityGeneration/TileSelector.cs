@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public interface ITileSelector
 {
@@ -43,7 +44,7 @@ public class TileSelector : ITileSelector
 		var requiredConnections = "";
 		int rotationToRequiredConnections = 0;
 
-		var leftTile = _placedTiles[x - 1, y];
+		var leftTile = _placedTiles[x + 1, y];
 		if (leftTile != null)
 		{
 			rotationToRequiredConnections = 1 + FlipRotation;
@@ -72,7 +73,10 @@ public class TileSelector : ITileSelector
 		}
 		var selectedTemplate = possibleTemplates[_random.Range(0, possibleTemplates.Count())];
 
-		return PlaceTile(x, y, selectedTemplate.Tile, selectedTemplate.Rotation + rotationToRequiredConnections);
+		int rotation = GetNormalizedRotation(selectedTemplate.Rotation + rotationToRequiredConnections);
+		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(selectedTemplate.Tile, rotation);
+		Debug.Log(string.Format("Tile at {0}, {1} is rotated {2} has connections {3} and required {4}", x, y, rotation, completeConnections, requiredConnections));
+		return new PlacedTile(selectedTemplate.Tile, completeConnections, rotation);
 	}
 
 	private string GetSideConnections(string allConnections, int rotation)
@@ -92,41 +96,4 @@ public class TileSelector : ITileSelector
 	{
 		return sideConnections.Substring(1, 1) + sideConnections.Substring(0, 1);
 	}
-
-	public PlacedTile PlaceTile(int x, int y, object tile, int rotation)
-	{
-		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(tile, rotation);
-		return new PlacedTile(tile, completeConnections, GetNormalizedRotation(rotation));
-	}
-}
-
-public class NoTileWithConnections : Exception
-{
-	public NoTileWithConnections(string connections) : base("No tile with following connections: " + connections)  { }
-}
-
-public class PlacedTile
-{
-	public object Tile { get; private set; }
-	public string AllConnections { get; private set; }
-	public int Rotation { get; private set; }
-
-	public PlacedTile(object tile, string allConnections, int rotation)
-	{
-		Tile = tile;
-		AllConnections = allConnections;
-		Rotation = rotation;
-	}
-}
-
-public class TileTemplate
-{
-	public TileTemplate(object tile, int rotation)
-	{
-		Tile = tile;
-		Rotation = rotation;
-	}
-
-	public object Tile { get; private set; }
-	public int Rotation { get; private set; }
 }

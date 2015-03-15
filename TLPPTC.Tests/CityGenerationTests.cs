@@ -10,6 +10,7 @@ namespace TLPPTC.Tests
 		private readonly TwoDimensionalCollection<PlacedTile> _collection;
 		private readonly TestBlockFactory _testBlockFactory;
 		private readonly TestTileSelector _tileSelector;
+		private readonly DoNothingLogger _logger;
 
 		public CityGenerationTests()
 		{
@@ -17,7 +18,8 @@ namespace TLPPTC.Tests
 			_tileSelector = new TestTileSelector();
 
 			_collection = new TwoDimensionalCollection<PlacedTile>();
-			_sut = new CityGeneration(_testBlockFactory, _tileSelector, _collection)
+			_logger = new DoNothingLogger();
+			_sut = new CityGeneration(_testBlockFactory, _tileSelector, _collection, _logger)
 			{
 				NrOfTiles = 2,
 				TileDimension = 2
@@ -63,6 +65,21 @@ namespace TLPPTC.Tests
 
 			_collection[0, 0].Should().NotBeNull();
 			_collection[1, 0].Should().NotBeNull();
+			_collection[0, 1].Should().NotBeNull();
+			_collection[1, 1].Should().NotBeNull();
+		}
+
+		[Fact]
+		public void Logs_that_select_cant_find_tile_and_continues()
+		{
+			var tile = new PlacedTile(new object(), "", 0);
+			_tileSelector.SetSelectedTiles(new[] { tile, null, tile, tile });
+			_sut.Generate();
+
+			_logger.Warnings.Should().HaveCount(1);
+
+			_collection[0, 0].Should().NotBeNull();
+			_collection[1, 0].Should().BeNull();
 			_collection[0, 1].Should().NotBeNull();
 			_collection[1, 1].Should().NotBeNull();
 		}
