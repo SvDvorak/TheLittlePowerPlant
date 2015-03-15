@@ -3,7 +3,6 @@ using System.Linq;
 using FluentAssertions;
 using UnityEngine;
 using Xunit;
-using Object = System.Object;
 
 namespace TLPPTC.Tests
 {
@@ -20,7 +19,7 @@ namespace TLPPTC.Tests
 			var tileTemplate2 = new {name = "Tile2"};
 
 			var twoDimensionalCollection = new TwoDimensionalCollection<PlacedTile>();
-			var sut = new CityGeneration(testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), random, twoDimensionalCollection), twoDimensionalCollection, new DoNothingLogger())
+			var sut = new CityGeneration(testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), random, twoDimensionalCollection), twoDimensionalCollection, new DoNothingLogger(), new TestCoordinateTransformer())
 			{
 				NrOfTiles = 2,
 				TileDimension = 2,
@@ -47,14 +46,14 @@ namespace TLPPTC.Tests
 			block4.Tile.Should().Be(tileTemplate1);
 
 			block1.Position.Should().Be(new Vector3(0, 0, 0));
-			block2.Position.Should().Be(new Vector3(0, 0, 2));
-			block3.Position.Should().Be(new Vector3(2, 0, 0));
-			block4.Position.Should().Be(new Vector3(2, 0, 2));
+			block2.Position.Should().Be(new Vector3(2, 0, 0));
+			block3.Position.Should().Be(new Vector3(0, 2, 0));
+			block4.Position.Should().Be(new Vector3(2, 2, 0));
 
 			block1.Rotation.Should().Be(new Vector3(0, 0, 0));
-			block2.Rotation.Should().Be(new Vector3(0, 180, 0));
-			block3.Rotation.Should().Be(new Vector3(0, 270, 0));
-			block4.Rotation.Should().Be(new Vector3(0, 270, 0));
+			block2.Rotation.Should().Be(new Vector3(0, 0, 0));
+			block3.Rotation.Should().Be(new Vector3(0, 180, 0));
+			block4.Rotation.Should().Be(new Vector3(0, 180, 0));
 		}
 	}
 }

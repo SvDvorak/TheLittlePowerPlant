@@ -21,6 +21,8 @@ public class Generation : MonoBehaviour, IBlockFactory
 	private void Start()
 	{
 		var collection = new TwoDimensionalCollection<PlacedTile>();
+		var coordinateTransformer = new Unity3DCoordinateTransformer();
+		coordinateTransformer.SetOrigo(new Vector3(-NrOfTiles, 0));
 		_cityGeneration = new CityGeneration(
 			this,
 			new TileSelector(
@@ -28,11 +30,12 @@ public class Generation : MonoBehaviour, IBlockFactory
 				new Random(),
 				collection),
 			collection,
-			new UnityLogger());
+			new UnityLogger(),
+			coordinateTransformer);
 
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
-		_cityGeneration.SetTiles(new[] { BlockPrefab1, BlockPrefab2, BlockPrefab3, BlockPrefab4 });
+		_cityGeneration.SetTiles(new[] { BlockPrefab1 });
 		_cityGeneration.Generate();
 	}
 
@@ -45,22 +48,5 @@ public class Generation : MonoBehaviour, IBlockFactory
 
 	private void CreateNewBlocks()
 	{
-	}
-}
-
-internal class UnityLogger : ILogger
-{
-	public void LogWarning(string message)
-	{
-		Debug.LogWarning(message);
-	}
-}
-
-public class UnityConnectionsRetriever : IExitRetriever
-{
-	public object GetExits(object tile, string name)
-	{
-		var gameObject = tile as GameObject;
-		return gameObject.transform.FindChild(name);
 	}
 }

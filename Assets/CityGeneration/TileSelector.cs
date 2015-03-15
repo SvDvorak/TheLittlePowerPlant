@@ -44,7 +44,7 @@ public class TileSelector : ITileSelector
 		var requiredConnections = "";
 		int rotationToRequiredConnections = 0;
 
-		var leftTile = _placedTiles[x + 1, y];
+		var leftTile = _placedTiles[x - 1, y];
 		if (leftTile != null)
 		{
 			rotationToRequiredConnections = 1 + FlipRotation;
@@ -75,7 +75,6 @@ public class TileSelector : ITileSelector
 
 		int rotation = GetNormalizedRotation(selectedTemplate.Rotation + rotationToRequiredConnections);
 		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(selectedTemplate.Tile, rotation);
-		Debug.Log(string.Format("Tile at {0}, {1} is rotated {2} has connections {3} and required {4}", x, y, rotation, completeConnections, requiredConnections));
 		return new PlacedTile(selectedTemplate.Tile, completeConnections, rotation);
 	}
 

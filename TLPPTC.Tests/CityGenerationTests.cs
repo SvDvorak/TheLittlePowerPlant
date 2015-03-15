@@ -11,6 +11,7 @@ namespace TLPPTC.Tests
 		private readonly TestBlockFactory _testBlockFactory;
 		private readonly TestTileSelector _tileSelector;
 		private readonly DoNothingLogger _logger;
+		private readonly TestCoordinateTransformer _coordinateTransformer;
 
 		public CityGenerationTests()
 		{
@@ -19,7 +20,8 @@ namespace TLPPTC.Tests
 
 			_collection = new TwoDimensionalCollection<PlacedTile>();
 			_logger = new DoNothingLogger();
-			_sut = new CityGeneration(_testBlockFactory, _tileSelector, _collection, _logger)
+			_coordinateTransformer = new TestCoordinateTransformer();
+			_sut = new CityGeneration(_testBlockFactory, _tileSelector, _collection, _logger, _coordinateTransformer)
 			{
 				NrOfTiles = 2,
 				TileDimension = 2
@@ -46,9 +48,9 @@ namespace TLPPTC.Tests
 			var block4 = _testBlockFactory.CreatedTiles[3];
 
 			block1.Position.Should().Be(new Vector3(0, 0, 0));
-			block2.Position.Should().Be(new Vector3(0, 0, 2));
-			block3.Position.Should().Be(new Vector3(2, 0, 0));
-			block4.Position.Should().Be(new Vector3(2, 0, 2));
+			block2.Position.Should().Be(new Vector3(2, 0, 0));
+			block3.Position.Should().Be(new Vector3(0, 2, 0));
+			block4.Position.Should().Be(new Vector3(2, 2, 0));
 
 			block1.Rotation.Should().Be(new Vector3(0, 0, 0));
 			block2.Rotation.Should().Be(new Vector3(0, 90, 0));
@@ -82,6 +84,18 @@ namespace TLPPTC.Tests
 			_collection[1, 0].Should().BeNull();
 			_collection[0, 1].Should().NotBeNull();
 			_collection[1, 1].Should().NotBeNull();
+		}
+
+		[Fact]
+		public void Transforms_coordinates_before_sending_to_block_factory()
+		{
+			_sut.NrOfTiles = 1;
+			_tileSelector.SetSelectedTiles(new[] { new PlacedTile(new object(), "", 0) });
+			_coordinateTransformer.SetTransformation(x => new Vector3(1, 0, 0));
+
+			_sut.Generate();
+
+			_testBlockFactory.CreatedTiles[0].Position.Should().Be(new Vector3(1, 0, 0));
 		}
 	}
 }
