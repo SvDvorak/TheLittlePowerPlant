@@ -35,7 +35,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
-		_cityGeneration.SetTiles(new[] { BlockPrefab1, BlockPrefab2 });
+		_cityGeneration.SetTiles(new[] { BlockPrefab1, BlockPrefab2, BlockPrefab3 });
 		_cityGeneration.Generate();
 	}
 
