@@ -74,6 +74,7 @@ ModelImporter:
     100132: Mud_001
     100134: Mud_002
     100136: CutGrass_001
+    100138: DarkGrass
     400000: BlueSkyscraper
     400002: BrownSkyscraper
     400004: ElgroComplex
@@ -143,6 +144,7 @@ ModelImporter:
     400132: Mud_001
     400134: Mud_002
     400136: CutGrass_001
+    400138: DarkGrass
     2300000: BlueSkyscraper
     2300002: BrownSkyscraper
     2300004: ElgroComplex
@@ -211,6 +213,7 @@ ModelImporter:
     2300130: Mud_001
     2300132: Mud_002
     2300134: CutGrass_001
+    2300136: DarkGrass
     3300000: BlueSkyscraper
     3300002: BrownSkyscraper
     3300004: ElgroComplex
@@ -279,6 +282,7 @@ ModelImporter:
     3300130: Mud_001
     3300132: Mud_002
     3300134: CutGrass_001
+    3300136: DarkGrass
     4300000: BlueSkyscraper
     4300002: Icosphere_014
     4300004: Icosphere_013
@@ -347,6 +351,7 @@ ModelImporter:
     4300130: Mud_002
     4300132: Mud_001
     4300134: CutGrass_001
+    4300136: DarkGrass
     7400000: Default Take
     9500000: //RootNode
   materials:
