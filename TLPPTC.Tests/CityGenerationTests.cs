@@ -39,7 +39,7 @@ namespace TLPPTC.Tests
 				new TileInstance(new object(), "3456", 3)
 			};
 			_tileAligner.SetAlignedTiles(selectTiles);
-			_sut.Generate();
+			_sut.Generate(Vector3.zero);
 
 			_testBlockFactory.CreatedTiles.Count.Should().Be(4);
 			var block1 = _testBlockFactory.CreatedTiles[0];
@@ -63,7 +63,7 @@ namespace TLPPTC.Tests
 		{
 			var tile = new TileInstance(new object(), "", 0);
 			_tileAligner.SetAlignedTiles(new[] { tile, tile, tile, tile });
-			_sut.Generate();
+			_sut.Generate(Vector3.zero);
 
 			_collection[0, 0].Should().NotBeNull();
 			_collection[1, 0].Should().NotBeNull();
@@ -76,7 +76,7 @@ namespace TLPPTC.Tests
 		{
 			var tile = new TileInstance(new object(), "", 0);
 			_tileAligner.SetAlignedTiles(new[] { tile, null, tile, tile });
-			_sut.Generate();
+			_sut.Generate(Vector3.zero);
 
 			_logger.Warnings.Should().HaveCount(1);
 
@@ -93,7 +93,19 @@ namespace TLPPTC.Tests
 			_tileAligner.SetAlignedTiles(new[] { new TileInstance(new object(), "", 0) });
 			_coordinateTransformer.SetTransformation(x => new Vector3(1, 0, 0));
 
-			_sut.Generate();
+			_sut.Generate(Vector3.zero);
+
+			_testBlockFactory.CreatedTiles[0].Position.Should().Be(new Vector3(1, 0, 0));
+		}
+
+		[Fact]
+		public void Places_tiles_according_to_center_point()
+		{
+			_sut.NrOfTiles = 1;
+
+			_tileAligner.SetAlignedTiles(new[] { new TileInstance(new object(), "", 0) });
+
+			_sut.Generate(new Vector3(1, 0, 0));
 
 			_testBlockFactory.CreatedTiles[0].Position.Should().Be(new Vector3(1, 0, 0));
 		}

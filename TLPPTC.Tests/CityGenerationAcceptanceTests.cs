@@ -9,7 +9,7 @@ namespace TLPPTC.Tests
 	public class CityGenerationAcceptanceTests
 	{
 		[Fact]
-		public void Adds_blocks_that_fit_with_surrounding_ones()
+		public void Adds_blocks_along_center_point_that_fit_with_surrounding_ones()
 		{
 			var random = new IncrementingRandom();
 			var testBlockFactory = new TestBlockFactory();
@@ -33,7 +33,7 @@ namespace TLPPTC.Tests
 					tileTemplate2
 				});
 
-			sut.Generate();
+			sut.Generate(new Vector3(1, 1, 0));
 
 			var block1 = testBlockFactory.CreatedTiles[0];
 			var block2 = testBlockFactory.CreatedTiles[1];
@@ -45,10 +45,10 @@ namespace TLPPTC.Tests
 			block3.Tile.Should().Be(tileTemplate2);
 			block4.Tile.Should().Be(tileTemplate1);
 
-			block1.Position.Should().Be(new Vector3(0, 0, 0));
-			block2.Position.Should().Be(new Vector3(2, 0, 0));
-			block3.Position.Should().Be(new Vector3(0, 2, 0));
-			block4.Position.Should().Be(new Vector3(2, 2, 0));
+			block1.Position.Should().Be(new Vector3(1, 1, 0));
+			block2.Position.Should().Be(new Vector3(3, 1, 0));
+			block3.Position.Should().Be(new Vector3(1, 3, 0));
+			block4.Position.Should().Be(new Vector3(3, 3, 0));
 
 			block1.Rotation.Should().Be(new Vector3(0, 0, 0));
 			block2.Rotation.Should().Be(new Vector3(0, 0, 0));

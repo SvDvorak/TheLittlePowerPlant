@@ -28,7 +28,7 @@ public class CityGeneration
 		_transformer = transformer;
 	}
 
-	public void Generate()
+	public void Generate(Vector3 centerPoint)
 	{
 		for (int y = 0; y < NrOfTiles; y++)
 		{
@@ -38,7 +38,8 @@ public class CityGeneration
 				{
 					var tileTemplate = _tileAligner.GetAlignedTile(x, y);
 					_placedTiles[x, y] = tileTemplate;
-					_blockFactory.Create(tileTemplate.Tile, _transformer.Transform(new Vector3(x * TileDimension, y * TileDimension, 0)), new Vector3(0, 90 * tileTemplate.Rotation));
+					var position = new Vector3(x * TileDimension + (int)centerPoint.x, y * TileDimension + (int)centerPoint.y, 0);
+					_blockFactory.Create(tileTemplate.Tile, _transformer.Transform(position), new Vector3(0, 90 * tileTemplate.Rotation));
 				}
 				catch (NoTileWithConnections exception)
 				{
