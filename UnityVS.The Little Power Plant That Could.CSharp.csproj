@@ -69,7 +69,7 @@
     <Compile Include="Assets\CityGeneration\NoTileWithConnections.cs" />
     <Compile Include="Assets\CityGeneration\TileInstance.cs" />
     <Compile Include="Assets\CityGeneration\Random.cs" />
-    <Compile Include="Assets\CityGeneration\TileSelector.cs" />
+    <Compile Include="Assets\CityGeneration\TileAligner.cs" />
     <Compile Include="Assets\CityGeneration\TileTemplate.cs" />
     <Compile Include="Assets\CityGeneration\TwoDimensionalCollection.cs" />
     <Compile Include="Assets\CityGeneration\Unity3DCoordinateTransformer.cs" />

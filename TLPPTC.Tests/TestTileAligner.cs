@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TLPPTC.Tests
 {
-	public class TestTileSelector : ITileSelector
+	public class TestTileAligner : ITileAligner
 	{
 		private Queue<TileInstance> _tileQueue = new Queue<TileInstance>();
 
@@ -12,12 +12,12 @@ namespace TLPPTC.Tests
 			throw new NotImplementedException();
 		}
 
-		public void SetSelectedTiles(IEnumerable<TileInstance> tiles)
+		public void SetAlignedTiles(IEnumerable<TileInstance> tiles)
 		{
 			_tileQueue = new Queue<TileInstance>(tiles);
 		}
 
-		public TileInstance Select(int x, int y)
+		public TileInstance GetAlignedTile(int x, int y)
 		{
 			var placedTile = _tileQueue.Dequeue();
 			if (placedTile == null)

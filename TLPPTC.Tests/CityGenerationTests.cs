@@ -9,19 +9,19 @@ namespace TLPPTC.Tests
 		private readonly CityGeneration _sut;
 		private readonly TwoDimensionalCollection<TileInstance> _collection;
 		private readonly TestBlockFactory _testBlockFactory;
-		private readonly TestTileSelector _tileSelector;
+		private readonly TestTileAligner _tileAligner;
 		private readonly DoNothingLogger _logger;
 		private readonly TestCoordinateTransformer _coordinateTransformer;
 
 		public CityGenerationTests()
 		{
 			_testBlockFactory = new TestBlockFactory();
-			_tileSelector = new TestTileSelector();
+			_tileAligner = new TestTileAligner();
 
 			_collection = new TwoDimensionalCollection<TileInstance>();
 			_logger = new DoNothingLogger();
 			_coordinateTransformer = new TestCoordinateTransformer();
-			_sut = new CityGeneration(_testBlockFactory, _tileSelector, _collection, _logger, _coordinateTransformer)
+			_sut = new CityGeneration(_testBlockFactory, _tileAligner, _collection, _logger, _coordinateTransformer)
 			{
 				NrOfTiles = 2,
 				TileDimension = 2
@@ -38,7 +38,7 @@ namespace TLPPTC.Tests
 				new TileInstance(new object(), "9012", 1),
 				new TileInstance(new object(), "3456", 3)
 			};
-			_tileSelector.SetSelectedTiles(selectTiles);
+			_tileAligner.SetAlignedTiles(selectTiles);
 			_sut.Generate();
 
 			_testBlockFactory.CreatedTiles.Count.Should().Be(4);
@@ -62,7 +62,7 @@ namespace TLPPTC.Tests
 		public void Places_selected_tiles_into_collection()
 		{
 			var tile = new TileInstance(new object(), "", 0);
-			_tileSelector.SetSelectedTiles(new[] { tile, tile, tile, tile });
+			_tileAligner.SetAlignedTiles(new[] { tile, tile, tile, tile });
 			_sut.Generate();
 
 			_collection[0, 0].Should().NotBeNull();
@@ -75,7 +75,7 @@ namespace TLPPTC.Tests
 		public void Logs_that_select_cant_find_tile_and_continues()
 		{
 			var tile = new TileInstance(new object(), "", 0);
-			_tileSelector.SetSelectedTiles(new[] { tile, null, tile, tile });
+			_tileAligner.SetAlignedTiles(new[] { tile, null, tile, tile });
 			_sut.Generate();
 
 			_logger.Warnings.Should().HaveCount(1);
@@ -90,7 +90,7 @@ namespace TLPPTC.Tests
 		public void Transforms_coordinates_before_sending_to_block_factory()
 		{
 			_sut.NrOfTiles = 1;
-			_tileSelector.SetSelectedTiles(new[] { new TileInstance(new object(), "", 0) });
+			_tileAligner.SetAlignedTiles(new[] { new TileInstance(new object(), "", 0) });
 			_coordinateTransformer.SetTransformation(x => new Vector3(1, 0, 0));
 
 			_sut.Generate();

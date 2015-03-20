@@ -4,29 +4,29 @@ using Xunit;
 
 namespace TLPPTC.Tests
 {
-	public class TileSelectorTests
+	public class TileAlignerTests
 	{
-		private readonly TileSelector _sut;
+		private readonly TileAligner _sut;
 		private readonly TestConnectionsFinder _connectionsFinder;
 		private readonly SetRandom _setRandom;
 		private readonly TwoDimensionalCollection<TileInstance> _placedTiles;
 
-		public TileSelectorTests()
+		public TileAlignerTests()
 		{
 			_connectionsFinder = new TestConnectionsFinder();
 			_setRandom = new SetRandom();
 			_placedTiles = new TwoDimensionalCollection<TileInstance>();
-			_sut = new TileSelector(_connectionsFinder, _setRandom, _placedTiles);
+			_sut = new TileAligner(_connectionsFinder, _setRandom, _placedTiles);
 		}
 
 		[Fact]
-		public void Returns_tile_from_set_when_selecting()
+		public void Returns_tile_from_set_when_aligning()
 		{
 			var expectedTile = new object();
 			_connectionsFinder.SetConnectionSet(expectedTile, new ConnectionSet("00110100", 0));
 			_sut.SetTiles(expectedTile.AsList());
 
-			var actualTile = _sut.Select(0, 0);
+			var actualTile = _sut.GetAlignedTile(0, 0);
 
 			actualTile.Tile.Should().Be(expectedTile);
 		}
@@ -46,13 +46,13 @@ namespace TLPPTC.Tests
 			_connectionsFinder.SetConnectionSet(tile3, new ConnectionSet("1100", 2));
 			_sut.SetTiles(new[] { tile1, tile2, tile3 });
 
-			var placedTile1 = _sut.Select(0, 0);
+			var placedTile1 = _sut.GetAlignedTile(0, 0);
 			_placedTiles[0, 0] = placedTile1;
-			var placedTile2 = _sut.Select(1, 0);
+			var placedTile2 = _sut.GetAlignedTile(1, 0);
 			_placedTiles[1, 0] = placedTile2;
-			var placedTile3 = _sut.Select(0, 1);
+			var placedTile3 = _sut.GetAlignedTile(0, 1);
 			_placedTiles[0, 1] = placedTile3;
-			var placedTile4 = _sut.Select(1, 1);
+			var placedTile4 = _sut.GetAlignedTile(1, 1);
 			_placedTiles[1, 0] = placedTile4;
 
 			placedTile1.Tile.Should().Be(tile1);
@@ -83,8 +83,8 @@ namespace TLPPTC.Tests
 
 			_setRandom.Value = 1;
 
-			var placedTile1 = _sut.Select(0, 0);
-			var placedTile2 = _sut.Select(1, 0);
+			var placedTile1 = _sut.GetAlignedTile(0, 0);
+			var placedTile2 = _sut.GetAlignedTile(1, 0);
 
 			placedTile1.Tile.Should().Be(tile2);
 			placedTile2.Tile.Should().Be(tile2);
@@ -98,9 +98,9 @@ namespace TLPPTC.Tests
 			_connectionsFinder.SetConnectionSet(tile1, new ConnectionSet("00", 0));
 			_sut.SetTiles(new[] { tile1 });
 
-			_placedTiles[0, 0] = _sut.Select(0, 0);
+			_placedTiles[0, 0] = _sut.GetAlignedTile(0, 0);
 
-			Action invalidSelect = () => _sut.Select(1, 0);
+			Action invalidSelect = () => _sut.GetAlignedTile(1, 0);
 			invalidSelect.ShouldThrow<NoTileWithConnections>();
 		}
 	}

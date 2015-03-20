@@ -19,7 +19,7 @@ namespace TLPPTC.Tests
 			var tileTemplate2 = new {name = "Tile2"};
 
 			var twoDimensionalCollection = new TwoDimensionalCollection<TileInstance>();
-			var sut = new CityGeneration(testBlockFactory, new TileSelector(new ConnectionsFinder(exitRetriever), random, twoDimensionalCollection), twoDimensionalCollection, new DoNothingLogger(), new TestCoordinateTransformer())
+			var sut = new CityGeneration(testBlockFactory, new TileAligner(new ConnectionsFinder(exitRetriever), random, twoDimensionalCollection), twoDimensionalCollection, new DoNothingLogger(), new TestCoordinateTransformer())
 			{
 				NrOfTiles = 2,
 				TileDimension = 2,

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public interface ITileSelector
+public interface ITileAligner
 {
 	void SetTiles(IEnumerable<object> tiles);
-	TileInstance Select(int x, int y);
+	TileInstance GetAlignedTile(int x, int y);
 }
 
-public class TileSelector : ITileSelector
+public class TileAligner : ITileAligner
 {
 	private readonly IConnectionsFinder _connectionsFinder;
 	private readonly IRandom _random;
@@ -18,7 +18,7 @@ public class TileSelector : ITileSelector
 
 	private const int FlipRotation = 2;
 
-	public TileSelector(
+	public TileAligner(
 		IConnectionsFinder connectionsFinder,
 		IRandom random,
 		ITwoDimensionalCollection<TileInstance> placedTiles)
@@ -42,7 +42,7 @@ public class TileSelector : ITileSelector
 		}
 	}
 
-	public TileInstance Select(int x, int y)
+	public TileInstance GetAlignedTile(int x, int y)
 	{
 		var requiredConnections = "";
 		int rotationToRequiredConnections = 0;

@@ -27,7 +27,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 		coordinateTransformer.SetOrigo(new Vector3(-NrOfTiles, 0));
 		_cityGeneration = new CityGeneration(
 			this,
-			new TileSelector(
+			new TileAligner(
 				new ConnectionsFinder(new UnityConnectionsRetriever()),
 				new Random(),
 				collection),

@@ -79,8 +79,8 @@
     <Compile Include="TestConnectionsFinder.cs" />
     <Compile Include="TestCoordinateTransformer.cs" />
     <Compile Include="TestExitRetriever.cs" />
-    <Compile Include="TestTileSelector.cs" />
-    <Compile Include="TileSelectorTests.cs" />
+    <Compile Include="TestTileAligner.cs" />
+    <Compile Include="TileAlignerTests.cs" />
     <Compile Include="TwoDimensionalCollectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
