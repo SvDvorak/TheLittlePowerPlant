@@ -647,6 +647,8 @@ ModelImporter:
     101278: TreeFir_proxy_017
     101280: TreeFir_proxy_018
     101282: TreeFir_proxy_019
+    101284: Bush
+    101286: CutGrass_0
     400000: BezierCurve
     400002: BezierCurve_001
     400004: //RootNode
@@ -1289,6 +1291,8 @@ ModelImporter:
     401278: TreeFir_proxy_017
     401280: TreeFir_proxy_018
     401282: TreeFir_proxy_019
+    401284: Bush
+    401286: CutGrass_0
     2300000: BezierCurve
     2300002: BezierCurve_001
     2300004: Circle
@@ -1920,6 +1924,8 @@ ModelImporter:
     2301256: TreeFir_proxy_017
     2301258: TreeFir_proxy_018
     2301260: TreeFir_proxy_019
+    2301262: Bush
+    2301264: CutGrass_0
     3300000: BezierCurve
     3300002: BezierCurve_001
     3300004: Circle
@@ -2551,6 +2557,8 @@ ModelImporter:
     3301256: TreeFir_proxy_017
     3301258: TreeFir_proxy_018
     3301260: TreeFir_proxy_019
+    3301262: Bush
+    3301264: CutGrass_0
     4300000: Cone_164
     4300002: Cone_163
     4300004: Cone_162
@@ -3182,6 +3190,8 @@ ModelImporter:
     4301256: Sidewalk
     4301258: ThickGrassFormat
     4301260: CutGrass
+    4301262: CutGrass_0
+    4301264: Bush
     7400000: Default Take
     9500000: //RootNode
   materials:

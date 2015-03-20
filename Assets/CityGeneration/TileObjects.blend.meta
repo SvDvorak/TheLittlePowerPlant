@@ -65,6 +65,15 @@ ModelImporter:
     100114: Mud
     100116: Sand
     100118: Goal
+    100120: Garage
+    100122: Municipal
+    100124: Skyscraper
+    100126: Sidewalk_001
+    100128: Bench
+    100130: Fence
+    100132: Mud_001
+    100134: Mud_002
+    100136: CutGrass_001
     400000: BlueSkyscraper
     400002: BrownSkyscraper
     400004: ElgroComplex
@@ -125,6 +134,15 @@ ModelImporter:
     400114: Mud
     400116: Sand
     400118: Goal
+    400120: Garage
+    400122: Municipal
+    400124: Skyscraper
+    400126: Sidewalk_001
+    400128: Bench
+    400130: Fence
+    400132: Mud_001
+    400134: Mud_002
+    400136: CutGrass_001
     2300000: BlueSkyscraper
     2300002: BrownSkyscraper
     2300004: ElgroComplex
@@ -184,6 +202,15 @@ ModelImporter:
     2300112: Mud
     2300114: Sand
     2300116: Goal
+    2300118: Garage
+    2300120: Municipal
+    2300122: Skyscraper
+    2300124: Sidewalk_001
+    2300126: Bench
+    2300128: Fence
+    2300130: Mud_001
+    2300132: Mud_002
+    2300134: CutGrass_001
     3300000: BlueSkyscraper
     3300002: BrownSkyscraper
     3300004: ElgroComplex
@@ -243,6 +270,15 @@ ModelImporter:
     3300112: Mud
     3300114: Sand
     3300116: Goal
+    3300118: Garage
+    3300120: Municipal
+    3300122: Skyscraper
+    3300124: Sidewalk_001
+    3300126: Bench
+    3300128: Fence
+    3300130: Mud_001
+    3300132: Mud_002
+    3300134: CutGrass_001
     4300000: BlueSkyscraper
     4300002: Icosphere_014
     4300004: Icosphere_013
@@ -302,6 +338,15 @@ ModelImporter:
     4300112: Sand
     4300114: Mud
     4300116: Goal
+    4300118: Garage
+    4300120: Skyscraper
+    4300122: Municipal
+    4300124: Sidewalk_001
+    4300126: Bench
+    4300128: Fence
+    4300130: Mud_002
+    4300132: Mud_001
+    4300134: CutGrass_001
     7400000: Default Take
     9500000: //RootNode
   materials:
