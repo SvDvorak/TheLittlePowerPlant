@@ -50,7 +50,7 @@ namespace TLPPTC.Tests
 
 			block1.Tile.Should().Be(tileTemplate2);
 			block2.Tile.Should().Be(tileTemplate2);
-			block3.Tile.Should().Be(tileTemplate2);
+			block3.Tile.Should().Be(tileTemplate1);
 			block4.Tile.Should().Be(tileTemplate2);
 			block5.Tile.Should().Be(tileTemplate1);
 
@@ -62,9 +62,9 @@ namespace TLPPTC.Tests
 
 			block1.Rotation.Should().Be(new Vector3(0, 0, 0));
 			block2.Rotation.Should().Be(new Vector3(0, 180, 0));
-			block3.Rotation.Should().Be(new Vector3(0, 0, 0));
-			block4.Rotation.Should().Be(new Vector3(0, 180, 0));
-			block5.Rotation.Should().Be(new Vector3(0, 90, 0));
+			block3.Rotation.Should().Be(new Vector3(0, 180, 0));
+			block4.Rotation.Should().Be(new Vector3(0, 0, 0));
+			block5.Rotation.Should().Be(new Vector3(0, 0, 0));
 		}
 
 		[Fact]

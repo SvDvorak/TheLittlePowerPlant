@@ -518,6 +518,105 @@ ModelImporter:
     4300192: House_001_proxy
     4300194: House_003_proxy
     4300196: CutGrass_proxy
+    6400000: Bench_proxy
+    6400002: Bench_proxy_001
+    6400004: Bench_proxy_002
+    6400006: Bench_proxy_003
+    6400008: Bench_proxy_004
+    6400010: Bench_proxy_005
+    6400012: BlueSkyscraper_proxy
+    6400014: BrownSkyscraper_proxy
+    6400016: BrownSkyscraper_proxy_001
+    6400018: Bush_proxy
+    6400020: Bush_proxy_001
+    6400022: CarBlue_proxy
+    6400024: CarBlue_proxy_001
+    6400026: CarBlue_proxy_002
+    6400028: CarBlue_proxy_003
+    6400030: CarBlue_proxy_004
+    6400032: CarGreen_proxy
+    6400034: CarGreen_proxy_001
+    6400036: CarRed_proxy
+    6400038: CarRed_proxy_001
+    6400040: CarRed_proxy_002
+    6400042: CarRed_proxy_003
+    6400044: CarRed_proxy_004
+    6400046: CarRed_proxy_005
+    6400048: CarRed_proxy_006
+    6400050: CarRed_proxy_007
+    6400052: CarYellow_proxy
+    6400054: CarYellow_proxy_001
+    6400056: CarYellow_proxy_002
+    6400058: CarYellow_proxy_003
+    6400060: CarYellow_proxy_004
+    6400062: CarYellow_proxy_005
+    6400064: Cube
+    6400066: Cube_001
+    6400068: Cube_002
+    6400070: Cube_003
+    6400072: Cube_004
+    6400074: Cube_005
+    6400076: Cube_006
+    6400078: Cube_007
+    6400080: CutGrass_proxy
+    6400082: House_001_proxy
+    6400084: House_003_proxy
+    6400086: House_003_proxy_001
+    6400088: House_003_proxy_002
+    6400090: House_003_proxy_003
+    6400092: LeafyTree_001_proxy
+    6400094: LeafyTree_001_proxy_001
+    6400096: LeafyTree_001_proxy_002
+    6400098: LeafyTree_002_proxy
+    6400100: LeafyTree_002_proxy_001
+    6400102: LeafyTree_002_proxy_002
+    6400104: LeafyTree_002_proxy_003
+    6400106: LeafyTree_002_proxy_004
+    6400108: LeafyTree_002_proxy_005
+    6400110: LeafyTree_003_proxy
+    6400112: LeafyTree_003_proxy_001
+    6400114: LeafyTree_003_proxy_002
+    6400116: LeafyTree_003_proxy_003
+    6400118: LeafyTree_003_proxy_004
+    6400120: LeafyTree_003_proxy_005
+    6400122: LeafyTree_003_proxy_006
+    6400124: LeafyTree_003_proxy_007
+    6400126: LeafyTree_003_proxy_008
+    6400128: LeafyTree_003_proxy_009
+    6400130: LeafyTree_004_proxy
+    6400132: LeafyTree_004_proxy_001
+    6400134: LeafyTree_004_proxy_002
+    6400136: LeafyTree_004_proxy_003
+    6400138: LeafyTree_004_proxy_004
+    6400140: LeafyTree_004_proxy_005
+    6400142: LeafyTree_004_proxy_006
+    6400144: LeafyTree_004_proxy_007
+    6400146: LeafyTree_004_proxy_008
+    6400148: LeafyTree_proxy
+    6400150: LeafyTree_proxy_001
+    6400152: LeafyTree_proxy_002
+    6400154: LeafyTree_proxy_003
+    6400156: LeafyTree_proxy_004
+    6400158: LeafyTree_proxy_005
+    6400160: LeafyTree_proxy_006
+    6400162: LeafyTree_proxy_007
+    6400164: NurbsPath
+    6400166: NurbsPath_001
+    6400168: NurbsPath_002
+    6400170: NurbsPath_003
+    6400172: NurbsPath_004
+    6400174: NurbsPath_005
+    6400176: NurbsPath_006
+    6400178: Rock_001_proxy
+    6400180: Rock_proxy
+    6400182: Rock_proxy_001
+    6400184: Rock_proxy_002
+    6400186: RowHouse_proxy
+    6400188: RowHouse_proxy_001
+    6400190: Slide_proxy
+    6400192: Slide_proxy_002
+    6400194: SpinningWheel_proxy
+    6400196: ThickGrassFormat
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -541,7 +640,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

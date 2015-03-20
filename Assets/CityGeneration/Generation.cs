@@ -11,6 +11,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 	public GameObject BlockPrefab4;
 	public GameObject BlockPrefab5;
 	public GameObject BlockPrefab6;
+	public int NrOfTiles;
 	public int TileDimension;
 	public GameObject FollowObject;
 
@@ -36,6 +37,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 	{
 		var collection = new TwoDimensionalCollection<TileInstance>();
 		var coordinateTransformer = new Unity3DCoordinateTransformer();
+		coordinateTransformer.SetOrigo(new Vector3(-NrOfTiles, 0));
 		_cityGeneration = new CityGeneration(
 			this,
 			new TileAligner(
@@ -47,14 +49,14 @@ public class Generation : MonoBehaviour, IBlockFactory
 			coordinateTransformer);
 
 		_cityGeneration.TileDimension = TileDimension;
-		_cityGeneration.NrOfTiles = 0;
+		_cityGeneration.NrOfTiles = NrOfTiles;
 		_cityGeneration.SetTiles(new[] { BlockPrefab1, BlockPrefab2, BlockPrefab3, BlockPrefab4, BlockPrefab5, BlockPrefab6 });
 	}
 
 	private void Update()
 	{
 		_cityGeneration.TileDimension = TileDimension;
-		_cityGeneration.NrOfTiles = (int)FollowObject.transform.localScale.x;
+		_cityGeneration.NrOfTiles = NrOfTiles;
 		_cityGeneration.Generate(FollowObject.transform.position);
 	}
 }

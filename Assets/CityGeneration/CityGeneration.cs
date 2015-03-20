@@ -53,9 +53,11 @@ public class CityGeneration
 		{
 			for (var x = -NrOfTiles - 1; x < NrOfTiles; x++)
 			{
-				if(IsInside(x, y) && _placedTiles[x + (int)tileCenter.x, y + (int)tileCenter.y] == null)
+				var centerAdjustedX = x + (int)tileCenter.x;
+				var centerAdjustedY = y + (int)tileCenter.y;
+				if(IsInside(x, y) && _placedTiles[centerAdjustedX, centerAdjustedY] == null)
 				{
-					TryPlaceTile(x, y, tileCenter);
+					TryPlaceTile(centerAdjustedX, centerAdjustedY);
 				}
 			}
 		}
@@ -66,18 +68,13 @@ public class CityGeneration
 		return Math.Abs(x) + Math.Abs(y) < NrOfTiles;
 	}
 
-	private float GetInTileDimension(float value)
-	{
-		return (float)Math.Round(value/TileDimension) * TileDimension;
-	}
-
-	private void TryPlaceTile(int x, int y, Vector3 centerPoint)
+	private void TryPlaceTile(int x, int y)
 	{
 		try
 		{
-			var tileTemplate = _tileAligner.GetAlignedTile(x, y); //WARNING WRONG! x & y pos
-			_placedTiles[x + (int)centerPoint.x, y + (int)centerPoint.y] = tileTemplate;
-			var position = new Vector3((x + (int) centerPoint.x)*TileDimension, (y + (int)centerPoint.y)* TileDimension, 0);
+			var tileTemplate = _tileAligner.GetAlignedTile(x, y);
+			_placedTiles[x, y] = tileTemplate;
+			var position = new Vector3(x*TileDimension, y* TileDimension, 0);
 			_blockFactory.Create(tileTemplate.Tile, _transformer.Transform(position), new Vector3(0, 90*tileTemplate.Rotation));
 		}
 		catch (NoTileWithConnections exception)

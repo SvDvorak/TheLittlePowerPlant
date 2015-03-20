@@ -18,7 +18,7 @@ public class Strafe : MonoBehaviour
 	
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown(1))
+		if (Input.GetMouseButtonDown(0))
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
@@ -28,8 +28,7 @@ public class Strafe : MonoBehaviour
 			}
 		}
 
-		_currentDirectionX = Mathf.MoveTowards(_currentDirectionX, Mathf.Clamp(-_targetVector.x, -1, 1), DirectionChangeSpeedPerSecond*Time.deltaTime);
-		Debug.Log(_currentDirectionX);
+		_currentDirectionX = Mathf.MoveTowards(_currentDirectionX, Mathf.Clamp(-_targetVector.x/15, -1, 1), DirectionChangeSpeedPerSecond*Time.deltaTime);
 		_animator.SetFloat("Strafe", _currentDirectionX);
 		var movement = -Vector3.forward*MovementSpeed - new Vector3(_currentDirectionX, 0, 0)*StrafeSpeed;
 		transform.position += movement*Time.deltaTime;
