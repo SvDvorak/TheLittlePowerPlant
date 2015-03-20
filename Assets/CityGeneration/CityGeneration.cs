@@ -30,22 +30,30 @@ public class CityGeneration
 
 	public void Generate(Vector3 centerPoint)
 	{
-		for (int y = 0; y < NrOfTiles; y++)
+		for (var y = 0; y < NrOfTiles; y++)
 		{
-			for (int x = 0; x < NrOfTiles; x++)
+			for (var x = 0; x < NrOfTiles; x++)
 			{
-				try
+				if(_placedTiles[x, y] == null)
 				{
-					var tileTemplate = _tileAligner.GetAlignedTile(x, y);
-					_placedTiles[x, y] = tileTemplate;
-					var position = new Vector3(x * TileDimension + (int)centerPoint.x, y * TileDimension + (int)centerPoint.y, 0);
-					_blockFactory.Create(tileTemplate.Tile, _transformer.Transform(position), new Vector3(0, 90 * tileTemplate.Rotation));
-				}
-				catch (NoTileWithConnections exception)
-				{
-					_logger.LogWarning(exception.Message);
+					TryPlaceTile(centerPoint, x, y);
 				}
 			}
+		}
+	}
+
+	private void TryPlaceTile(Vector3 centerPoint, int x, int y)
+	{
+		try
+		{
+			var tileTemplate = _tileAligner.GetAlignedTile(x, y);
+			_placedTiles[x, y] = tileTemplate;
+			var position = new Vector3(x*TileDimension + (int) centerPoint.x, y*TileDimension + (int) centerPoint.y, 0);
+			_blockFactory.Create(tileTemplate.Tile, _transformer.Transform(position), new Vector3(0, 90*tileTemplate.Rotation));
+		}
+		catch (NoTileWithConnections exception)
+		{
+			_logger.LogWarning(exception.Message);
 		}
 	}
 

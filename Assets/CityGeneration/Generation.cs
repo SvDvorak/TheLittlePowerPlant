@@ -11,6 +11,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 	public GameObject BlockPrefab6;
 	public int NrOfTiles;
 	public int TileDimension;
+	public Vector3 Center;
 
 	public object Create(object block, Vector3 position, Vector3 rotation)
 	{
@@ -38,17 +39,12 @@ public class Generation : MonoBehaviour, IBlockFactory
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
 		_cityGeneration.SetTiles(new[] { BlockPrefab1, BlockPrefab2, BlockPrefab3, BlockPrefab4, BlockPrefab5, BlockPrefab6 });
-		_cityGeneration.Generate(Vector3.zero);
 	}
 
 	private void Update()
 	{
-		//CreateNewBlocks();
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
-	}
-
-	private void CreateNewBlocks()
-	{
+		_cityGeneration.Generate(Center);
 	}
 }

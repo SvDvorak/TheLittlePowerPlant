@@ -17,6 +17,7 @@ namespace TLPPTC.Tests
 		{
 			_testBlockFactory = new TestBlockFactory();
 			_tileAligner = new TestTileAligner();
+			_tileAligner.SetAlignedTiles(new[] { new TileInstance(new object(), "", 0) });
 
 			_collection = new TwoDimensionalCollection<TileInstance>();
 			_logger = new DoNothingLogger();
@@ -90,7 +91,6 @@ namespace TLPPTC.Tests
 		public void Transforms_coordinates_before_sending_to_block_factory()
 		{
 			_sut.NrOfTiles = 1;
-			_tileAligner.SetAlignedTiles(new[] { new TileInstance(new object(), "", 0) });
 			_coordinateTransformer.SetTransformation(x => new Vector3(1, 0, 0));
 
 			_sut.Generate(Vector3.zero);
@@ -103,11 +103,22 @@ namespace TLPPTC.Tests
 		{
 			_sut.NrOfTiles = 1;
 
-			_tileAligner.SetAlignedTiles(new[] { new TileInstance(new object(), "", 0) });
-
 			_sut.Generate(new Vector3(1, 0, 0));
 
 			_testBlockFactory.CreatedTiles[0].Position.Should().Be(new Vector3(1, 0, 0));
+		}
+
+		[Fact]
+		public void Does_not_create_tile_on_existing_tile()
+		{
+			_sut.NrOfTiles = 1;
+			var tile = new TileInstance(new object(), "", 0);
+			_tileAligner.SetAlignedTiles(new[] { tile, tile });
+
+			_sut.Generate(Vector3.zero);
+			_sut.Generate(Vector3.zero);
+
+			_testBlockFactory.CreatedTiles.Should().HaveCount(1);
 		}
 	}
 }
