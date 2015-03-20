@@ -2,7 +2,7 @@
 
 public class Unity3DCoordinateTransformer : ICoordinateTransformer
 {
-	private Vector3 _origo;
+	private Vector3 _origo = Vector3.zero;
 
 	public void SetOrigo(Vector3 origo)
 	{
@@ -11,6 +11,6 @@ public class Unity3DCoordinateTransformer : ICoordinateTransformer
 
 	public Vector3 Transform(Vector3 vector)
 	{
-		return new Vector3(-vector.x, 0, vector.y) + _origo;
+		return new Vector3(-vector.x, vector.z, vector.y) + _origo;
 	}
 }

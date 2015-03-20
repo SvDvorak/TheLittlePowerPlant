@@ -76,7 +76,7 @@ public class TileAligner : ITileAligner
 		}
 		var selectedTemplate = possibleTemplates[_random.Range(0, possibleTemplates.Count())];
 
-		int rotation = GetNormalizedRotation(selectedTemplate.Rotation + rotationToRequiredConnections);
+		var rotation = GetNormalizedRotation(selectedTemplate.Rotation + rotationToRequiredConnections);
 		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(selectedTemplate.Tile, rotation);
 		return new TileInstance(selectedTemplate.Tile, completeConnections, rotation);
 	}

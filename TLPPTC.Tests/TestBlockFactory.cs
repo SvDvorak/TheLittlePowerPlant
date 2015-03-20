@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace TLPPTC.Tests
@@ -11,6 +12,12 @@ namespace TLPPTC.Tests
 			var blockInfo = new TileInfo() { Tile = tile, Position = position, Rotation = rotation };
 			CreatedTiles.Add(blockInfo);
 			return blockInfo;
+		}
+
+		public void Destroy(Vector3 position)
+		{
+			var createdTile = CreatedTiles.Single(x => x.Position == position);
+			CreatedTiles.Remove(createdTile);
 		}
 
 		public class TileInfo
