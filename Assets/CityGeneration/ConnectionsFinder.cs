@@ -68,3 +68,40 @@ public class ConnectionsFinder : IConnectionsFinder
 		return exitR != null ? 1 : 0;
 	}
 }
+
+//public struct Rotation
+//{
+//	public Rotation(int value)
+//	{
+//		Value = value;
+//	}
+
+//	private static int NormalizeRotation(int rotation)
+//	{
+//		rotation = rotation % 4;
+//		rotation = rotation < 0 ? 4 + rotation : rotation;
+//		return rotation;
+//	}
+
+//	public static Rotation operator +(Rotation r1, Rotation r2)
+//	{
+//		return new Rotation(r1.Value + r2.Value);
+//	}
+
+//	public static int operator +(Rotation rotation, int value)
+//	{
+//		return NormalizeRotation(rotation.Value + value);
+//	}
+
+//	private int Value { get; set; }
+//}
+
+public class DirectionRotation
+{
+	public static int NormalizeRotation(int rotation)
+	{
+		rotation = rotation % 4;
+		rotation = rotation < 0 ? 4 + rotation : rotation;
+		return rotation;
+	}
+}

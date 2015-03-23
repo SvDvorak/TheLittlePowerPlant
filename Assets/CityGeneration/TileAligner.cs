@@ -12,21 +12,19 @@ public interface ITileAligner
 public class TileAligner : ITileAligner
 {
 	private readonly IConnectionsFinder _connectionsFinder;
+	private readonly IConnectionRequirementsRetriever _connectionRequirementsRetriever;
 	private readonly IRandom _random;
 	private readonly NonStupidLookup<string, TileTemplate> _connectionToTilesMapping;
-	private readonly ITwoDimensionalCollection<TileInstance> _placedTiles;
-
-	private const int FlipRotation = 2;
 
 	public TileAligner(
 		IConnectionsFinder connectionsFinder,
-		IRandom random,
-		ITwoDimensionalCollection<TileInstance> placedTiles)
+		IConnectionRequirementsRetriever connectionRequirementsRetriever,
+		IRandom random)
 	{
 		_connectionsFinder = connectionsFinder;
+		_connectionRequirementsRetriever = connectionRequirementsRetriever;
 		_random = random;
 		_connectionToTilesMapping = new NonStupidLookup<string, TileTemplate>();
-		_placedTiles = placedTiles;
 	}
 
 	public void SetTiles(IEnumerable<object> tiles)
@@ -44,30 +42,16 @@ public class TileAligner : ITileAligner
 
 	public TileInstance GetAlignedTile(int x, int y)
 	{
-		var requiredConnections = "";
-		int rotationToRequiredConnections = 0;
-
-		var leftTile = _placedTiles[x - 1, y];
-		if (leftTile != null)
-		{
-			rotationToRequiredConnections = 1 + FlipRotation;
-			requiredConnections += GetOppositeSide(GetSideConnections(leftTile.AllConnections, 1 - leftTile.Rotation));
-		}
-		var topTile = _placedTiles[x, y - 1];
-		if (topTile != null)
-		{
-			rotationToRequiredConnections = requiredConnections == null ? 2 + FlipRotation : rotationToRequiredConnections;
-			requiredConnections += GetOppositeSide(GetSideConnections(topTile.AllConnections, 2 - topTile.Rotation));
-		}
+		var requiredConnection = _connectionRequirementsRetriever.GetRequiredConnection(x, y);
 
 		List<TileTemplate> possibleTemplates;
-		if (requiredConnections != "")
+		if (requiredConnection.Connections != "")
 		{
-			if (!_connectionToTilesMapping.HasKey(requiredConnections))
+			if (!_connectionToTilesMapping.HasKey(requiredConnection.Connections))
 			{
-				throw new NoTileWithConnections(requiredConnections);
+				throw new NoTileWithConnections(requiredConnection.Connections);
 			}
-			possibleTemplates = _connectionToTilesMapping[requiredConnections].ToList();
+			possibleTemplates = _connectionToTilesMapping[requiredConnection.Connections].ToList();
 		}
 		else
 		{
@@ -76,26 +60,8 @@ public class TileAligner : ITileAligner
 		}
 		var selectedTemplate = possibleTemplates[_random.Range(0, possibleTemplates.Count())];
 
-		var rotation = GetNormalizedRotation(selectedTemplate.Rotation + rotationToRequiredConnections);
+		var rotation = DirectionRotation.NormalizeRotation(selectedTemplate.Rotation + requiredConnection.Rotation);
 		var completeConnections = _connectionsFinder.GetCompleteConnectionsOriented(selectedTemplate.Tile, rotation);
 		return new TileInstance(selectedTemplate.Tile, completeConnections, rotation);
-	}
-
-	private string GetSideConnections(string allConnections, int rotation)
-	{
-		rotation = GetNormalizedRotation(rotation);
-		return allConnections.Substring(rotation*2, 2);
-	}
-
-	private static int GetNormalizedRotation(int rotation)
-	{
-		rotation = rotation%4;
-		rotation = rotation < 0 ? 4 + rotation : rotation;
-		return rotation;
-	}
-
-	private string GetOppositeSide(string sideConnections)
-	{
-		return sideConnections.Substring(1, 1) + sideConnections.Substring(0, 1);
 	}
 }

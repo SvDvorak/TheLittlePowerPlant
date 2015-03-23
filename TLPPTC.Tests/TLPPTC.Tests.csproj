@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="CityGenerationAcceptanceTests.cs" />
     <Compile Include="CityGenerationTests.cs" />
+    <Compile Include="ConnectionRequirementsRetrieverTests.cs" />
     <Compile Include="ConnectionsFinderTests.cs" />
     <Compile Include="DoNothingLogger.cs" />
     <Compile Include="IncrementingRandom.cs" />

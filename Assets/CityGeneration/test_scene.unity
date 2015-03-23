@@ -184,6 +184,7 @@ MonoBehaviour:
   BlockPrefab4: {fileID: 100000, guid: dff2fcacb80b96c4ab95c9de7e4145f3, type: 3}
   BlockPrefab5: {fileID: 100000, guid: 5416314840f64b045aed05b1483ed188, type: 3}
   BlockPrefab6: {fileID: 100000, guid: 312a08bf9de46c94aa49ce6718946dc6, type: 3}
+  NrOfTiles: 3
   TileDimension: 60
   FollowObject: {fileID: 1723511941}
 --- !u!81 &1510048874

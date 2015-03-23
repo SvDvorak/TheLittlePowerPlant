@@ -42,8 +42,8 @@ public class Generation : MonoBehaviour, IBlockFactory
 			this,
 			new TileAligner(
 				new ConnectionsFinder(new UnityConnectionsRetriever()),
-				new Random(),
-				collection),
+				new ConnectionRequirementsRetriever(collection), 
+				new Random()),
 			collection,
 			new UnityLogger(),
 			coordinateTransformer);
