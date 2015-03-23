@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public interface IConnectionRequirementsRetriever
+public interface IEdgeConnections
 {
-	ConnectionSet GetRequiredConnection(int x, int y);
+	ConnectionSet GetEdgeConnections(int x, int y);
 }
 
-public class ConnectionRequirementsRetriever : IConnectionRequirementsRetriever
+public class EdgeConnections : IEdgeConnections
 {
 	private readonly ITwoDimensionalCollection<TileInstance> _tiles;
 
@@ -22,12 +22,12 @@ public class ConnectionRequirementsRetriever : IConnectionRequirementsRetriever
 	private const int EdgeConnectionCount = 2;
 	private const int FlipRotation = 2;
 
-	public ConnectionRequirementsRetriever(ITwoDimensionalCollection<TileInstance> tiles)
+	public EdgeConnections(ITwoDimensionalCollection<TileInstance> tiles)
 	{
 		_tiles = tiles;
 	}
 
-	public ConnectionSet GetRequiredConnection(int x, int y)
+	public ConnectionSet GetEdgeConnections(int x, int y)
 	{
 		var surroundingTiles = _surroundingDirections.Select(delta => _tiles[x + (int)delta.x, y + (int)delta.y]).ToList();
 		var longestRequirement = "";

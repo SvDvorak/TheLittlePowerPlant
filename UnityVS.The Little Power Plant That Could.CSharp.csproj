@@ -60,7 +60,7 @@
     <Compile Include="Assets\CityGeneration\ConnectionRequirementsRetriever.cs" />
     <Compile Include="Assets\CityGeneration\ConnectionSet.cs" />
     <Compile Include="Assets\CityGeneration\ConnectionsFinder.cs" />
-    <Compile Include="Assets\CityGeneration\Generation.cs" />
+    <Compile Include="Assets\CityGeneration\CityGenerationUnityComponent.cs" />
     <Compile Include="Assets\CityGeneration\IBlockFactory.cs" />
     <Compile Include="Assets\CityGeneration\ICoordinateTransformer.cs" />
     <Compile Include="Assets\CityGeneration\IEnumerableExtensions.cs" />

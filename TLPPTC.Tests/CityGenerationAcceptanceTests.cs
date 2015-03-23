@@ -26,7 +26,7 @@ namespace TLPPTC.Tests
 			_sut = new CityGeneration(_testBlockFactory,
 				new TileAligner(
 					new ConnectionsFinder(_exitRetriever),
-					new ConnectionRequirementsRetriever(twoDimensionalCollection),
+					new EdgeConnections(twoDimensionalCollection),
 					random),
 				twoDimensionalCollection,
 				new DoNothingLogger(), new TestCoordinateTransformer())

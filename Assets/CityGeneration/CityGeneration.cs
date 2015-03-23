@@ -28,34 +28,52 @@ public class CityGeneration
 		_transformer = transformer;
 	}
 
+	public void SetTiles(IEnumerable<object> tiles)
+	{
+		_tileAligner.SetTiles(tiles);
+	}
+
 	public void Generate(Vector3 centerPoint)
 	{
-		centerPoint = _transformer.Transform(centerPoint);
-		var tileCenter = new Vector3((int)(centerPoint.x/TileDimension), (int)(centerPoint.y/TileDimension));
+		var tileCenter = GetTileCenter(_transformer.Transform(centerPoint));
 
+		RemoveTilesOutsideBounds(tileCenter);
+		AddMissingTiles(tileCenter);
+	}
+
+	private Vector3 GetTileCenter(Vector3 centerPoint)
+	{
+		return new Vector3((int)(centerPoint.x/TileDimension), (int)(centerPoint.y/TileDimension));
+	}
+
+	private void RemoveTilesOutsideBounds(Vector3 tileCenter)
+	{
 		for (var y = -NrOfTiles - 2; y < NrOfTiles + 2; y++)
 		{
 			for (var x = -NrOfTiles - 2; x < NrOfTiles + 2; x++)
 			{
-				var centerAdjustedX = x + (int)tileCenter.x;
-				var centerAdjustedY = y + (int)tileCenter.y;
+				var centerAdjustedX = x + (int) tileCenter.x;
+				var centerAdjustedY = y + (int) tileCenter.y;
 				var possibleTile = _placedTiles[centerAdjustedX, centerAdjustedY];
 				if (!IsInside(x, y) && possibleTile != null)
 				{
-					var position = new Vector3(centerAdjustedX * TileDimension, centerAdjustedY * TileDimension, 0);
+					var position = new Vector3(centerAdjustedX*TileDimension, centerAdjustedY*TileDimension, 0);
 					_blockFactory.Destroy(_transformer.Transform(position));
 					_placedTiles[centerAdjustedX, centerAdjustedY] = null;
 				}
 			}
 		}
+	}
 
+	private void AddMissingTiles(Vector3 tileCenter)
+	{
 		for (var y = -NrOfTiles - 1; y <= NrOfTiles; y++)
 		{
 			for (var x = -NrOfTiles - 1; x < NrOfTiles; x++)
 			{
-				var centerAdjustedX = x + (int)tileCenter.x;
-				var centerAdjustedY = y + (int)tileCenter.y;
-				if(IsInside(x, y) && _placedTiles[centerAdjustedX, centerAdjustedY] == null)
+				var centerAdjustedX = x + (int) tileCenter.x;
+				var centerAdjustedY = y + (int) tileCenter.y;
+				if (IsInside(x, y) && _placedTiles[centerAdjustedX, centerAdjustedY] == null)
 				{
 					TryPlaceTile(centerAdjustedX, centerAdjustedY);
 				}
@@ -81,10 +99,5 @@ public class CityGeneration
 		{
 			_logger.LogWarning(exception.Message);
 		}
-	}
-
-	public void SetTiles(IEnumerable<object> tiles)
-	{
-		_tileAligner.SetTiles(tiles);
 	}
 }

@@ -1,16 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Generation : MonoBehaviour, IBlockFactory
+public class CityGenerationUnityComponent : MonoBehaviour, IBlockFactory
 {
 	private CityGeneration _cityGeneration;
 
-	public GameObject BlockPrefab1;
-	public GameObject BlockPrefab2;
-	public GameObject BlockPrefab3;
-	public GameObject BlockPrefab4;
-	public GameObject BlockPrefab5;
-	public GameObject BlockPrefab6;
+	public List<GameObject> Tiles = new List<GameObject>(); 
 	public int NrOfTiles;
 	public int TileDimension;
 	public GameObject FollowObject;
@@ -42,7 +38,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 			this,
 			new TileAligner(
 				new ConnectionsFinder(new UnityConnectionsRetriever()),
-				new ConnectionRequirementsRetriever(collection), 
+				new EdgeConnections(collection), 
 				new Random()),
 			collection,
 			new UnityLogger(),
@@ -50,7 +46,7 @@ public class Generation : MonoBehaviour, IBlockFactory
 
 		_cityGeneration.TileDimension = TileDimension;
 		_cityGeneration.NrOfTiles = NrOfTiles;
-		_cityGeneration.SetTiles(new[] { BlockPrefab1, BlockPrefab2, BlockPrefab3, BlockPrefab4, BlockPrefab5, BlockPrefab6 });
+		_cityGeneration.SetTiles(Tiles.Cast<object>());
 	}
 
 	private void Update()

@@ -10,14 +10,14 @@ namespace TLPPTC.Tests
 		private readonly TestConnectionsFinder _connectionsFinder;
 		private readonly SetRandom _setRandom;
 		private readonly TwoDimensionalCollection<TileInstance> _placedTiles;
-		private readonly TestConnectionRequirementsRetriever _connectionRequirements;
+		private readonly TestEdgeConnections _connectionRequirements;
 
 		public TileAlignerTests()
 		{
 			_connectionsFinder = new TestConnectionsFinder();
 			_setRandom = new SetRandom();
 			_placedTiles = new TwoDimensionalCollection<TileInstance>();
-			_connectionRequirements = new TestConnectionRequirementsRetriever();
+			_connectionRequirements = new TestEdgeConnections();
 			_sut = new TileAligner(_connectionsFinder, _connectionRequirements, _setRandom);
 		}
 
@@ -100,7 +100,7 @@ namespace TLPPTC.Tests
 		}
 	}
 
-	public class TestConnectionRequirementsRetriever : IConnectionRequirementsRetriever
+	public class TestEdgeConnections : IEdgeConnections
 	{
 		private ConnectionSet _connectionSet;
 
@@ -109,7 +109,7 @@ namespace TLPPTC.Tests
 			_connectionSet = new ConnectionSet(connections, rotation);
 		}
 
-		public ConnectionSet GetRequiredConnection(int x, int y)
+		public ConnectionSet GetEdgeConnections(int x, int y)
 		{
 			return _connectionSet ?? new ConnectionSet("", 0);
 		}
