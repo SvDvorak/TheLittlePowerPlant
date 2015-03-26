@@ -10,6 +10,8 @@ public class BuildMachine : MonoBehaviour
     public GameObject NuclearTemplate;
     public GameObject CoalTemplate;
 	public ScoreUpdater OutputUpdater;
+	public Vector3 RelativeTilePosition;
+
     private GameObject _machineSelection;
 	private GameObject _builtMachine;
 
@@ -61,6 +63,7 @@ public class BuildMachine : MonoBehaviour
 		machine.transform.SetParent(transform, false);
 		machine.transform.localPosition = new Vector3(0, 0.26f, 0);
         OutputUpdater.Income -= machineTypeToBuild.Cost;
+	    ScoreManager.MachineBuilt(machineTypeToBuild, RelativeTilePosition);
 
 	    return machine;
     }

@@ -120,6 +120,7 @@ ModelImporter:
     100224: TreeFir_004_proxy_001
     100226: TreeFir_004_proxy_002
     100228: TreeFir_004_proxy_003
+    100230: LeafyTree_002_proxy_009
     400000: //RootNode
     400002: Exit_E_L
     400004: Exit_E_R
@@ -235,6 +236,7 @@ ModelImporter:
     400224: TreeFir_004_proxy_001
     400226: TreeFir_004_proxy_002
     400228: TreeFir_004_proxy_003
+    400230: LeafyTree_002_proxy_009
     2300000: ThickGrassFormat
     2300002: NurbsPath
     2300004: NurbsPath_001
@@ -344,6 +346,7 @@ ModelImporter:
     2300212: TreeFir_004_proxy_001
     2300214: TreeFir_004_proxy_002
     2300216: TreeFir_004_proxy_003
+    2300218: LeafyTree_002_proxy_009
     3300000: ThickGrassFormat
     3300002: NurbsPath
     3300004: NurbsPath_001
@@ -453,6 +456,7 @@ ModelImporter:
     3300212: TreeFir_004_proxy_001
     3300214: TreeFir_004_proxy_002
     3300216: TreeFir_004_proxy_003
+    3300218: LeafyTree_002_proxy_009
     4300000: ThickGrassFormat
     4300002: NurbsPath_003
     4300004: NurbsPath_002
@@ -562,6 +566,7 @@ ModelImporter:
     4300212: Cube_011
     4300214: Cube_010
     4300216: Cube_009
+    4300218: LeafyTree_002_proxy_009
     6400000: Bush_001_proxy_001
     6400002: Bush_001_proxy_002
     6400004: Bush_proxy_001
@@ -651,6 +656,10 @@ ModelImporter:
     6400172: TreeFir_004_proxy_001
     6400174: TreeFir_004_proxy_002
     6400176: TreeFir_004_proxy_003
+    6400178: LeafyTree_002_proxy_009
+    6400180: LeafyTree_004_proxy_014
+    6400182: LeafyTree_proxy_001
+    6400184: LeafyTree_proxy_002
     7400000: Default Take
     9500000: //RootNode
   materials:

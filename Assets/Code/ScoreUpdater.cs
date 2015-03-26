@@ -4,7 +4,24 @@ using UnityEngine;
 
 public static class ScoreManager
 {
+	static ScoreManager()
+	{
+		BuiltMachines = new List<BuiltMachine>();
+	}
+
 	public static float CityValue { get; set; }
+	public static List<BuiltMachine> BuiltMachines { get; set; }
+
+	public static void MachineBuilt(IMachineType machine, Vector3 position)
+	{
+		BuiltMachines.Add(new BuiltMachine() { MachineType = machine, Position = position });
+	}
+
+	public class BuiltMachine
+	{
+		public IMachineType MachineType;
+		public Vector3 Position;
+	}
 }
 
 public class ScoreUpdater : MonoBehaviour
@@ -105,6 +122,7 @@ public class ScoreUpdater : MonoBehaviour
 				_gameEnded = true;
 				//GameOverScreen.SetActive(true);
 				TransformAnimator.SetBool("IsTransformed", true);
+				Application.LoadLevel("Part2");
 			}
 		}
 		else

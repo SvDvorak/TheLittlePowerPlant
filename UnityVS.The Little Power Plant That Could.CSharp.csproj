@@ -112,7 +112,10 @@
     <Compile Include="Assets\Code\Nuclear\NuclearProcess.cs" />
     <Compile Include="Assets\Code\Nuclear\WarningLightsController.cs" />
     <Compile Include="Assets\Code\OutputUpdater.cs" />
+    <Compile Include="Assets\Code\Part2\AddMachinesToBack.cs" />
+    <Compile Include="Assets\Code\Part2\HouseCrash.cs" />
     <Compile Include="Assets\Code\Part2\MachineCollision.cs" />
+    <Compile Include="Assets\Code\Part2\TreeFall.cs" />
     <Compile Include="Assets\Code\Range.cs" />
     <Compile Include="Assets\Code\RangeToDeltaSize.cs" />
     <Compile Include="Assets\Code\RestartGame.cs" />
