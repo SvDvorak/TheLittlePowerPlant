@@ -101,6 +101,7 @@ GameObject:
   - 81: {fileID: 1195201}
   - 114: {fileID: 1195200}
   - 114: {fileID: 1195206}
+  - 114: {fileID: 1195207}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -323,6 +324,20 @@ MonoBehaviour:
     type: 3}
   colorCorrectionSelectiveShader: {fileID: 4800000, guid: e515e0f94cefc4c0db54b45cba621544,
     type: 3}
+--- !u!114 &1195207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461b02c6266c55a46a7febf9de8c3ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeAmt: .200000003
+  ShakePeriodTime: .119999997
+  DropOffTime: 1.60000002
 --- !u!1 &9856853
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +453,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileObjects: {fileID: 100050, guid: 2250ee453add9b149900804b1fe6f20d, type: 3}
+  CameraShake: {fileID: 1195207}
+  TreeCollisionForce: .150000006
+  HouseCollisionForce: .300000012
+  SkyscraperCollisionForce: 1.5
 --- !u!54 &1046366209
 Rigidbody:
   m_ObjectHideFlags: 0

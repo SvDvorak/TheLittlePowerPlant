@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Linq;
-using UnityEditor;
 
 public class TreeFall : MonoBehaviour
 {

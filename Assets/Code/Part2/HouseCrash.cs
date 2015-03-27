@@ -3,15 +3,10 @@ using System.Collections;
 
 public class HouseCrash : MonoBehaviour
 {
-	private const float MovementPerSecond = 2;
+	private const float CrashSpeed = 4;
 
 	void Start ()
 	{
-	
-	}
-	
-	void Update ()
-	{
-		transform.Translate(0, 0, -Time.deltaTime*MovementPerSecond);
+		LeanTween.moveY(gameObject, -16, CrashSpeed).setEase(LeanTweenType.easeInQuad);
 	}
 }

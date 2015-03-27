@@ -6,10 +6,11 @@ using System.Linq;
 public class MachineCollision : MonoBehaviour
 {
 	public GameObject TileObjects;
+	public CameraShake CameraShake;
 
-	public void Start()
-	{
-	}
+	public float TreeCollisionForce = 0.2f;
+	public float HouseCollisionForce = 0.5f;
+	public float SkyscraperCollisionForce = 1.5f;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -17,10 +18,18 @@ public class MachineCollision : MonoBehaviour
 		if (collidedName.Contains("TREE"))
 		{
 			AddTreeFallAnimation(other.gameObject);
+			CameraShake.AddCollisionForce(TreeCollisionForce);
 		}
-		else if(CollidedIsOneOfFollowing(collidedName, new List<string>() { "HOUSE", "SKYSCRAPER", "COMPLEX", "MUNICIPAL", "GARAGE"}))
+		else if (CollidedIsOneOfFollowing(collidedName,
+			new List<string>() { "HOUSE" }))
 		{
 			AddBuildingCrumbleAnimation(other.gameObject);
+			CameraShake.AddCollisionForce(HouseCollisionForce);
+		}
+		else if(CollidedIsOneOfFollowing(collidedName, new List<string>() { "SKYSCRAPER", "COMPLEX", "MUNICIPAL", "GARAGE"}))
+		{
+			AddBuildingCrumbleAnimation(other.gameObject);
+			CameraShake.AddCollisionForce(SkyscraperCollisionForce);
 		}
 	}
 
