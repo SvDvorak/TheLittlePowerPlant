@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Code;
 
 public class MachineCollision : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MachineCollision : MonoBehaviour
 	public float TreeCollisionForce = 0.2f;
 	public float HouseCollisionForce = 0.5f;
 	public float SkyscraperCollisionForce = 1.5f;
+	private TransformerState _dataContext;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -30,6 +32,7 @@ public class MachineCollision : MonoBehaviour
 		{
 			AddBuildingCrumbleAnimation(other.gameObject);
 			CameraShake.AddCollisionForce(SkyscraperCollisionForce);
+			DecreaseHealth(0.1f);
 		}
 	}
 
@@ -52,5 +55,15 @@ public class MachineCollision : MonoBehaviour
 		{
 			collidedGameObject.AddComponent<HouseCrash>();
 		}
+	}
+
+	private void DecreaseHealth(float amount)
+	{
+		if (_dataContext == null)
+		{
+			_dataContext = gameObject.GetDataContext<TransformerState>();
+		}
+
+		_dataContext.Health = new Range(_dataContext.Health.Low, _dataContext.Health.High - amount);
 	}
 }
