@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.0.0f4</UnityVersion>
@@ -87,13 +85,13 @@
     <Compile Include="Assets\Code\Coal\Coal.cs" />
     <Compile Include="Assets\Code\Coal\CoalProcess.cs" />
     <Compile Include="Assets\Code\Coal\UpdateFireGlow.cs" />
+    <Compile Include="Assets\Code\Databinding\ButtonCommand.cs" />
+    <Compile Include="Assets\Code\Databinding\DataContext.cs" />
+    <Compile Include="Assets\Code\Databinding\TextReader.cs" />
+    <Compile Include="Assets\Code\Databinding\TransformToValue.cs" />
+    <Compile Include="Assets\Code\Databinding\ValueBinding.cs" />
     <Compile Include="Assets\Code\DebugInfo.cs" />
     <Compile Include="Assets\Code\ForcedOverload.cs" />
-    <Compile Include="Assets\Code\GUI\Databinding\ButtonCommand.cs" />
-    <Compile Include="Assets\Code\GUI\Databinding\DataContext.cs" />
-    <Compile Include="Assets\Code\GUI\Databinding\TextReader.cs" />
-    <Compile Include="Assets\Code\GUI\Databinding\TransformToValue.cs" />
-    <Compile Include="Assets\Code\GUI\Databinding\ValueBinding.cs" />
     <Compile Include="Assets\Code\GUI\ItemList.cs" />
     <Compile Include="Assets\Code\GUI\ObjectExtensions.cs" />
     <Compile Include="Assets\Code\GUI\ToggleColorFill.cs" />
@@ -116,17 +114,21 @@
     <Compile Include="Assets\Code\Nuclear\WarningLightsController.cs" />
     <Compile Include="Assets\Code\OutputUpdater.cs" />
     <Compile Include="Assets\Code\Part2\AddMachinesToBack.cs" />
+    <Compile Include="Assets\Code\Part2\DeathUpdater.cs" />
+    <Compile Include="Assets\Code\Part2\GameOverCheck.cs" />
+    <Compile Include="Assets\Code\Part2\GameState.cs" />
     <Compile Include="Assets\Code\Part2\HouseCrash.cs" />
     <Compile Include="Assets\Code\Part2\MachineCollision.cs" />
+    <Compile Include="Assets\Code\Part2\Movement.cs" />
+    <Compile Include="Assets\Code\Part2\ScoreLoader.cs" />
     <Compile Include="Assets\Code\Part2\TransformerSetup.cs" />
-    <Compile Include="Assets\Code\Part2\GameState.cs" />
     <Compile Include="Assets\Code\Part2\TreeFall.cs" />
+    <Compile Include="Assets\Code\PlayerPrefs2.cs" />
     <Compile Include="Assets\Code\Range.cs" />
     <Compile Include="Assets\Code\RangeToDeltaSize.cs" />
     <Compile Include="Assets\Code\RestartGame.cs" />
     <Compile Include="Assets\Code\ScoreUpdater.cs" />
     <Compile Include="Assets\Code\ShowMachineInfo.cs" />
-    <Compile Include="Assets\Code\TransformerControl\Strafe.cs" />
     <Compile Include="Assets\Code\WallPanel\CurrentOutput.cs" />
   </ItemGroup>
   <ItemGroup>

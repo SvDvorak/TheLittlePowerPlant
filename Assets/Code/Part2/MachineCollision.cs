@@ -62,9 +62,7 @@ public class MachineCollision : MonoBehaviour
 
 	private void DecreaseHealth(float amount)
 	{
-		var dataContext = GetDataContext();
-
-		dataContext.Health = new Range(dataContext.Health.Low, dataContext.Health.High - amount);
+		GetDataContext().Health -= amount;
 	}
 
 	private void DecreaseCityValue(float destructionCost)
