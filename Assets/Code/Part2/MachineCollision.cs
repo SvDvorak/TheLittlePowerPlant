@@ -12,7 +12,7 @@ public class MachineCollision : MonoBehaviour
 	public float TreeCollisionForce = 0.2f;
 	public float HouseCollisionForce = 0.5f;
 	public float SkyscraperCollisionForce = 1.5f;
-	private TransformerState _dataContext;
+	private GameState _dataContext;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -21,18 +21,21 @@ public class MachineCollision : MonoBehaviour
 		{
 			AddTreeFallAnimation(other.gameObject);
 			CameraShake.AddCollisionForce(TreeCollisionForce);
+			DecreaseCityValue(0.1f);
 		}
 		else if (CollidedIsOneOfFollowing(collidedName,
 			new List<string>() { "HOUSE" }))
 		{
 			AddBuildingCrumbleAnimation(other.gameObject);
 			CameraShake.AddCollisionForce(HouseCollisionForce);
+			DecreaseCityValue(1);
 		}
 		else if(CollidedIsOneOfFollowing(collidedName, new List<string>() { "SKYSCRAPER", "COMPLEX", "MUNICIPAL", "GARAGE"}))
 		{
 			AddBuildingCrumbleAnimation(other.gameObject);
 			CameraShake.AddCollisionForce(SkyscraperCollisionForce);
 			DecreaseHealth(0.1f);
+			DecreaseCityValue(100);
 		}
 	}
 
@@ -59,11 +62,23 @@ public class MachineCollision : MonoBehaviour
 
 	private void DecreaseHealth(float amount)
 	{
+		var dataContext = GetDataContext();
+
+		dataContext.Health = new Range(dataContext.Health.Low, dataContext.Health.High - amount);
+	}
+
+	private void DecreaseCityValue(float destructionCost)
+	{
+		GetDataContext().CityValue -= destructionCost;
+	}
+
+	private GameState GetDataContext()
+	{
 		if (_dataContext == null)
 		{
-			_dataContext = gameObject.GetDataContext<TransformerState>();
+			_dataContext = gameObject.GetDataContext<GameState>();
 		}
 
-		_dataContext.Health = new Range(_dataContext.Health.Low, _dataContext.Health.High - amount);
+		return _dataContext;
 	}
 }

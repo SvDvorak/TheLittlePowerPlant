@@ -5,9 +5,9 @@ public class TransformerSetup : MonoBehaviour
 {
 	public DataContext GuiDataContext;
 
-	void Start ()
+	void Awake ()
 	{
-		var transformerState = new TransformerState();
+		var transformerState = new GameState();
 		GetComponent<DataContext>().Data = transformerState;
 		GuiDataContext.Data = transformerState;
 	}
