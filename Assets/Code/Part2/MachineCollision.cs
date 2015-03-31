@@ -67,7 +67,7 @@ public class MachineCollision : MonoBehaviour
 
 	private void DecreaseCityValue(float destructionCost)
 	{
-		GetDataContext().CityValue -= destructionCost;
+		GetDataContext().DestructionCost += destructionCost;
 	}
 
 	private GameState GetDataContext()

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class GameOverCheck : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class GameOverCheck : MonoBehaviour
 	{
 		if (_gameState.GameOver && !HighscoreElement.activeSelf)
 		{
+			var readNames = PlayerPrefs2.GetStringArray("Names").ToList();
+			var readScores = PlayerPrefs2.GetFloatArray("Scores").ToList();
+			readNames.Add("Andreas");
+			readScores.Add(_gameState.DestructionCost);
+			PlayerPrefs2.SetStringArray("Names", readNames.ToArray());
+			PlayerPrefs2.SetFloatArray("Scores", readScores.ToArray());
 			HighscoreElement.SetActive(true);
 		}
 	}

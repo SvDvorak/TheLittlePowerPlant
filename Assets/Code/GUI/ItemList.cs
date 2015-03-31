@@ -36,8 +36,12 @@ public class ItemList : MonoBehaviour
             var itemPresentation = (GameObject)Instantiate(ItemPresentationTemplate);
             itemPresentation.transform.SetParent(ItemPanel.transform, false);
             
-            var toggle = itemPresentation.GetComponent<Toggle>();
-            toggle.group = panelToggleGroup;
+			if(panelToggleGroup != null)
+			{
+				var toggle = itemPresentation.GetComponent<Toggle>();
+				toggle.group = panelToggleGroup;
+			}
+
             itemPresentation.AddComponent<DataContext>().Data = item;
         }
     }
