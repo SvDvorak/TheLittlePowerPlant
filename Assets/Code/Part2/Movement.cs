@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (_gameState.IsAlive && Input.GetMouseButtonDown(0))
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
