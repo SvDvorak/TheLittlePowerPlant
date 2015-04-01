@@ -684,10 +684,6 @@ Prefab:
       propertyPath: m_Name
       value: helicopter
       objectReference: {fileID: 0}
-    - target: {fileID: 11466224, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
-      propertyPath: AttackTarget
-      value: 
-      objectReference: {fileID: 1046366202}
     - target: {fileID: 148526, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_IsActive
       value: 0

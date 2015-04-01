@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 477214}
   - 95: {fileID: 9567510}
-  - 114: {fileID: 11466224}
+  - 114: {fileID: 11478118}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -93,6 +93,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &185294
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 422566}
+  m_Layer: 0
+  m_Name: MissileSpawn_r
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &187768
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 461362}
+  m_Layer: 0
+  m_Name: MissileSpawn_l
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &413012
 Transform:
   m_ObjectHideFlags: 1
@@ -105,6 +135,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 477214}
   m_RootOrder: 1
+--- !u!4 &422566
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185294}
+  m_LocalRotation: {x: .707106829, y: 0, z: -0, w: .707106709}
+  m_LocalPosition: {x: .344428569, y: -.25578177, z: -.495913029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 469578}
+  m_RootOrder: 2
 --- !u!4 &430138
 Transform:
   m_ObjectHideFlags: 1
@@ -119,6 +161,18 @@ Transform:
   - {fileID: 467300}
   m_Father: {fileID: 469578}
   m_RootOrder: 0
+--- !u!4 &461362
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187768}
+  m_LocalRotation: {x: .707106829, y: 0, z: -0, w: .707106709}
+  m_LocalPosition: {x: -.343132883, y: -.25578177, z: -.495913029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 469578}
+  m_RootOrder: 1
 --- !u!4 &467300
 Transform:
   m_ObjectHideFlags: 1
@@ -154,6 +208,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 430138}
+  - {fileID: 461362}
+  - {fileID: 422566}
   m_Father: {fileID: 477214}
   m_RootOrder: 0
 --- !u!4 &477214
@@ -164,7 +220,7 @@ Transform:
   m_GameObject: {fileID: 148526}
   m_LocalRotation: {x: 0, y: -.317086726, z: 0, w: .948396623}
   m_LocalPosition: {x: -.0680197254, y: 9.47941494, z: 44.9012527}
-  m_LocalScale: {x: 1.41053486, y: 1.41053545, z: 1.41053534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469578}
   - {fileID: 413012}
@@ -179,7 +235,7 @@ Animator:
   m_GameObject: {fileID: 148526}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
-  m_Controller: {fileID: 9100000, guid: be8ba45732af883438d2358587136b39, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -187,7 +243,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11466224
+--- !u!114 &11478118
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -205,6 +261,10 @@ MonoBehaviour:
   TargetMaxDistance: 80
   NewOffsetTimeInSeconds: 5
   OffsetConeFromTarget: 45
+  FireDelay: 5
+  MissileTemplate: {fileID: 154946, guid: 7a16752316d38cd44b90a77aa950f020, type: 2}
+  MissileSpawnL: {fileID: 461362}
+  MissileSpawnR: {fileID: 422566}
 --- !u!137 &13741232
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

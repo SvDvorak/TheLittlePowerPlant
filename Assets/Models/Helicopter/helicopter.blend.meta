@@ -11,12 +11,16 @@ ModelImporter:
     100006: HelicopterMesh
     100008: MainRotor
     100010: TailRotor
+    100012: MissileSpawn_l
+    100014: MissileSpawn_r
     400000: Body
     400002: Helicopter
     400004: //RootNode
     400006: HelicopterMesh
     400008: MainRotor
     400010: TailRotor
+    400012: MissileSpawn_l
+    400014: MissileSpawn_r
     4300000: HelicopterMesh
     7400000: Default Take
     7400002: HelicopterAction

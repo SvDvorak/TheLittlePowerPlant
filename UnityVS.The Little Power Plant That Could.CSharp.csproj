@@ -121,6 +121,7 @@
     <Compile Include="Assets\Code\Part2\HelicopterSpawner.cs" />
     <Compile Include="Assets\Code\Part2\HouseCrash.cs" />
     <Compile Include="Assets\Code\Part2\MachineCollision.cs" />
+    <Compile Include="Assets\Code\Part2\MissileMovement.cs" />
     <Compile Include="Assets\Code\Part2\Movement.cs" />
     <Compile Include="Assets\Code\Part2\ScoreLoader.cs" />
     <Compile Include="Assets\Code\Part2\TransformerSetup.cs" />
