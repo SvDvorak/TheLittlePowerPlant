@@ -396,7 +396,7 @@ RectTransform:
   m_Children:
   - {fileID: 1188992394}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -468,6 +468,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemList: {fileID: 1188992396}
+--- !u!1 &76561360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 76561362}
+  - 114: {fileID: 76561361}
+  m_Layer: 0
+  m_Name: HelicopterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &76561361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76561360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d2ad0a24954ae4a870bee86f32f74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HelicopterTemplate: {fileID: 148526, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
+  AttackTarget: {fileID: 1046366202}
+  MaxOffsetInX: 60
+  HeightOffset: 9
+  SpawnTime: 10
+--- !u!4 &76561362
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76561360}
+  m_LocalRotation: {x: -.6706177, y: -.224214152, z: -.224214196, w: .67061764}
+  m_LocalPosition: {x: .158490628, y: 10.5111341, z: 44.6022034}
+  m_LocalScale: {x: 1.41053486, y: 1.4105351, z: 1.41053522}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &133843715
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +543,7 @@ RectTransform:
   m_Children:
   - {fileID: 1151452148}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -604,56 +648,52 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.0680197254
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalPosition.y
       value: 9.47941494
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalPosition.z
       value: 44.9012527
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalRotation.y
       value: -.317086726
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_LocalRotation.w
       value: .948396623
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+    - target: {fileID: 477214, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.41053486
+    - target: {fileID: 148526, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
+      propertyPath: m_Name
+      value: helicopter
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.41053545
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.41053534
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 11466224, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
+      propertyPath: AttackTarget
       value: 
-      objectReference: {fileID: 9100000, guid: be8ba45732af883438d2358587136b39, type: 2}
+      objectReference: {fileID: 1046366202}
+    - target: {fileID: 148526, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+  m_ParentPrefab: {fileID: 100100000, guid: 6e18428a55d0dea448a7ea17c7d4cd84, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &763620715
 GameObject:
@@ -1164,7 +1204,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22467488, guid: e30078358e1dfe24baa2b48b2015f3bb, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 22467488, guid: e30078358e1dfe24baa2b48b2015f3bb, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1258,7 +1298,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22493906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 22493906, guid: ce8b440e7ba778f49a1a5b3a6d4977d7, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1451,27 +1491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PropertyName: CurrentCityValue
   Format: '{0:0.0}M$'
---- !u!1 &2074131158
-GameObject:
-  m_PrefabParentObject: {fileID: 100004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
-  m_PrefabInternal: {fileID: 591261424}
---- !u!114 &2074131161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2074131158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee4589fd11edfa4e84b78ec14025500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackTarget: {fileID: 1046366202}
-  FlySpeed: 10
-  MaxSpeedDistance: 5
-  TargetMinDistance: 20
-  TargetMaxDistance: 50
-  NewOffsetTimeInSeconds: 5
 --- !u!1001 &2143311036
 Prefab:
   m_ObjectHideFlags: 0
@@ -1509,7 +1528,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c65aa1fc47c17dc4f8591f41220e007e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: c65aa1fc47c17dc4f8591f41220e007e, type: 3}
       propertyPath: m_Controller
