@@ -10,6 +10,7 @@ GameObject:
   - 224: {fileID: 22445600}
   - 222: {fileID: 22257238}
   - 114: {fileID: 11447558}
+  - 114: {fileID: 11420634}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -45,6 +46,7 @@ GameObject:
   - 224: {fileID: 22440998}
   - 222: {fileID: 22249800}
   - 114: {fileID: 11429984}
+  - 114: {fileID: 11454762}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -52,6 +54,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11420634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3a68de1bc457843b6243947daa8579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropertyName: Name
+  Format: 
 --- !u!114 &11429984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .917647064, g: .917647064, b: .917647064, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
@@ -90,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .917647064, g: .917647064, b: .917647064, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
@@ -104,6 +119,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Name
+--- !u!114 &11454762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3a68de1bc457843b6243947daa8579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropertyName: Score
+  Format: '{0:0.0}M$'
 --- !u!114 &11467964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,8 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 3
+    m_Right: 3
     m_Top: 3
     m_Bottom: 3
   m_ChildAlignment: 0
