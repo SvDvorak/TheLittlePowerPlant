@@ -18,9 +18,10 @@ public class DeathUpdater : MonoBehaviour
 	{
 		_gameState.CrashTime = CrashTime;
 
-		if (_gameState.Health <= 0)
+		if (_gameState.Health <= 0 && _gameState.IsAlive)
 		{
 			_gameState.IsAlive = false;
+			GetComponent<AudioSource>().Play();
 			Invoke("SetGameOver", _gameState.CrashTime);
 		}
 
