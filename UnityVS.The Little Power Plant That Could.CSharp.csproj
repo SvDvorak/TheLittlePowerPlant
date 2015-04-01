@@ -117,6 +117,7 @@
     <Compile Include="Assets\Code\Part2\DeathUpdater.cs" />
     <Compile Include="Assets\Code\Part2\GameOverCheck.cs" />
     <Compile Include="Assets\Code\Part2\GameState.cs" />
+    <Compile Include="Assets\Code\Part2\HelicopterAI.cs" />
     <Compile Include="Assets\Code\Part2\HouseCrash.cs" />
     <Compile Include="Assets\Code\Part2\MachineCollision.cs" />
     <Compile Include="Assets\Code\Part2\Movement.cs" />

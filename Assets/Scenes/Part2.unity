@@ -1451,6 +1451,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PropertyName: CurrentCityValue
   Format: '{0:0.0}M$'
+--- !u!1 &2074131158
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 30132822aeed7eb46ba4e355de6d7d8b, type: 3}
+  m_PrefabInternal: {fileID: 591261424}
+--- !u!114 &2074131161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2074131158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee4589fd11edfa4e84b78ec14025500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackTarget: {fileID: 1046366202}
+  FlySpeed: 5
+  TargetKeepDistance: 20
 --- !u!1001 &2143311036
 Prefab:
   m_ObjectHideFlags: 0
