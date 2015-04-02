@@ -33,6 +33,7 @@ public class HelicopterSpawner : MonoBehaviour
 		return SpawnTime + UnityEngine.Random.Range(-2, 2);
 	}
 
+	[ContextMenu("Spawn")]
 	private void SpawnHelicopter()
 	{
 		var helicopter = Instantiate(HelicopterTemplate);

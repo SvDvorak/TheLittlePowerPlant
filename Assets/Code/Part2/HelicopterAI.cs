@@ -39,6 +39,7 @@ public class HelicopterAI : MonoBehaviour
 		_offset = randomDirection*UnityEngine.Random.Range(TargetMinDistance, TargetMaxDistance);
 	}
 
+	[ContextMenu("Spawn Missile")]
 	private void FireMissile()
 	{
 		if (_fireFromLeft)
@@ -56,6 +57,8 @@ public class HelicopterAI : MonoBehaviour
 	private void SpawnMissile(Transform missileSpawn)
 	{
 		var missile = Instantiate(MissileTemplate);
-		missile.transform.position = transform.position + missileSpawn.position;
+		missile.transform.position = missileSpawn.position;
+		var missileMovement = missile.GetComponent<MissileMovement>();
+		missileMovement.Target = AttackTarget.transform;
 	}
 }

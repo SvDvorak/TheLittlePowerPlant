@@ -257,7 +257,7 @@ MonoBehaviour:
   AttackTarget: {fileID: 0}
   FlySpeed: 10
   MaxSpeedDistance: 5
-  TargetMinDistance: 40
+  TargetMinDistance: 60
   TargetMaxDistance: 80
   NewOffsetTimeInSeconds: 5
   OffsetConeFromTarget: 45
