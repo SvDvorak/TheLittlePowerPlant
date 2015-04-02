@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.1700001, y: 9.81000042, z: 0}
   m_LocalScale: {x: 2.68498373, y: 2.68498302, z: 2.68498302}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,9 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d1f21e8a2b8574f86884a226e00a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  MissileSpeed: 10
-  TurnDegrees: 1
+  TargetPosition: {x: 0, y: 0, z: 0}
+  TargetMovement: {x: 0, y: 0, z: 0}
+  MissileSpeed: 20
+  TurnDegrees: 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

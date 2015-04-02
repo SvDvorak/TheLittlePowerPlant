@@ -16,11 +16,14 @@ public class HelicopterAI : MonoBehaviour
 
 	private Vector3 _offset;
 	private bool _fireFromLeft;
+	private Vector3 _previousTargetPosition;
+	private Vector3 _targetMovement;
 
 	void Start ()
 	{
 		InvokeRepeating("SetNewRandomOffset", 0, NewOffsetTimeInSeconds);
 		InvokeRepeating("FireMissile", FireDelay, FireDelay);
+		_previousTargetPosition = AttackTarget.transform.position;
 	}
 
 	void Update ()
@@ -31,6 +34,9 @@ public class HelicopterAI : MonoBehaviour
 		var velocity = Mathf.SmoothStep(0, FlySpeed, helicopterToTargetOffset.magnitude/MaxSpeedDistance);
 		transform.position += helicopterToTargetOffset.normalized*velocity*Time.deltaTime;
 		transform.LookAt(AttackTarget.transform.position);
+
+		_targetMovement = (AttackTarget.transform.position - _previousTargetPosition)/Time.deltaTime;
+		_previousTargetPosition = AttackTarget.transform.position;
 	}
 
 	private void SetNewRandomOffset()
@@ -58,7 +64,9 @@ public class HelicopterAI : MonoBehaviour
 	{
 		var missile = Instantiate(MissileTemplate);
 		missile.transform.position = missileSpawn.position;
+		missile.transform.rotation = transform.rotation;
 		var missileMovement = missile.GetComponent<MissileMovement>();
-		missileMovement.Target = AttackTarget.transform;
+		missileMovement.TargetPosition = AttackTarget.transform.position + new Vector3(0, 4, 0);
+		missileMovement.TargetMovement = _targetMovement;
 	}
 }
