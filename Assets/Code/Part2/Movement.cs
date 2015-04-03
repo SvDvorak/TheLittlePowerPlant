@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 	private GameState _gameState;
 	private LTDescr _speedDecreaseTween;
 	private float _movementMultiplier = 1;
+	private float _collisionCorrection = 1;
 
 	void Start()
 	{
@@ -39,10 +40,19 @@ public class Movement : MonoBehaviour
 			Invoke("GroundSmashCollision", 0.5f);
 		}
 
+		if (_gameState.IsAlive && _gameState.GotHit)
+		{
+			_gameState.GotHit = false;
+			LeanTween.value(gameObject, value => _collisionCorrection = value, 1, 0, 0.7f).setOnComplete(() =>
+				{
+					LeanTween.value(gameObject, value => _collisionCorrection = value, 0, 1, 0.3f);
+				});
+		}
+
 		_currentDirectionX = Mathf.MoveTowards(_currentDirectionX, Mathf.Clamp(-_targetVector.x/15, -1, 1), DirectionChangeSpeedPerSecond*Time.deltaTime);
 		_animator.SetFloat("Strafe", _currentDirectionX);
 		var movement = -Vector3.forward*MovementSpeed - new Vector3(_currentDirectionX, 0, 0)*StrafeSpeed;
-		transform.position += movement*_movementMultiplier*Time.deltaTime;
+		transform.position += movement*_collisionCorrection*_movementMultiplier*Time.deltaTime;
 	}
 
 	void GroundSmashCollision()

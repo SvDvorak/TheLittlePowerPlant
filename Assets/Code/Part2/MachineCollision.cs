@@ -34,7 +34,7 @@ public class MachineCollision : MonoBehaviour
 		{
 			AddBuildingCrumbleAnimation(other.gameObject);
 			CameraShake.AddCollisionForce(SkyscraperCollisionForce);
-			DecreaseHealth(0.1f);
+			MachineDamage(0.1f);
 			DecreaseCityValue(100);
 		}
 	}
@@ -60,9 +60,13 @@ public class MachineCollision : MonoBehaviour
 		}
 	}
 
-	private void DecreaseHealth(float amount)
+	private void MachineDamage(float amount)
 	{
-		GetDataContext().Health -= amount;
+		var dataContext = GetDataContext();
+		dataContext.Health -= amount;
+		dataContext.GotHit = true;
+		var animator = GetComponent<Animator>();
+		animator.SetTrigger("Hit");
 	}
 
 	private void DecreaseCityValue(float destructionCost)

@@ -16,4 +16,5 @@ public class GameState
 	public float DestructionCost { get; set; }
 	public float CrashTime { get; set; }
 	public bool GameOver { get; set; }
+	public bool GotHit { get; set; }
 }
