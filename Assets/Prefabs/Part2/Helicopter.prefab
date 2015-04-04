@@ -257,11 +257,11 @@ MonoBehaviour:
   AttackTarget: {fileID: 0}
   FlySpeed: 10
   MaxSpeedDistance: 5
-  TargetMinDistance: 60
-  TargetMaxDistance: 80
+  TargetMinDistance: 50
+  TargetMaxDistance: 75
   NewOffsetTimeInSeconds: 5
   OffsetConeFromTarget: 45
-  FireDelay: 5
+  FireDelay: 10
   MissileTemplate: {fileID: 154946, guid: 7a16752316d38cd44b90a77aa950f020, type: 2}
   MissileSpawnL: {fileID: 461362}
   MissileSpawnR: {fileID: 422566}

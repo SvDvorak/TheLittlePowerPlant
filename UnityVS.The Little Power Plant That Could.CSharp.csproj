@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.0.0f4</UnityVersion>
@@ -123,6 +121,7 @@
     <Compile Include="Assets\Code\Part2\HelicopterSpawner.cs" />
     <Compile Include="Assets\Code\Part2\HouseCrash.cs" />
     <Compile Include="Assets\Code\Part2\MachineCollision.cs" />
+    <Compile Include="Assets\Code\Part2\MissileCollision.cs" />
     <Compile Include="Assets\Code\Part2\MissileMovement.cs" />
     <Compile Include="Assets\Code\Part2\Movement.cs" />
     <Compile Include="Assets\Code\Part2\ScoreLoader.cs" />

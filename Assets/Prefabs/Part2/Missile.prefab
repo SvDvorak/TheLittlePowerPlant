@@ -12,6 +12,8 @@ GameObject:
   - 23: {fileID: 2317634}
   - 95: {fileID: 9567096}
   - 114: {fileID: 11495634}
+  - 65: {fileID: 6541226}
+  - 114: {fileID: 11414268}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.1700001, y: 9.81000042, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.68498373, y: 2.68498302, z: 2.68498302}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,6 +65,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154946}
   m_Mesh: {fileID: 4300000, guid: 41e81cb46b83fe942834dd33791c52fd, type: 3}
+--- !u!65 &6541226
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0577000007, y: .0481299981, z: .349534005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9567096
 Animator:
   serializedVersion: 3
@@ -80,6 +94,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11414268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153fd5f54b13cb42bd236586cb52747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissileDamage: .0199999996
 --- !u!114 &11495634
 MonoBehaviour:
   m_ObjectHideFlags: 1
