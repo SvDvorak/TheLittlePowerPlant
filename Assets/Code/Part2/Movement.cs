@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
 			Invoke("GroundSmashCollision", 0.5f);
 		}
 
-		if (_gameState.IsAlive && _gameState.GotHit)
+		if (_gameState.Health > 0 && _gameState.GotHit)
 		{
 			_gameState.GotHit = false;
 			LeanTween.value(gameObject, value => _collisionCorrection = value, 1, 0, 0.7f).setOnComplete(() =>
