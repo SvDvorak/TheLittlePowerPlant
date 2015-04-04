@@ -120,7 +120,7 @@ MonoBehaviour:
   TargetPosition: {x: 0, y: 0, z: 0}
   TargetMovement: {x: 0, y: 0, z: 0}
   MissileSpeed: 20
-  TurnDegrees: 50
+  TurnDegrees: 25
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
