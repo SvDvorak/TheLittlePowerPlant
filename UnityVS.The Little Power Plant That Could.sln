@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp", "UnityVS.The Little Power Plant That Could.CSharp.csproj", "{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp.Plugins", "UnityVS.The Little Power Plant That Could.CSharp.Plugins.csproj", "{1065AFFE-B457-5B18-A212-63A0C7CCA351}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp", "UnityVS.The Little Power Plant That Could.CSharp.csproj", "{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp.Editor", "UnityVS.The Little Power Plant That Could.CSharp.Editor.csproj", "{9B91BD56-98EA-A500-4C0E-7ABBA4EDB558}"
 EndProject
@@ -15,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1065AFFE-B457-5B18-A212-63A0C7CCA351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1065AFFE-B457-5B18-A212-63A0C7CCA351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1065AFFE-B457-5B18-A212-63A0C7CCA351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1065AFFE-B457-5B18-A212-63A0C7CCA351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B91BD56-98EA-A500-4C0E-7ABBA4EDB558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9B91BD56-98EA-A500-4C0E-7ABBA4EDB558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B91BD56-98EA-A500-4C0E-7ABBA4EDB558}.Release|Any CPU.ActiveCfg = Release|Any CPU
