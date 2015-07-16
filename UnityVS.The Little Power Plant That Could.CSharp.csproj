@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Web v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebPlayer:6</UnityBuildTarget>
     <UnityVersion>5.1.1f1</UnityVersion>
@@ -90,40 +92,48 @@
     <Compile Include="Assets\CityGeneration\Unity3DCoordinateTransformer.cs" />
     <Compile Include="Assets\CityGeneration\UnityConnectionsRetriever.cs" />
     <Compile Include="Assets\CityGeneration\UnityLogger.cs" />
-    <Compile Include="Assets\Code\BuildMachine.cs" />
-    <Compile Include="Assets\Code\CameraShake.cs" />
-    <Compile Include="Assets\Code\Coal\Coal.cs" />
-    <Compile Include="Assets\Code\Coal\CoalProcess.cs" />
-    <Compile Include="Assets\Code\Coal\UpdateFireGlow.cs" />
-    <Compile Include="Assets\Code\Databinding\ButtonCommand.cs" />
-    <Compile Include="Assets\Code\Databinding\DataContext.cs" />
-    <Compile Include="Assets\Code\Databinding\TextReader.cs" />
-    <Compile Include="Assets\Code\Databinding\TransformToValue.cs" />
-    <Compile Include="Assets\Code\Databinding\ValueBinding.cs" />
-    <Compile Include="Assets\Code\DebugInfo.cs" />
-    <Compile Include="Assets\Code\ForcedOverload.cs" />
-    <Compile Include="Assets\Code\GUI\ItemList.cs" />
-    <Compile Include="Assets\Code\GUI\ObjectExtensions.cs" />
-    <Compile Include="Assets\Code\GUI\ToggleColorFill.cs" />
-    <Compile Include="Assets\Code\GUI\ToggleGroupExtensions.cs" />
-    <Compile Include="Assets\Code\GameObjectExtensions.cs" />
-    <Compile Include="Assets\Code\HighscoreText.cs" />
-    <Compile Include="Assets\Code\Hydro\DurabilityPresentation.cs" />
-    <Compile Include="Assets\Code\Hydro\Hydro.cs" />
-    <Compile Include="Assets\Code\Hydro\HydroLightSwitch.cs" />
-    <Compile Include="Assets\Code\Hydro\HydroProcess.cs" />
-    <Compile Include="Assets\Code\Hydro\UpdateAnimatorOnMachineState.cs" />
-    <Compile Include="Assets\Code\IMachineProcess.cs" />
-    <Compile Include="Assets\Code\IMachineType.cs" />
-    <Compile Include="Assets\Code\MachineSelectionList.cs" />
-    <Compile Include="Assets\Code\MachineTypeData.cs" />
-    <Compile Include="Assets\Code\Nuclear\AdjustControlRods.cs" />
-    <Compile Include="Assets\Code\Nuclear\FuelRodProcess.cs" />
-    <Compile Include="Assets\Code\Nuclear\Nuclear.cs" />
-    <Compile Include="Assets\Code\Nuclear\NuclearProcess.cs" />
-    <Compile Include="Assets\Code\Nuclear\WarningLightsController.cs" />
-    <Compile Include="Assets\Code\OutputUpdater.cs" />
+    <Compile Include="Assets\Code\Part1\BuildMachine.cs" />
+    <Compile Include="Assets\Code\Part1\Coal\Coal.cs" />
+    <Compile Include="Assets\Code\Part1\Coal\CoalProcess.cs" />
+    <Compile Include="Assets\Code\Part1\Coal\UpdateFireGlow.cs" />
+    <Compile Include="Assets\Code\Part1\Databinding\ButtonCommand.cs" />
+    <Compile Include="Assets\Code\Part1\Databinding\DataContext.cs" />
+    <Compile Include="Assets\Code\Part1\Databinding\TextReader.cs" />
+    <Compile Include="Assets\Code\Part1\Databinding\TransformToValue.cs" />
+    <Compile Include="Assets\Code\Part1\Databinding\ValueBinding.cs" />
+    <Compile Include="Assets\Code\Part1\DebugInfo.cs" />
+    <Compile Include="Assets\Code\Part1\ForcedOverload.cs" />
+    <Compile Include="Assets\Code\Part1\GUI\ItemList.cs" />
+    <Compile Include="Assets\Code\Part1\GUI\ObjectExtensions.cs" />
+    <Compile Include="Assets\Code\Part1\GUI\ToggleColorFill.cs" />
+    <Compile Include="Assets\Code\Part1\GUI\ToggleGroupExtensions.cs" />
+    <Compile Include="Assets\Code\Part1\GameObjectExtensions.cs" />
+    <Compile Include="Assets\Code\Part1\HighscoreText.cs" />
+    <Compile Include="Assets\Code\Part1\Hydro\DurabilityPresentation.cs" />
+    <Compile Include="Assets\Code\Part1\Hydro\Hydro.cs" />
+    <Compile Include="Assets\Code\Part1\Hydro\HydroLightSwitch.cs" />
+    <Compile Include="Assets\Code\Part1\Hydro\HydroProcess.cs" />
+    <Compile Include="Assets\Code\Part1\Hydro\UpdateAnimatorOnMachineState.cs" />
+    <Compile Include="Assets\Code\Part1\IMachineProcess.cs" />
+    <Compile Include="Assets\Code\Part1\IMachineType.cs" />
+    <Compile Include="Assets\Code\Part1\MachineSelectionList.cs" />
+    <Compile Include="Assets\Code\Part1\MachineTypeData.cs" />
+    <Compile Include="Assets\Code\Part1\Nuclear\AdjustControlRods.cs" />
+    <Compile Include="Assets\Code\Part1\Nuclear\FuelRodProcess.cs" />
+    <Compile Include="Assets\Code\Part1\Nuclear\Nuclear.cs" />
+    <Compile Include="Assets\Code\Part1\Nuclear\NuclearProcess.cs" />
+    <Compile Include="Assets\Code\Part1\Nuclear\WarningLightsController.cs" />
+    <Compile Include="Assets\Code\Part1\OutputUpdater.cs" />
+    <Compile Include="Assets\Code\Part1\PlayerPrefs2.cs" />
+    <Compile Include="Assets\Code\Part1\Range.cs" />
+    <Compile Include="Assets\Code\Part1\RangeToDeltaSize.cs" />
+    <Compile Include="Assets\Code\Part1\RestartGame.cs" />
+    <Compile Include="Assets\Code\Part1\ScoreUpdater.cs" />
+    <Compile Include="Assets\Code\Part1\ShowMachineInfo.cs" />
+    <Compile Include="Assets\Code\Part1\WallPanel\CurrentOutput.cs" />
     <Compile Include="Assets\Code\Part2\AddMachinesToBack.cs" />
+    <Compile Include="Assets\Code\Part2\Attack.cs" />
+    <Compile Include="Assets\Code\Part2\CameraShake.cs" />
     <Compile Include="Assets\Code\Part2\DeathUpdater.cs" />
     <Compile Include="Assets\Code\Part2\GameOverCheck.cs" />
     <Compile Include="Assets\Code\Part2\GameState.cs" />
@@ -137,13 +147,7 @@
     <Compile Include="Assets\Code\Part2\ScoreLoader.cs" />
     <Compile Include="Assets\Code\Part2\TransformerSetup.cs" />
     <Compile Include="Assets\Code\Part2\TreeFall.cs" />
-    <Compile Include="Assets\Code\PlayerPrefs2.cs" />
-    <Compile Include="Assets\Code\Range.cs" />
-    <Compile Include="Assets\Code\RangeToDeltaSize.cs" />
-    <Compile Include="Assets\Code\RestartGame.cs" />
-    <Compile Include="Assets\Code\ScoreUpdater.cs" />
-    <Compile Include="Assets\Code\ShowMachineInfo.cs" />
-    <Compile Include="Assets\Code\WallPanel\CurrentOutput.cs" />
+    <Compile Include="Assets\Code\Part2\LaserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeanTween\ReadMe.txt" />
