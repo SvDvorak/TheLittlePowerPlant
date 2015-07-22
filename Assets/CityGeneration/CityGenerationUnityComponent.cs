@@ -20,10 +20,32 @@ public class CityGenerationUnityComponent : MonoBehaviour, IBlockFactory
 		newBlock.transform.Rotate(rotation);
 		_createdTiles.Add(position, newBlock);
 
-		return newBlock;
+	    foreach (Transform item in newBlock.transform)
+	    {
+	        var nameInUpper = item.name.ToUpper();
+	        if (NameIsOneOfFollowing(nameInUpper, new[] { "TREE" }))
+	        {
+	            item.gameObject.AddComponent<Destroyable>().Init(1, typeof(TreeFall));
+	        }
+            else if (NameIsOneOfFollowing(nameInUpper, new[] { "HOUSE" }))
+            {
+                item.gameObject.AddComponent<Destroyable>().Init(3, typeof(HouseCrash));
+            }
+            else if (NameIsOneOfFollowing(nameInUpper, new[] { "SKYSCRAPER", "COMPLEX", "MUNICIPAL", "GARAGE" }))
+            {
+                item.gameObject.AddComponent<Destroyable>().Init(10, typeof(HouseCrash));
+            }
+	    }
+
+	    return newBlock;
 	}
 
-	public void Destroy(Vector3 position)
+    private bool NameIsOneOfFollowing(string actualName, string[] nameCollection)
+    {
+        return nameCollection.Any(actualName.Contains);
+    }
+
+    public void Destroy(Vector3 position)
 	{
 		Destroy(_createdTiles[position]);
 		_createdTiles.Remove(position);

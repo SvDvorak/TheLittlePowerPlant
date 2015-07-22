@@ -3,30 +3,29 @@ using System.Collections;
 
 public class LaserLogic : MonoBehaviour
 {
+    public float Damage;
     private Vector3 _target;
 
-    void Start ()
+	public void Update ()
 	{
-	
-	}
-
-	void Update ()
-	{
-	    if (_target != null)
+	    var ray = new Ray(transform.position, _target - transform.position);
+	    RaycastHit hit;
+	    if (Physics.Raycast(ray, out hit))
 	    {
-            var ray = new Ray(transform.position, _target - transform.position);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                var startToEnd = hit.point - transform.position;
+	        var startToEnd = hit.point - transform.position;
 
-                var localScale = transform.localScale;
-                localScale.z = startToEnd.magnitude;
-                transform.localScale = localScale;
-                transform.rotation = Quaternion.LookRotation(-startToEnd, Vector3.up);
-            }
-        }
-    }
+	        var localScale = transform.localScale;
+	        localScale.z = startToEnd.magnitude;
+	        transform.localScale = localScale;
+	        transform.rotation = Quaternion.LookRotation(-startToEnd, Vector3.up);
+	    }
+
+	    var damageable = hit.transform.GetComponent(typeof (IDamageable)) as IDamageable;
+	    if (damageable != null)
+	    {
+	        damageable.DoDamage(Time.deltaTime * Damage);
+	    }
+	}
 
     public void FireAt(Vector3 target)
     {
