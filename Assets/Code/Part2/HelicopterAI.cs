@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HelicopterAI : MonoBehaviour
+public class HelicopterAI : MonoBehaviour, IDamageable
 {
 	public GameObject AttackTarget;
 	public float FlySpeed;
@@ -18,10 +18,16 @@ public class HelicopterAI : MonoBehaviour
 	private bool _fireFromLeft;
 	private Vector3 _previousTargetPosition;
 	private Vector3 _targetMovement;
+    private float _currentHealth;
 
-	void Start ()
+    [SerializeField]
+    private float _initialHealth;
+    public float InitialHealth { get { return _initialHealth; } }
+
+    void Start ()
 	{
-		InvokeRepeating("SetNewRandomOffset", 0, NewOffsetTimeInSeconds);
+        _currentHealth = InitialHealth;
+        InvokeRepeating("SetNewRandomOffset", 0, NewOffsetTimeInSeconds);
 		InvokeRepeating("FireMissile", FireDelay, FireDelay);
 		_previousTargetPosition = AttackTarget.transform.position;
 	}
@@ -69,4 +75,15 @@ public class HelicopterAI : MonoBehaviour
 		missileMovement.TargetPosition = AttackTarget.transform.position + new Vector3(0, 4, 0);
 		missileMovement.TargetMovement = _targetMovement;
 	}
+
+    public void DoDamage(float damage)
+    {
+        _currentHealth -= damage;
+
+        if (_currentHealth < 0)
+        {
+            GetComponent<Animator>().SetTrigger("Crash");
+            Destroy(this);
+        }
+    }
 }

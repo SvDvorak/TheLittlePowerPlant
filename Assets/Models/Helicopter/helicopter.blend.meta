@@ -25,6 +25,7 @@ ModelImporter:
     7400000: Default Take
     7400002: HelicopterAction
     7400004: Flying
+    7400006: Crashing
     9500000: //RootNode
     13700000: HelicopterMesh
   materials:
@@ -36,6 +37,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -76,6 +81,52 @@ ModelImporter:
       - path: Helicopter/Body/MainRotor
         weight: 1
       - path: Helicopter/Body/TailRotor
+        weight: 1
+      - path: Helicopter/MissileSpawn_l
+        weight: 1
+      - path: Helicopter/MissileSpawn_r
+        weight: 1
+      - path: HelicopterMesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Crashing
+      takeName: Crashing
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Helicopter
+        weight: 1
+      - path: Helicopter/Body
+        weight: 1
+      - path: Helicopter/Body/MainRotor
+        weight: 1
+      - path: Helicopter/Body/TailRotor
+        weight: 1
+      - path: Helicopter/MissileSpawn_l
+        weight: 1
+      - path: Helicopter/MissileSpawn_r
         weight: 1
       - path: HelicopterMesh
         weight: 1

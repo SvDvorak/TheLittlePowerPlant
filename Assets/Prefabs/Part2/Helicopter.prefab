@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 148526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.0680197254, y: 9.47941494, z: 44.9012527}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 469578}
   - {fileID: 413012}
@@ -278,6 +278,7 @@ MonoBehaviour:
   MissileTemplate: {fileID: 154946, guid: 7a16752316d38cd44b90a77aa950f020, type: 2}
   MissileSpawnL: {fileID: 461362}
   MissileSpawnR: {fileID: 422566}
+  _initialHealth: 15
 --- !u!137 &13741232
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -324,7 +325,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _initialHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148526}

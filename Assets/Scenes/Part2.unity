@@ -846,9 +846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileObjects: {fileID: 100050, guid: 2250ee453add9b149900804b1fe6f20d, type: 3}
   CameraShake: {fileID: 1195207}
-  TreeCollisionForce: .150000006
-  HouseCollisionForce: .300000012
-  SkyscraperCollisionForce: 1.5
 --- !u!54 &1046366209
 Rigidbody:
   m_ObjectHideFlags: 0
