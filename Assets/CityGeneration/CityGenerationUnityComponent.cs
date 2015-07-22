@@ -25,7 +25,7 @@ public class CityGenerationUnityComponent : MonoBehaviour, IBlockFactory
 	        var nameInUpper = item.name.ToUpper();
 	        if (NameIsOneOfFollowing(nameInUpper, new[] { "TREE" }))
 	        {
-	            item.gameObject.AddComponent<Destroyable>().Init(1, typeof(TreeFall));
+	            item.gameObject.AddComponent<Destroyable>().Init(0.3f, typeof(TreeFall));
 	        }
             else if (NameIsOneOfFollowing(nameInUpper, new[] { "HOUSE" }))
             {

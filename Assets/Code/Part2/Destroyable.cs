@@ -31,6 +31,7 @@ public class Destroyable : MonoBehaviour, IDamageable
         if (gameObject.GetComponent(_crashAnimationType) == null)
         {
             gameObject.AddComponent(_crashAnimationType);
+            gameObject.GetComponent<Collider>().enabled = false;
             Destroy(this);
         }
     }

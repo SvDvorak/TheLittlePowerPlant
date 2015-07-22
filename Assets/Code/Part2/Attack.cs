@@ -14,7 +14,12 @@ public class Attack : MonoBehaviour
 
     void Update ()
 	{
-        if (_gameState.IsAlive && Input.GetMouseButton(1))
+        if (!_gameState.IsAlive)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButton(1))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -22,6 +27,10 @@ public class Attack : MonoBehaviour
             {
                 Weapon.FireAt(hit.point);
             }
+        }
+        else
+        {
+            Weapon.StopFiring();
         }
     }
 }

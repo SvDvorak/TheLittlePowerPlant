@@ -29,6 +29,12 @@ public class LaserLogic : MonoBehaviour
 
     public void FireAt(Vector3 target)
     {
+        gameObject.SetActive(true);
         _target = target;
+    }
+
+    public void StopFiring()
+    {
+        gameObject.SetActive(false);
     }
 }
