@@ -83,6 +83,9 @@ public class HelicopterAI : MonoBehaviour, IDamageable
         if (_currentHealth < 0)
         {
             GetComponent<Animator>().SetTrigger("Crash");
+            var rigidBody = gameObject.AddComponent<Rigidbody>();
+            rigidBody.AddForce(new Vector3(0, 10, -10), ForceMode.Impulse);
+            rigidBody.AddTorque(new Vector3(UnityEngine.Random.Range(0f, 3f), 0, UnityEngine.Random.Range(-1f, 1f)), ForceMode.Impulse);
             Destroy(this);
         }
     }
