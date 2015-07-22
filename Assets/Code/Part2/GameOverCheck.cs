@@ -20,7 +20,7 @@ public class GameOverCheck : MonoBehaviour
 			var readNames = PlayerPrefs2.GetStringArray("Names").ToList();
 			var readScores = PlayerPrefs2.GetFloatArray("Scores").ToList();
 			readNames.Add("Andreas");
-			readScores.Add(_gameState.DestructionCost);
+			readScores.Add(ScoreManager.DestructionValue);
 			PlayerPrefs2.SetStringArray("Names", readNames.ToArray());
 			PlayerPrefs2.SetFloatArray("Scores", readScores.ToArray());
 			HighscoreElement.SetActive(true);

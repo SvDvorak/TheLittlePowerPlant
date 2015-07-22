@@ -14,23 +14,17 @@ public class Attack : MonoBehaviour
 
     void Update ()
 	{
-        if (!_gameState.IsAlive)
+        if (!_gameState.IsAlive || !Input.GetMouseButton(1))
         {
+            Weapon.StopFiring();
             return;
         }
 
-        if (Input.GetMouseButton(1))
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                Weapon.FireAt(hit.point);
-            }
-        }
-        else
-        {
-            Weapon.StopFiring();
+            Weapon.FireAt(hit.point);
         }
     }
 }

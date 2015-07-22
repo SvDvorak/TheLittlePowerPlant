@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Assets.Code;
 
 public class Destroyable : MonoBehaviour, IDamageable
 {
@@ -8,9 +9,11 @@ public class Destroyable : MonoBehaviour, IDamageable
 
     private Type _crashAnimationType;
     private float _currentHealth;
+    private float _itemValue;
 
-    public void Init(float health, Type type)
+    public void Init(float itemValue, float health, Type type)
     {
+        _itemValue = itemValue;
         _crashAnimationType = type;
         InitialHealth = health;
         _currentHealth = InitialHealth;
@@ -23,6 +26,7 @@ public class Destroyable : MonoBehaviour, IDamageable
         if (_currentHealth < 0)
         {
             AddBuildingCrumbleAnimation();
+            ScoreManager.IncreaseDestructionValue(_itemValue);
         }
     }
 

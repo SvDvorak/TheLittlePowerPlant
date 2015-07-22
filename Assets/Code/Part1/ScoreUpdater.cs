@@ -9,13 +9,19 @@ public static class ScoreManager
 		BuiltMachines = new List<BuiltMachine>();
 	}
 
-	public static float CityValue { get; set; }
+    public static float CityValue { get; set; }
+    public static float DestructionValue { get; set; }
 	public static List<BuiltMachine> BuiltMachines { get; set; }
 
 	public static void MachineBuilt(IMachineType machine, Vector3 position)
 	{
 		BuiltMachines.Add(new BuiltMachine() { MachineType = machine, Position = position });
 	}
+
+    public static void IncreaseDestructionValue(float value)
+    {
+        DestructionValue += value;
+    }
 
 	public class BuiltMachine
 	{
