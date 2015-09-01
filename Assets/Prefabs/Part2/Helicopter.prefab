@@ -278,7 +278,7 @@ MonoBehaviour:
   MissileTemplate: {fileID: 154946, guid: 7a16752316d38cd44b90a77aa950f020, type: 2}
   MissileSpawnL: {fileID: 461362}
   MissileSpawnR: {fileID: 422566}
-  _initialHealth: 15
+  _initialHealth: 3
 --- !u!137 &13741232
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -328,7 +328,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: _initialHealth
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

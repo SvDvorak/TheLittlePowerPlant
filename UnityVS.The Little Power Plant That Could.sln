@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp.Plugins", "UnityVS.The Little Power Plant That Could.CSharp.Plugins.csproj", "{1065AFFE-B457-5B18-A212-63A0C7CCA351}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp", "UnityVS.The Little Power Plant That Could.CSharp.csproj", "{FDEE5E22-98C1-5FEB-D4E3-C1635F872A55}"
@@ -8,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.The Little Power Plant That Could.CSharp.Editor", "UnityVS.The Little Power Plant That Could.CSharp.Editor.csproj", "{9B91BD56-98EA-A500-4C0E-7ABBA4EDB558}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLPPTC.Tests", "TLPPTC.Tests\TLPPTC.Tests.csproj", "{9E8B414B-7E29-439B-B0BA-492675DC49F9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MapGenerator", "..\MapGenerator\MapGenerator.xproj", "{F5F1EA1D-9A5C-410E-9A2C-FF79C9BD6B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapGeneratorTests", "..\MapGeneratorTests\MapGeneratorTests.csproj", "{B574EE37-75EF-4064-9D98-FCACBC901685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,14 @@ Global
 		{9E8B414B-7E29-439B-B0BA-492675DC49F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E8B414B-7E29-439B-B0BA-492675DC49F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E8B414B-7E29-439B-B0BA-492675DC49F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F1EA1D-9A5C-410E-9A2C-FF79C9BD6B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F1EA1D-9A5C-410E-9A2C-FF79C9BD6B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F1EA1D-9A5C-410E-9A2C-FF79C9BD6B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F1EA1D-9A5C-410E-9A2C-FF79C9BD6B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B574EE37-75EF-4064-9D98-FCACBC901685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B574EE37-75EF-4064-9D98-FCACBC901685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B574EE37-75EF-4064-9D98-FCACBC901685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B574EE37-75EF-4064-9D98-FCACBC901685}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

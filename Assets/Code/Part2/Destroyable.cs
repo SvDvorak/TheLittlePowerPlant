@@ -25,12 +25,12 @@ public class Destroyable : MonoBehaviour, IDamageable
 
         if (_currentHealth < 0)
         {
-            AddBuildingCrumbleAnimation();
+            AddCrashAnimation();
             ScoreManager.IncreaseDestructionValue(_itemValue);
         }
     }
 
-    private void AddBuildingCrumbleAnimation()
+    private void AddCrashAnimation()
     {
         if (gameObject.GetComponent(_crashAnimationType) == null)
         {

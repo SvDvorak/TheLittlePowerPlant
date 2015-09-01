@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class LaserLogic : MonoBehaviour
 {
     public float Damage;
     private Vector3 _target;
+    private Vector3 _initialScale;
+
+    public void Start()
+    {
+        _initialScale = transform.lossyScale;
+    }
 
 	public void Update ()
 	{
@@ -15,17 +22,18 @@ public class LaserLogic : MonoBehaviour
 	        var startToEnd = hit.point - transform.position;
 
 	        var localScale = transform.localScale;
-	        localScale.z = startToEnd.magnitude;
-	        transform.localScale = localScale;
+            localScale.z = startToEnd.magnitude*(1/_initialScale.z);
+            transform.localScale = localScale;
 	        transform.rotation = Quaternion.LookRotation(-startToEnd, Vector3.up);
-	    }
 
-	    var damageable = hit.transform.GetComponent(typeof (IDamageable)) as IDamageable;
-	    if (damageable != null)
-	    {
-	        damageable.DoDamage(Time.deltaTime * Damage);
-	    }
-	}
+            var damageable = hit.transform.GetComponent(typeof(IDamageable)) as IDamageable;
+
+            if (damageable != null)
+            {
+                damageable.DoDamage(Time.deltaTime * Damage);
+            }
+        }
+    }
 
     public void FireAt(Vector3 target)
     {
