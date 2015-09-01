@@ -138,6 +138,7 @@
     <Compile Include="Assets\Code\Part2\CameraShake.cs" />
     <Compile Include="Assets\Code\Part2\DeathUpdater.cs" />
     <Compile Include="Assets\Code\Part2\Destroyable.cs" />
+    <Compile Include="Assets\Code\Part2\ExplosionTouch.cs" />
     <Compile Include="Assets\Code\Part2\GameOverCheck.cs" />
     <Compile Include="Assets\Code\Part2\GameState.cs" />
     <Compile Include="Assets\Code\Part2\HelicopterAI.cs" />
@@ -148,13 +149,17 @@
     <Compile Include="Assets\Code\Part2\MachineCollision.cs" />
     <Compile Include="Assets\Code\Part2\MissileCollision.cs" />
     <Compile Include="Assets\Code\Part2\MissileMovement.cs" />
+    <Compile Include="Assets\Code\Part2\MomentaryExplosion.cs" />
     <Compile Include="Assets\Code\Part2\Movement.cs" />
     <Compile Include="Assets\Code\Part2\ScoreLoader.cs" />
     <Compile Include="Assets\Code\Part2\TransformerSetup.cs" />
     <Compile Include="Assets\Code\Part2\TreeFall.cs" />
+    <Compile Include="Assets\PorglezompPyroclastics\ExplosionMat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeanTween\ReadMe.txt" />
+    <None Include="Assets\PorglezompPyroclastics\Explosion.shader" />
+    <None Include="Assets\PorglezompPyroclastics\README.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />

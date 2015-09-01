@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using Assets.Code;
+using Object = UnityEngine.Object;
 
 public class Destroyable : MonoBehaviour, IDamageable
 {

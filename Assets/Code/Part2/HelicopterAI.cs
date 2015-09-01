@@ -87,6 +87,12 @@ public class HelicopterAI : MonoBehaviour, IDamageable
             rigidBody.AddForce(new Vector3(0, 10, -10), ForceMode.Impulse);
             rigidBody.AddTorque(new Vector3(UnityEngine.Random.Range(0f, 3f), 0, UnityEngine.Random.Range(-1f, 1f)), ForceMode.Impulse);
             Destroy(this);
+            ExplodeOnCollision();
         }
+    }
+
+    private void ExplodeOnCollision()
+    {
+        gameObject.AddComponent<ExplosionTouch>();
     }
 }
