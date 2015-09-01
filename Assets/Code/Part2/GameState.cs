@@ -3,6 +3,7 @@ public class GameState
 	public GameState()
 	{
 		Health = 1f;
+	    LaserCharge = 1f;
 		IsAlive = true;
 	}
 
@@ -13,4 +14,5 @@ public class GameState
 	public float CrashTime { get; set; }
 	public bool GameOver { get; set; }
 	public bool GotHit { get; set; }
+    public float LaserCharge { get; set; }
 }

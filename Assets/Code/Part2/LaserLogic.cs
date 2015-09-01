@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Assets.Code;
 
 public class LaserLogic : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class LaserLogic : MonoBehaviour
         _initialScale = transform.lossyScale;
     }
 
-	public void Update ()
+    public void Update ()
 	{
 	    var ray = new Ray(transform.position, _target - transform.position);
 	    RaycastHit hit;
@@ -32,7 +33,7 @@ public class LaserLogic : MonoBehaviour
             {
                 damageable.DoDamage(Time.deltaTime * Damage);
             }
-        }
+	    }
     }
 
     public void FireAt(Vector3 target)
