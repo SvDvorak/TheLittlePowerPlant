@@ -9,13 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 436818}
   - 33: {fileID: 3383318}
-  - 135: {fileID: 13504852}
   - 23: {fileID: 2349498}
-  - 114: {fileID: 11418820}
-  - 114: {fileID: 11479752}
+  - 114: {fileID: 11492488}
+  - 114: {fileID: 11469302}
   m_Layer: 0
   m_Name: Explosion
-  m_TagString: Effect
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.17753577, y: 5.64269114, z: 45.3268967}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: a9619eac2c9514ba8b707d91e07bc718, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -63,19 +62,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147030}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11418820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cff5aad50d9c4ae2830ef06afcfe23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ramp: {fileID: 2800000, guid: fefc6813ed34d4fad819fcf0f35ded02, type: 3}
---- !u!114 &11479752
+--- !u!114 &11469302
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,18 +73,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2ea898ecd42a842997adba9f2db3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13504852
-SphereCollider:
+--- !u!114 &11492488
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147030}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .500000119
-  m_Center: {x: 5.96046448e-08, y: 0, z: -8.94069672e-08}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202806cc8bebd4507a95d9f5d6be2b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ramp: {fileID: 2800000, guid: de25a418e52274482b51702fff566bcd, type: 3}
+  _noise: {fileID: 2800000, guid: 4648634f8231b4bf0860b6a2b4f6fadc, type: 3}
+  ExplosionMaterial: {fileID: 2100000, guid: ba9ab8cadaaa4451b93b38012ec0b31b, type: 2}
+  _heat: 1
+  _alpha: 1
+  _scrollSpeed: 1
+  _frequency: 1
+  _scattering: 1
+  _octaves: 4
+  _quality: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -120,6 +116,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
