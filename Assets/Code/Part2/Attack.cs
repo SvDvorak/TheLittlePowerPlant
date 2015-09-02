@@ -4,14 +4,18 @@ using Assets.Code;
 public class Attack : MonoBehaviour
 {
     public LaserLogic Weapon;
+    public Renderer WeaponRenderer;
     public float RechargePerSecond;
     public float ChargeUsePerSecond;
     private GameState _gameState;
     private bool _forceRecharging;
+    private Color _emissionColor;
+    private readonly Color _noChargeLaserColor = new Color(0.1f, 0.1f, 0.1f);
 
     void Start ()
-	{
-		_gameState = gameObject.GetDataContext<GameState>();
+    {
+        _gameState = gameObject.GetDataContext<GameState>();
+        _emissionColor = WeaponRenderer.material.GetColor("_EmissionColor");
     }
 
     void Update ()
@@ -27,6 +31,10 @@ public class Attack : MonoBehaviour
             _forceRecharging = true;
             Weapon.StopFiring();
         }
+
+        var newEmissionColor = Color.Lerp(_noChargeLaserColor, _emissionColor, _gameState.LaserCharge);
+        WeaponRenderer.material.SetColor("_EmissionColor", newEmissionColor);
+        DynamicGI.SetEmissive(WeaponRenderer, newEmissionColor);
 
         if (_forceRecharging)
         {
