@@ -7,6 +7,18 @@ public class HouseCrash : MonoBehaviour
 
 	void Start ()
 	{
-		LeanTween.moveY(gameObject, -16, CrashSpeed).setEase(LeanTweenType.easeInQuad);
+	    var smoke = (GameObject)Instantiate(Resources.Load("CrumbleSmoke"), transform.position, transform.rotation);
+	    var bounds = gameObject.GetComponent<Renderer>().bounds.size;
+	    smoke.transform.localScale = bounds;
+	    LeanTween
+            .moveY(gameObject, -bounds.y, CrashSpeed)
+            .setEase(LeanTweenType.easeInQuad)
+            .setOnComplete(() => StopAndDestroy(smoke));
 	}
+
+    private static void StopAndDestroy(GameObject smoke)
+    {
+        smoke.GetComponent<ParticleSystem>().Stop();
+        Destroy(smoke, 4f);
+    }
 }
